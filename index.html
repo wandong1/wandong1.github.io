@@ -821,6 +821,99 @@
 
 
   
+    <article id="post-golang微服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/15/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/">golang微服务</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/15/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2022-08-15T00:15:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="golang微服务"><a href="#golang微服务" class="headerlink" title="golang微服务"></a>golang微服务</h1><h2 id="1、RPC-简介"><a href="#1、RPC-简介" class="headerlink" title="1、RPC 简介"></a>1、RPC 简介</h2><p>⚫ 远程过程调用（Remote Procedure Call，RPC）是一个计算机通信协议 </p>
+<p>⚫ 该协议允许运行于一台计算机的程序调用另一台计算机的子程序，而程序员无需额 外地为这个交互作用编程 </p>
+<p>⚫ 如果涉及的软件采用面向对象编程，那么远程过程调用亦可称作远程调用或远程方 法调用</p>
+<h2 id="2、golang中如何实现RPC"><a href="#2、golang中如何实现RPC" class="headerlink" title="2、golang中如何实现RPC"></a>2、golang中如何实现RPC</h2><p>⚫ golang 中实现 RPC 非常简单，官方提供了封装好的库，还有一些第三方的库 </p>
+<p>⚫ golang 官方的 net&#x2F;rpc 库使用 encoding&#x2F;gob 进行编解码，支持 tcp 和 http 数据传输方 式，由于其他语言不支持 gob 编解码方式，所以 golang 的 RPC 只支持 golang 开发 的服务器与客户端之间的交互 </p>
+<p>⚫ 官方还提供了 net&#x2F;rpc&#x2F;jsonrpc 库实现 RPC 方法，jsonrpc 采用 JSON 进行数据编解码， 因而支持跨语言调用，目前 jsonrpc 库是基于 tcp 协议实现的，暂不支持 http 传输 方式</p>
+<p><strong>⚫ golang 的 RPC 必须符合 4 个条件才可以</strong> 	</p>
+<p>​	◼ 结构体字段首字母要大写，要跨域访问，所以大写 </p>
+<p>​	◼ 函数名必须首字母大写（可以序列号导出的） </p>
+<p>​	◼ 函数第一个参数是接收参数，第二个参数是返回给客户端参数，必须是指针类 型 </p>
+<p>​	◼ 函数必须有一个返回值 error</p>
+<p>⚫ 另外，net&#x2F;rpc&#x2F;jsonrpc 库通过 json 格式编解码，支持跨语言调用</p>
+<h3 id="服务端代码："><a href="#服务端代码：" class="headerlink" title="服务端代码："></a>服务端代码：</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;net/rpc&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务端，求矩形面积和周长</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Rect 声明矩形对象</span></span><br><span class="line"><span class="keyword">type</span> Rect <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Params 生命参数结构体，字段首字母大写</span></span><br><span class="line"><span class="keyword">type</span> Params <span class="keyword">struct</span> &#123;</span><br><span class="line">	Width, Height <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Area 求矩形面积的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r *Rect)</span></span> Area(p Params, ret *<span class="type">int</span>) <span class="type">error</span> &#123;</span><br><span class="line">	*ret = p.Width * p.Height</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Perimeter 求矩形面积的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r *Rect)</span></span> Perimeter(p Params, ret *<span class="type">int</span>) <span class="type">error</span> &#123;</span><br><span class="line">	*ret = (p.Width + p.Height) * <span class="number">2</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1、注册服务</span></span><br><span class="line">	rect := <span class="built_in">new</span>(Rect)</span><br><span class="line">	rpc.Register(rect)</span><br><span class="line">	<span class="comment">// 2、把服务处理绑定到http协议上</span></span><br><span class="line">	rpc.HandleHTTP()</span><br><span class="line">	<span class="comment">// 3、监听服务，等待客户端调用</span></span><br><span class="line">	err := http.ListenAndServe(<span class="string">&quot;:8080&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="服务端代码（jsonrpc调用）："><a href="#服务端代码（jsonrpc调用）：" class="headerlink" title="服务端代码（jsonrpc调用）："></a>服务端代码（jsonrpc调用）：</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1、注册服务</span></span><br><span class="line">	rpc.Register(<span class="built_in">new</span>(Rect))</span><br><span class="line">	<span class="comment">// 2、把服务处理绑定到http协议上</span></span><br><span class="line">    lis,err := net.Listen(<span class="string">&quot;tcp&quot;</span>,<span class="string">&quot;127.0.0.1:8081&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//循环监听服务</span></span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        conn, err := lis.Accept()</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 起协程</span></span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(conn net.Conn)</span></span> &#123;</span><br><span class="line">            fmt.Println(<span class="string">&quot;new a client&quot;</span>)  </span><br><span class="line">            jsonrpc.ServeConn(conn)</span><br><span class="line">        &#125;(conn)</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="客户端代码："><a href="#客户端代码：" class="headerlink" title="客户端代码："></a>客户端代码：</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/rpc&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Params 定义参数结构体</span></span><br><span class="line"><span class="keyword">type</span> Params <span class="keyword">struct</span> &#123;</span><br><span class="line">	Width, Height <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用服务</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1、连接远程rpc服务</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//http调用</span></span><br><span class="line">	rp, err := rpc.DialHTTP(<span class="string">&quot;tcp&quot;</span>, <span class="string">&quot;127.0.0.1:8080&quot;</span>)</span><br><span class="line">    <span class="comment">// json rpc 调用</span></span><br><span class="line">    <span class="comment">// rp, err := jsonrpc.Dial(&quot;tcp&quot;, &quot;127.0.0.1:8081&quot;)</span></span><br><span class="line">    </span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 2、调用远程方法</span></span><br><span class="line">	<span class="comment">// 定义接收服务端传回来的计算结果的变量</span></span><br><span class="line">	<span class="keyword">var</span> ret <span class="type">int</span> <span class="comment">// ret := 0</span></span><br><span class="line">	pArgs := Params&#123;Width: <span class="number">100</span>, Height: <span class="number">50</span>&#125;</span><br><span class="line">	<span class="comment">// 求面积</span></span><br><span class="line">	err2 := rp.Call(<span class="string">&quot;Rect.Area&quot;</span>, pArgs, &amp;ret)</span><br><span class="line">	<span class="keyword">if</span> err2 != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err2)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;width: %d,height: %d &#x27;s area is %d\n&quot;</span>, pArgs.Width, pArgs.Height, ret)</span><br><span class="line">	<span class="comment">// 求周长</span></span><br><span class="line">	err3 := rp.Call(<span class="string">&quot;Rect.Perimeter&quot;</span>, pArgs, &amp;ret)</span><br><span class="line">	<span class="keyword">if</span> err3 != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err3)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;width: %d,height: %d &#x27;s perimeter is %d\n&quot;</span>, pArgs.Width, pArgs.Height, ret)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/15/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-golang定时任务系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -908,6 +1001,81 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/08/15/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-golang日志框架zap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/15/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/">golang日志框架zap</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/15/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/" class="archive-article-date">
+  	<time datetime="2022-08-15T00:15:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="golang日志框架zap"><a href="#golang日志框架zap" class="headerlink" title="golang日志框架zap"></a>golang日志框架zap</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;go.uber.org/zap&quot;</span></span><br><span class="line">	<span class="string">&quot;go.uber.org/zap/zapcore&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> logger *zap.Logger</span><br><span class="line"><span class="keyword">var</span> sugarLogger *zap.SugaredLogger</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InitLogger</span><span class="params">()</span></span> &#123;</span><br><span class="line">	writeSyncer := getLogWriter()</span><br><span class="line">	encoder := getEncoder()</span><br><span class="line">	core := zapcore.NewCore(encoder, writeSyncer, zapcore.DebugLevel)</span><br><span class="line"></span><br><span class="line">	logger = zap.New(core)</span><br><span class="line">	sugarLogger = logger.Sugar()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getEncoder</span><span class="params">()</span></span> zapcore.Encoder &#123;</span><br><span class="line">	encoderConfig := zap.NewProductionEncoderConfig()</span><br><span class="line">	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder</span><br><span class="line">	encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> zapcore.NewJSONEncoder(encoderConfig)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getLogWriter</span><span class="params">()</span></span> zapcore.WriteSyncer &#123;</span><br><span class="line">	file, _ := os.Create(<span class="string">&quot;./test.log&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> zapcore.AddSync(file)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	InitLogger()</span><br><span class="line">	<span class="keyword">defer</span> logger.Sync()</span><br><span class="line">	<span class="keyword">defer</span> sugarLogger.Sync()</span><br><span class="line">	logger.Info(<span class="string">&quot;日志记录成功&quot;</span>, zap.String(<span class="string">&quot;service&quot;</span>, <span class="string">&quot;logger service&quot;</span>))</span><br><span class="line">	logger.Error(<span class="string">&quot;日志记录失败&quot;</span>, zap.String(<span class="string">&quot;service&quot;</span>, <span class="string">&quot;logger service&quot;</span>))</span><br><span class="line">	sugarLogger.Infof(<span class="string">&quot;日志记录成功 服务：%s&quot;</span>, <span class="string">&quot;logger service&quot;</span>)</span><br><span class="line">	sugarLogger.Error(<span class="string">&quot;日志记录失败&quot;</span>, <span class="string">&quot;logger service&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/15/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/">展开全文 >></a>
         </p>
       
 
@@ -1226,174 +1394,6 @@
 
 
   
-    <article id="post-golang日志框架zap" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/15/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/">golang日志框架zap</a>
-    </h1>
-  
-
-        
-        <a href="/2022/08/15/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/" class="archive-article-date">
-  	<time datetime="2022-08-15T00:15:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="golang日志框架zap"><a href="#golang日志框架zap" class="headerlink" title="golang日志框架zap"></a>golang日志框架zap</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;go.uber.org/zap&quot;</span></span><br><span class="line">	<span class="string">&quot;go.uber.org/zap/zapcore&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> logger *zap.Logger</span><br><span class="line"><span class="keyword">var</span> sugarLogger *zap.SugaredLogger</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">InitLogger</span><span class="params">()</span></span> &#123;</span><br><span class="line">	writeSyncer := getLogWriter()</span><br><span class="line">	encoder := getEncoder()</span><br><span class="line">	core := zapcore.NewCore(encoder, writeSyncer, zapcore.DebugLevel)</span><br><span class="line"></span><br><span class="line">	logger = zap.New(core)</span><br><span class="line">	sugarLogger = logger.Sugar()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getEncoder</span><span class="params">()</span></span> zapcore.Encoder &#123;</span><br><span class="line">	encoderConfig := zap.NewProductionEncoderConfig()</span><br><span class="line">	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder</span><br><span class="line">	encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> zapcore.NewJSONEncoder(encoderConfig)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">getLogWriter</span><span class="params">()</span></span> zapcore.WriteSyncer &#123;</span><br><span class="line">	file, _ := os.Create(<span class="string">&quot;./test.log&quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> zapcore.AddSync(file)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	InitLogger()</span><br><span class="line">	<span class="keyword">defer</span> logger.Sync()</span><br><span class="line">	<span class="keyword">defer</span> sugarLogger.Sync()</span><br><span class="line">	logger.Info(<span class="string">&quot;日志记录成功&quot;</span>, zap.String(<span class="string">&quot;service&quot;</span>, <span class="string">&quot;logger service&quot;</span>))</span><br><span class="line">	logger.Error(<span class="string">&quot;日志记录失败&quot;</span>, zap.String(<span class="string">&quot;service&quot;</span>, <span class="string">&quot;logger service&quot;</span>))</span><br><span class="line">	sugarLogger.Infof(<span class="string">&quot;日志记录成功 服务：%s&quot;</span>, <span class="string">&quot;logger service&quot;</span>)</span><br><span class="line">	sugarLogger.Error(<span class="string">&quot;日志记录失败&quot;</span>, <span class="string">&quot;logger service&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/15/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-golang微服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/08/15/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/">golang微服务</a>
-    </h1>
-  
-
-        
-        <a href="/2022/08/15/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2022-08-15T00:15:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="golang微服务"><a href="#golang微服务" class="headerlink" title="golang微服务"></a>golang微服务</h1><h2 id="1、RPC-简介"><a href="#1、RPC-简介" class="headerlink" title="1、RPC 简介"></a>1、RPC 简介</h2><p>⚫ 远程过程调用（Remote Procedure Call，RPC）是一个计算机通信协议 </p>
-<p>⚫ 该协议允许运行于一台计算机的程序调用另一台计算机的子程序，而程序员无需额 外地为这个交互作用编程 </p>
-<p>⚫ 如果涉及的软件采用面向对象编程，那么远程过程调用亦可称作远程调用或远程方 法调用</p>
-<h2 id="2、golang中如何实现RPC"><a href="#2、golang中如何实现RPC" class="headerlink" title="2、golang中如何实现RPC"></a>2、golang中如何实现RPC</h2><p>⚫ golang 中实现 RPC 非常简单，官方提供了封装好的库，还有一些第三方的库 </p>
-<p>⚫ golang 官方的 net&#x2F;rpc 库使用 encoding&#x2F;gob 进行编解码，支持 tcp 和 http 数据传输方 式，由于其他语言不支持 gob 编解码方式，所以 golang 的 RPC 只支持 golang 开发 的服务器与客户端之间的交互 </p>
-<p>⚫ 官方还提供了 net&#x2F;rpc&#x2F;jsonrpc 库实现 RPC 方法，jsonrpc 采用 JSON 进行数据编解码， 因而支持跨语言调用，目前 jsonrpc 库是基于 tcp 协议实现的，暂不支持 http 传输 方式</p>
-<p><strong>⚫ golang 的 RPC 必须符合 4 个条件才可以</strong> 	</p>
-<p>​	◼ 结构体字段首字母要大写，要跨域访问，所以大写 </p>
-<p>​	◼ 函数名必须首字母大写（可以序列号导出的） </p>
-<p>​	◼ 函数第一个参数是接收参数，第二个参数是返回给客户端参数，必须是指针类 型 </p>
-<p>​	◼ 函数必须有一个返回值 error</p>
-<p>⚫ 另外，net&#x2F;rpc&#x2F;jsonrpc 库通过 json 格式编解码，支持跨语言调用</p>
-<h3 id="服务端代码："><a href="#服务端代码：" class="headerlink" title="服务端代码："></a>服务端代码：</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;net/rpc&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务端，求矩形面积和周长</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Rect 声明矩形对象</span></span><br><span class="line"><span class="keyword">type</span> Rect <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Params 生命参数结构体，字段首字母大写</span></span><br><span class="line"><span class="keyword">type</span> Params <span class="keyword">struct</span> &#123;</span><br><span class="line">	Width, Height <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Area 求矩形面积的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r *Rect)</span></span> Area(p Params, ret *<span class="type">int</span>) <span class="type">error</span> &#123;</span><br><span class="line">	*ret = p.Width * p.Height</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Perimeter 求矩形面积的方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(r *Rect)</span></span> Perimeter(p Params, ret *<span class="type">int</span>) <span class="type">error</span> &#123;</span><br><span class="line">	*ret = (p.Width + p.Height) * <span class="number">2</span></span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1、注册服务</span></span><br><span class="line">	rect := <span class="built_in">new</span>(Rect)</span><br><span class="line">	rpc.Register(rect)</span><br><span class="line">	<span class="comment">// 2、把服务处理绑定到http协议上</span></span><br><span class="line">	rpc.HandleHTTP()</span><br><span class="line">	<span class="comment">// 3、监听服务，等待客户端调用</span></span><br><span class="line">	err := http.ListenAndServe(<span class="string">&quot;:8080&quot;</span>, <span class="literal">nil</span>)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="服务端代码（jsonrpc调用）："><a href="#服务端代码（jsonrpc调用）：" class="headerlink" title="服务端代码（jsonrpc调用）："></a>服务端代码（jsonrpc调用）：</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1、注册服务</span></span><br><span class="line">	rpc.Register(<span class="built_in">new</span>(Rect))</span><br><span class="line">	<span class="comment">// 2、把服务处理绑定到http协议上</span></span><br><span class="line">    lis,err := net.Listen(<span class="string">&quot;tcp&quot;</span>,<span class="string">&quot;127.0.0.1:8081&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//循环监听服务</span></span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">        conn, err := lis.Accept()</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 起协程</span></span><br><span class="line">        <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(conn net.Conn)</span></span> &#123;</span><br><span class="line">            fmt.Println(<span class="string">&quot;new a client&quot;</span>)  </span><br><span class="line">            jsonrpc.ServeConn(conn)</span><br><span class="line">        &#125;(conn)</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="客户端代码："><a href="#客户端代码：" class="headerlink" title="客户端代码："></a>客户端代码：</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/rpc&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Params 定义参数结构体</span></span><br><span class="line"><span class="keyword">type</span> Params <span class="keyword">struct</span> &#123;</span><br><span class="line">	Width, Height <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用服务</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 1、连接远程rpc服务</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//http调用</span></span><br><span class="line">	rp, err := rpc.DialHTTP(<span class="string">&quot;tcp&quot;</span>, <span class="string">&quot;127.0.0.1:8080&quot;</span>)</span><br><span class="line">    <span class="comment">// json rpc 调用</span></span><br><span class="line">    <span class="comment">// rp, err := jsonrpc.Dial(&quot;tcp&quot;, &quot;127.0.0.1:8081&quot;)</span></span><br><span class="line">    </span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 2、调用远程方法</span></span><br><span class="line">	<span class="comment">// 定义接收服务端传回来的计算结果的变量</span></span><br><span class="line">	<span class="keyword">var</span> ret <span class="type">int</span> <span class="comment">// ret := 0</span></span><br><span class="line">	pArgs := Params&#123;Width: <span class="number">100</span>, Height: <span class="number">50</span>&#125;</span><br><span class="line">	<span class="comment">// 求面积</span></span><br><span class="line">	err2 := rp.Call(<span class="string">&quot;Rect.Area&quot;</span>, pArgs, &amp;ret)</span><br><span class="line">	<span class="keyword">if</span> err2 != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err2)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;width: %d,height: %d &#x27;s area is %d\n&quot;</span>, pArgs.Width, pArgs.Height, ret)</span><br><span class="line">	<span class="comment">// 求周长</span></span><br><span class="line">	err3 := rp.Call(<span class="string">&quot;Rect.Perimeter&quot;</span>, pArgs, &amp;ret)</span><br><span class="line">	<span class="keyword">if</span> err3 != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err3)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;width: %d,height: %d &#x27;s perimeter is %d\n&quot;</span>, pArgs.Width, pArgs.Height, ret)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/08/15/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1511,7 +1511,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">helm</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1519,11 +1523,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color5">helm</a>
               </li>
              
               <li class="article-tag-list-item">
