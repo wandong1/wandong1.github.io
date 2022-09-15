@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="generator" content="Hugo 0.102.3" />
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+  
+
+  <title>万东的技术博客</title>
+
+  
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="万东的技术博客"/>
+<meta name="twitter:description" content=""/>
+
+  <meta property="og:title" content="万东的技术博客" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://example.org/" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
+  
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css">
+
+  
+  
+  <link rel="stylesheet" href="/sass/main.scss">
+
+  
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  
+
+  <script src="/js/lazysizes.min.js"></script>
+
+  
+  
+
+  <link rel="alternate" type="application/rss+xml" href="/index.xml" title="万东的技术博客" />
+  
+</head>
+
+
+
+<body ontouchstart="">
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://example.org/">万东的技术博客</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+
+<header class="intro-header style-text">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <div class="site-heading">
+        
+          <h1>万东的技术博客</h1>
+          
+          
+          
+          
+          <span class="subheading"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+  
+  <div class="container">
+    <div class="row">
+      
+      
+      
+      <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-12
+      col-xs-12 postlist-container">
+        
+
+
+   <div class="post-preview">
+  <a href="/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">
+      <h2 class="post-title">helm的使用方法介绍</h2>
+      
+      <div class="post-content-preview">
+        
+        HelmHelm是一个Kubernetes的包管理工具，就像Linux下的包管理器，如yum/apt等，可以很方便的将之前
+打包好的yaml文件部署到kubernetes上。
+Helm有3个重要概念：
+• **helm：**一个命令行客户端工具，主要用于Kubernetes应用chart的创建、打包、发布和管理。
+• **Chart：**应用描述，一系列用于 …
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Wed, Sep 14, 2022
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/post/git/">
+      <h2 class="post-title">Git使用方法</h2>
+      
+      <div class="post-content-preview">
+         Git使用方法
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Mon, Aug 15, 2022
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/post/golang/">
+      <h2 class="post-title">Golang学习笔记</h2>
+      
+      <div class="post-content-preview">
+         Golang学习笔记
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Mon, Aug 15, 2022
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/">
+      <h2 class="post-title">golang定时任务系统</h2>
+      
+      <div class="post-content-preview">
+         golang定时任务系统
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Mon, Aug 15, 2022
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+      <h2 class="post-title">golang微服务</h2>
+      
+      <div class="post-content-preview">
+         golang微服务
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Mon, Aug 15, 2022
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/">
+      <h2 class="post-title">golang日志框架zap</h2>
+      
+      <div class="post-content-preview">
+         golang日志框架zap
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Mon, Aug 15, 2022
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/post/jdk%E5%AE%89%E8%A3%85/">
+      <h2 class="post-title">jdk安装教程（容器）</h2>
+      
+      <div class="post-content-preview">
+         jdk安装教程
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Mon, Aug 15, 2022
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/">
+      <h2 class="post-title">jenkins构建go项目</h2>
+      
+      <div class="post-content-preview">
+         jenkins构建go项目
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Mon, Aug 15, 2022
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/post/elasticsearch/">
+      <h2 class="post-title">ElasticSearch快速入门实战</h2>
+      
+      <div class="post-content-preview">
+         ElasticSearch
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Sun, Aug 15, 2021
+  </p>
+</div>
+<hr>
+
+   <div class="post-preview">
+  <a href="/post/elasticsearch%E5%85%A5%E9%97%A8/">
+      <h2 class="post-title">离线安装docker</h2>
+      
+      <div class="post-content-preview">
+         离线安装docker
+         
+      </div>
+  </a>
+  <p class="post-meta">
+      Posted by    on Sun, Aug 15, 2021
+  </p>
+</div>
+<hr>
+
+
+
+<ul class="pager">
+  
+  
+  <li class="next">
+      <a href="/page/2/">Older Posts &rarr;</a>
+  </li>
+  
+</ul>
+
+
+      </div>
+      
+      <div class="col-lg-3 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-12
+      col-xs-12 sidebar-container">
+
+        
+        <section>
+  
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/docker/">docker</a>
+    
+    <a href="/tags/es/">ES</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/go/">go</a>
+    
+    <a href="/tags/helm/">helm</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/java/">java</a>
+    
+    <a href="/tags/jenkins/">jenkins</a>
+    
+    <a href="/tags/k8s/">K8S</a>
+    
+    <a href="/tags/rancher/">rancher</a>
+    
+    <a href="/tags/zookeeper/">zookeeper</a>
+    
+  </div>
+</section>
+        
+<section class="visible-md visible-lg">
+  <hr>
+  
+  <h5><a href="/about/">ABOUT ME</a></h5>
+  
+
+  
+  <div class="short-about">
+    
+    
+    
+    
+
+
+<ul class="list-inline">
+
+  
+  
+  
+  
+  
+  
+  
+</ul>
+  </div>
+</section>
+        
+        
+
+
+      </div>
+      
+
+    </div>
+  </div>
+
+  
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        
+
+
+<ul class="list-inline text-center">
+
+  
+  
+  
+  
+  
+  
+  
+</ul>
+        <p class="copyright text-muted">
+          Copyright &copy; 万东的技术博客 2022
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+</body>
+
+</html>

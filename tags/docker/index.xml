@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on 万东的技术博客</title>
+    <link>http://example.org/tags/docker/</link>
+    <description>Recent content in docker on 万东的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Aug 2021 08:15:16 +0000</lastBuildDate><atom:link href="http://example.org/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>离线安装docker</title>
+      <link>http://example.org/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
+      
+      <guid>http://example.org/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <description>离线安装dockerhttps://download.docker.com/linux/static/stable/x86_64/docker-20.10.14.tgz
+#解压 tar -xvzf docker-20.10.14.tgz -C /opt/ chown root:root -R /opt/docker/ cp /opt/docker/* /usr/bin cat &amp;lt;&amp;lt;EOF &amp;gt;/etc/systemd/system/docker.service [Unit] Description=Docker Application Container Engine Documentation=https://docs.docker.com After=network-online.target firewalld.service Wants=network-online.target [Service] Type=notify ExecStart=/usr/bin/dockerd ExecReload=/bin/kill -s HUP \$MAINPID LimitNOFILE=infinity LimitNPROC=infinity TimeoutStartSec=0 Delegate=yes KillMode=process Restart=on-failure StartLimitBurst=3 StartLimitInterval=60s [Install] WantedBy=multi-user.target EOF chmod +x /etc/systemd/system/docker.service # 加载service配置 systemctl daemon-reload #设置开机启动 并立即启动 systemctl enable docker.service --now </description>
+    </item>
+    
+  </channel>
+</rss>

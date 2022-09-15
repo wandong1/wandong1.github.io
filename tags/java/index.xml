@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on 万东的技术博客</title>
+    <link>http://example.org/tags/java/</link>
+    <description>Recent content in java on 万东的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Aug 2022 08:15:16 +0000</lastBuildDate><atom:link href="http://example.org/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>jdk安装教程（容器）</title>
+      <link>http://example.org/post/jdk%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
+      
+      <guid>http://example.org/post/jdk%E5%AE%89%E8%A3%85/</guid>
+      <description>jdk安装dockerfile文件
+下载地址：https://www.oracle.com/java/technologies/downloads/#java8 jdk-8u341-linux-x64.tar.gz文件
+FROM ubuntu:latest ADD jdk-8u341-linux-x64.tar.gz /usr/local/ RUN mv /usr/local/jdk1.8.0_341 /usr/local/jdk1.8 ENV JAVA_HOME=/usr/local/jdk1.8 ENV JRE_HOME=${JAVA_HOME}/jre ENV CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib:$CLASSPATH ENV JAVA_PATH=${JAVA_HOME}/bin:${JRE_HOME}/bin ENV PATH=$PATH:${JAVA_PATH} RUN apt-get update &amp;amp;&amp;amp; apt-get install curl tree iputils-ping net-tools iproute2 vim -y CMD [&amp;#34;java&amp;#34;,&amp;#34;-version&amp;#34;] </description>
+    </item>
+    
+    <item>
+      <title>zookeeper的安装和使用</title>
+      <link>http://example.org/post/zookeeper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/post/zookeeper/</guid>
+      <description>zookeeper官网 https://zookeeper.apache.org/ 找download
+一、下载软件包https://dlcdn.apache.org/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz
+二、集群部署1、安装JDKcentos
+yum install java-1.8.0-openjdk* -y 2、zk配置文件# The number of milliseconds of each ticktickTime=2000# The number of ticks that the initial # synchronization phase can takeinitLimit=10# The number of ticks that can pass between # sending a request and getting an acknowledgementsyncLimit=5# the directory where the snapshot is stored.# do not use /tmp for storage, /tmp here is just # example sakes.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+  
+    
+  
+
+  <title>离线安装docker | 万东的技术博客</title>
+
+  
+  <meta name="description" content="离线安装docker">
+  <meta name="keywords" content="">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="离线安装docker"/>
+<meta name="twitter:description" content="离线安装docker"/>
+
+  <meta property="og:title" content="离线安装docker" />
+<meta property="og:description" content="离线安装docker" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/elasticsearch%E5%85%A5%E9%97%A8/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-08-15T08:15:16+00:00" />
+<meta property="article:modified_time" content="2021-08-15T08:15:16+00:00" />
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
+  
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css">
+
+  
+  
+  <link rel="stylesheet" href="/sass/main.scss">
+
+  
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  
+
+  <script src="/js/lazysizes.min.js"></script>
+
+  
+  
+
+  
+</head>
+
+
+
+<body ontouchstart="">
+
+  
+  
+  
+
+  
+
+  
+  
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://example.org/">万东的技术博客</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/es/" title="ES">ES</a>
+            
+          </div>
+          <h1>离线安装docker</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by   
+            on Sun, Aug 15, 2021
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <p>ES版本： v7.17.3</p>
+<p>ES环境搭建视频：https://pan.baidu.com/s/1PsTNbpDy&ndash;M-pvFWb3aehQ?pwd=nwxl</p>
+<h1 id="elasticsearch快速入门实战">ElasticSearch快速入门实战<a class="anchorjs-link" href="#elasticsearch%e5%bf%ab%e9%80%9f%e5%85%a5%e9%97%a8%e5%ae%9e%e6%88%98"></a></h1><p>note 链接：http://note.youdao.com/noteshare?id=d5d5718ae542f274ba0fda4284a53231&amp;sub=68E590656C7A48858C7F6997D4A1511A</p>
+<h2 id="全文检索"><strong>全文检索</strong><a class="anchorjs-link" href="#%e5%85%a8%e6%96%87%e6%a3%80%e7%b4%a2"></a></h2><p><strong>数据分类：</strong></p>
+<ul>
+<li>结构化数据： 固定格式，有限长度    比如mysql存的数据</li>
+<li>非结构化数据：不定长，无固定格式   比如邮件，word文档，日志</li>
+<li>半结构化数据： 前两者结合     比如xml，html</li>
+</ul>
+<p><strong>搜索分类：</strong></p>
+<ul>
+<li>
+<p>结构化数据搜索：  使用关系型数据库</p>
+</li>
+<li>
+<p>非结构化数据搜索</p>
+</li>
+<li>
+<ul>
+<li>顺序扫描</li>
+<li>全文检索</li>
+</ul>
+</li>
+</ul>
+<p>设想一个关于搜索的场景，假设我们要搜索一首诗句内容中带“前”字的古诗</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>content</th>
+<th>author</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>静夜思</td>
+<td>床前明月光,疑是地上霜。举头望明月，低头思故乡。</td>
+<td>李白</td>
+</tr>
+<tr>
+<td>望庐山瀑布</td>
+<td>日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺,疑是银河落九天。</td>
+<td>李白</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+<p>思考：用传统关系型数据库和ES 实现会有什么差别？</p>
+<p>如果用像 MySQL 这样的 RDBMS 来存储古诗的话，我们应该会去使用这样的 SQL 去查询</p>
+<p>​                select name from poems where content like &ldquo;%前%&rdquo;</p>
+<p>这种我们称为顺序扫描法，需要遍历所有的记录进行匹配。不但效率低，而且不符合我们搜索时的期望，比如我们在搜索“ABCD&quot;这样的关键词时，通常还希望看到&quot;A&quot;,&ldquo;AB&rdquo;,&ldquo;CD&rdquo;,“ABC”的搜索结果。</p>
+<h3 id="什么是全文检索"><strong>什么是全文检索</strong><a class="anchorjs-link" href="#%e4%bb%80%e4%b9%88%e6%98%af%e5%85%a8%e6%96%87%e6%a3%80%e7%b4%a2"></a></h3><p>全文检索是指：</p>
+<ul>
+<li>通过一个程序扫描文本中的每一个单词，针对单词建立索引，并保存该单词在文本中的位置、以及出现的次数</li>
+<li>用户查询时，通过之前建立好的索引来查询，将索引中单词对应的文本位置、出现的次数返回给用户，因为有了具体文本的位置，所以就可以将具体内容读取出来了</li>
+</ul>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/8A90F0AB501D4D6996DF632D22E3CD04/46866" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>搜索原理简单概括的话可以分为这么几步：</p>
+<ul>
+<li>内容爬取，停顿词过滤比如一些无用的像&quot;的&quot;，“了”之类的语气词/连接词</li>
+<li>内容分词，提取关键词</li>
+<li>根据关键词建立倒排索引</li>
+<li>用户输入关键词进行搜索</li>
+</ul>
+<h3 id="倒排索引"><strong>倒排索引</strong><a class="anchorjs-link" href="#%e5%80%92%e6%8e%92%e7%b4%a2%e5%bc%95"></a></h3><p>索引就类似于目录，平时我们使用的都是索引，都是通过主键定位到某条数据，那么倒排索引呢，刚好相反，数据对应到主键。</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/EDCB815C4FDD41C883F4B13ECFF6E274/46781" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>这里以一个博客文章的内容为例:</p>
+<p><strong>正排索引（正向索引）</strong></p>
+<table>
+<thead>
+<tr>
+<th>文章ID</th>
+<th>文章标题</th>
+<th>文章内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>浅析JAVA设计模式</td>
+<td>JAVA设计模式是每一个JAVA程序员都应该掌握的进阶知识</td>
+</tr>
+<tr>
+<td>2</td>
+<td>JAVA多线程设计模式</td>
+<td>JAVA多线程与设计模式结合</td>
+</tr>
+</tbody>
+</table>
+<p><strong>倒排索引（反向索引）</strong></p>
+<p>假如，我们有一个站内搜索的功能，通过某个关键词来搜索相关的文章，那么这个关键词可能出现在标题中，也可能出现在文章内容中，那我们将会在创建或修改文章的时候，建立一个关键词与文章的对应关系表，这种，我们可以称之为倒排索引。</p>
+<p>like %java设计模式%     java  设计模式</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>文章ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JAVA</td>
+<td>1,2</td>
+</tr>
+<tr>
+<td>设计模式</td>
+<td>1,2</td>
+</tr>
+<tr>
+<td>多线程</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>简单理解，正向索引是通过key找value，反向索引则是通过value找key。ES底层在检索时底层使用的就是倒排索引。</p>
+<h2 id="elasticsearch简介"><strong>ElasticSearch简介</strong><a class="anchorjs-link" href="#elasticsearch%e7%ae%80%e4%bb%8b"></a></h2><h3 id="elasticsearch是什么"><strong>ElasticSearch是什么</strong><a class="anchorjs-link" href="#elasticsearch%e6%98%af%e4%bb%80%e4%b9%88"></a></h3><p>ElasticSearch（简称ES）是一个分布式、RESTful 风格的搜索和数据分析引擎，是用Java开发并且是当前最流行的开源的企业级搜索引擎，能够达到近实时搜索，稳定，可靠，快速，安装使用方便。</p>
+<p>客户端支持Java、.NET（C#）、PHP、Python、Ruby等多种语言。</p>
+<p><strong>官方网站:</strong> <a href="https://www.elastic.co/">https://www.elastic.co/</a></p>
+<p>**下载地址：**<a href="https://www.elastic.co/cn/downloads/past-releases#elasticsearch">https://www.elastic.co/cn/downloads/past-releases#elasticsearch</a></p>
+<p>搜索引擎排名：</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/C14A899210B444CDAF00DB58A30E4D38/46333" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>参考网站：https://db-engines.com/en/ranking/search+engine</p>
+<h4 id="起源lucene"><strong>起源——Lucene</strong><a class="anchorjs-link" href="#%e8%b5%b7%e6%ba%90lucene"></a></h4><ul>
+<li>
+<p>基于Java语言开发的搜索引擎库类</p>
+</li>
+<li>
+<p>创建于1999年，2005年成为Apache 顶级开源项目</p>
+</li>
+<li>
+<p>Lucene具有高性能、易扩展的优点</p>
+</li>
+<li>
+<p>Lucene的局限性︰</p>
+</li>
+<li>
+<ul>
+<li>只能基于Java语言开发</li>
+<li>类库的接口学习曲线陡峭</li>
+<li>原生并不支持水平扩展</li>
+</ul>
+</li>
+</ul>
+<h4 id="elasticsearch的诞生"><strong>Elasticsearch的诞生</strong><a class="anchorjs-link" href="#elasticsearch%e7%9a%84%e8%af%9e%e7%94%9f"></a></h4><p>Elasticsearch是构建在Apache Lucene之上的开源分布式搜索引擎。</p>
+<ul>
+<li>
+<p>2004年 Shay Banon 基于Lucene开发了Compass</p>
+</li>
+<li>
+<p>2010年 Shay Banon重写了Compass，取名Elasticsearch</p>
+</li>
+<li>
+<ul>
+<li>支持分布式，可水平扩展</li>
+<li>降低全文检索的学习曲线，可以被任何编程语言调用</li>
+</ul>
+</li>
+</ul>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/A8F24FAED7834EFAAFFD94EFCF5A07A8/46329" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>Elasticsearch 与 Lucene 核心库竞争的优势在于：</p>
+<ul>
+<li>完美封装了 Lucene 核心库，设计了友好的 Restful-API，开发者无需过多关注底层机制，直接开箱即用。</li>
+<li>分片与副本机制，直接解决了集群下性能与高可用问题。</li>
+</ul>
+<p>ES Server进程  3节点   raft  (奇数节点)</p>
+<p>数据分片 -》lucene实例   分片和副本数    1个ES节点可以有多个lucene实例。也可以指定一个索引的多个分片</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/77E4EF0FBAF8465EA2DA3841014A8B6B/50604" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="elasticsearch版本特性"><strong>ElasticSearch版本特性</strong><a class="anchorjs-link" href="#elasticsearch%e7%89%88%e6%9c%ac%e7%89%b9%e6%80%a7"></a></h4><p>5.x新特性</p>
+<ul>
+<li>
+<p>Lucene 6.x， 性能提升，默认打分机制从TF-IDF改为BM 25</p>
+</li>
+<li>
+<p>支持Ingest节点/ Painless Scripting / Completion suggested支持/原生的Java REST客户端</p>
+</li>
+<li>
+<p>Type标记成deprecated， 支持了Keyword的类型</p>
+</li>
+<li>
+<p>性能优化</p>
+</li>
+<li>
+<ul>
+<li>内部引擎移除了避免同一文档并发更新的竞争锁，带来15% - 20%的性能提升</li>
+<li>Instant aggregation,支持分片，上聚合的缓存</li>
+<li>新增了Profile API</li>
+</ul>
+</li>
+</ul>
+<p>6.x新特性</p>
+<ul>
+<li>
+<p>Lucene 7.x</p>
+</li>
+<li>
+<p>新功能</p>
+</li>
+<li>
+<ul>
+<li>跨集群复制(CCR)</li>
+<li>索引生命周期管理</li>
+<li>SQL的支持</li>
+</ul>
+</li>
+<li>
+<p>更友好的的升级及数据迁移</p>
+</li>
+<li>
+<ul>
+<li>在主要版本之间的迁移更为简化，体验升级</li>
+<li>全新的基于操作的数据复制框架，可加快恢复数据</li>
+</ul>
+</li>
+<li>
+<p>性能优化</p>
+</li>
+<li>
+<ul>
+<li>有效存储稀疏字段的新方法，降低了存储成本</li>
+<li>在索引时进行排序，可加快排序的查询性能</li>
+</ul>
+</li>
+</ul>
+<p>7.x新特性</p>
+<ul>
+<li>
+<p>Lucene 8.0</p>
+</li>
+<li>
+<p>重大改进-正式废除单个索引下多Type的支持</p>
+</li>
+<li>
+<p>7.1开始，Security 功能免费使用</p>
+</li>
+<li>
+<p>ECK - Elasticseach Operator on Kubernetes</p>
+</li>
+<li>
+<p>新功能</p>
+</li>
+<li>
+<ul>
+<li>New Cluster coordination</li>
+<li>Feature——Complete High Level REST Client</li>
+<li>Script Score Query</li>
+</ul>
+</li>
+<li>
+<p>性能优化</p>
+</li>
+<li>
+<ul>
+<li>默认的Primary Shard数从5改为1,避免Over Sharding</li>
+<li>性能优化， 更快的Top K</li>
+</ul>
+</li>
+</ul>
+<p>8.x新特性</p>
+<ul>
+<li>Rest API相比较7.x而言做了比较大的改动（比如彻底删除_type）</li>
+<li>默认开启安全配置</li>
+<li>存储空间优化：对倒排文件使用新的编码集，对于keyword、match_only_text、text类型字段有效，有3.5%的空间优化提升，对于新建索引和segment自动生效。</li>
+<li>优化geo_point，geo_shape类型的索引（写入）效率：15%的提升。</li>
+<li>技术预览版KNN API发布，（K邻近算法），跟推荐系统、自然语言排名相关。</li>
+<li><a href="https://www.elastic.co/guide/en/elastic-stack/current/elasticsearch-breaking-changes.html">https://www.elastic.co/guide/en/elastic-stack/current/elasticsearch-breaking-changes.html</a></li>
+</ul>
+<h4 id="elasticsearch-vs-solr"><strong>ElasticSearch vs Solr</strong><a class="anchorjs-link" href="#elasticsearch-vs-solr"></a></h4><p>Solr 是第一个基于 Lucene 核心库功能完备的搜索引擎产品，诞生远早于 Elasticsearch。</p>
+<p>当单纯的对已有数据进行搜索时，Solr更快。当实时建立索引时, Solr会产生io阻塞，查询性能较差, Elasticsearch具有明显的优势。</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/E98844053B7A48D59BE2B285506B4DD8/50800" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/A1C3A7F3FBA943E89AADB69DA767EE4D/46439" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>大型互联网公司，实际生产环境测试，将搜索引擎从Solr转到 Elasticsearch以后的平均查询速度有了50倍的提升。</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/ED8202C58E1C4FF9B7FD435A498B36F5/46437" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>总结：</strong></p>
+<ul>
+<li>Solr 利用 Zookeeper 进行分布式管理，而Elasticsearch 自身带有分布式协调管理功能。</li>
+<li>Solr 支持更多格式的数据，比如JSON、XML、CSV，而 Elasticsearch 仅支持json文件格式。</li>
+<li>Solr 在传统的搜索应用中表现好于 Elasticsearch，但在处理实时搜索应用时效率明显低于 Elasticsearch。</li>
+<li>Solr 是传统搜索应用的有力解决方案，但 Elasticsearch更适用于新兴的实时搜索应用。</li>
+</ul>
+<h3 id="elastic-stack介绍"><strong>Elastic Stack介绍</strong><a class="anchorjs-link" href="#elastic-stack%e4%bb%8b%e7%bb%8d"></a></h3><p>在Elastic Stack之前我们听说过ELK，ELK分别是Elasticsearch，Logstash，Kibana这三款软件在一起的简称，在发展的过程中又有新的成员Beats的加入，就形成了Elastic Stack。</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/FB9BA708EAA1492EB2B2919B4DF10704/46325" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>　　　　　　　              Elastic Stack生态圈</p>
+<p>在Elastic Stack生态圈中Elasticsearch作为数据存储和搜索，是生态圈的基石，Kibana在上层提供用户一个可视化及操作的界面，Logstash和Beat可以对数据进行收集。在上图的右侧X-Pack部分则是Elastic公司提供的商业项目。</p>
+<p>指标分析/日志分析：</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/7B1A36FA8A004C298683FCC5F318EE6B/46442" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="elasticsearch应用场景"><strong>ElasticSearch应用场景</strong><a class="anchorjs-link" href="#elasticsearch%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af"></a></h3><ul>
+<li>站内搜索</li>
+<li>日志管理与分析</li>
+<li>大数据分析</li>
+<li>应用性能监控</li>
+<li>机器学习</li>
+</ul>
+<p>国内现在有大量的公司都在使用 Elasticsearch，包括携程、滴滴、今日头条、饿了么、360安全、小米、vivo等诸多知名公司。除了搜索之外，结合Kibana、Logstash、Beats，Elastic Stack还被广泛运用在大数据近实时分析领域，包括日志分析、指标监控、信息安全等多个领域。它可以帮助你探索海量结构化、非结构化数据，按需创建可视化报表，对监控数据设置报警阈值，甚至通过使用机器学习技术，自动识别异常状况。</p>
+<p><strong>通用数据处理流程：</strong></p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/F6E2A13CBA5D4F3096A1984C6266F1C5/46527" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h2 id="elasticsearch快速开始"><strong>ElasticSearch快速开始</strong><a class="anchorjs-link" href="#elasticsearch%e5%bf%ab%e9%80%9f%e5%bc%80%e5%a7%8b"></a></h2><p><strong>安装JDK</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>1、yum install -y java-1.8.0-openjdk*
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或者</span>
+</span></span><span style="display:flex;"><span>mkdir /opt/jdk;tar -xvzf jdk-8u333-linux-x64.tar.gz -C /opt/jdk/;  mv /opt/jdk/jdk1.8.0_333/ /opt/jdk/jdk1.8 ;
+</span></span><span style="display:flex;"><span>cat <span style="color:#e6db74">&lt;&lt;EOF &gt;&gt; /etc/profile
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">JAVA_HOME=/opt/jdk/jdk1.8
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">CLASSPATH=$JAVA_HOME/lib/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">PATH=$PATH:$JAVA_HOME/bin
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">export PATH JAVA_HOME CLASSPATH
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span><span style="display:flex;"><span>source /etc/profile
+</span></span></code></pre></div><h3 id="elasticsearch安装运行"><strong>ElasticSearch安装运行</strong><a class="anchorjs-link" href="#elasticsearch%e5%ae%89%e8%a3%85%e8%bf%90%e8%a1%8c"></a></h3><h4 id="环境准备"><strong>环境准备</strong><a class="anchorjs-link" href="#%e7%8e%af%e5%a2%83%e5%87%86%e5%a4%87"></a></h4><ul>
+<li>
+<p>运行Elasticsearch，需安装并配置JDK</p>
+</li>
+<li>
+<ul>
+<li>设置$JAVA_HOME</li>
+</ul>
+</li>
+<li>
+<p>各个版本对Java的依赖 <a href="https://www.elastic.co/support/matrix#matrix_jvm">https://www.elastic.co/support/matrix#matrix_jvm</a></p>
+</li>
+<li>
+<ul>
+<li>Elasticsearch 5需要Java 8以上的版本</li>
+<li>Elasticsearch 从6.5开始支持Java 11</li>
+<li>7.0开始，内置了Java环境</li>
+</ul>
+</li>
+<li>
+<p>ES比较耗内存，建议虚拟机4G或以上内存，jvm1g以上的内存分配</p>
+</li>
+</ul>
+<p>可以参考es的环境文件elasticsearch-env.bat</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/09A302EBF53F4B2DB4B956F8CC2DFBF3/46255" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>ES的jdk环境生效的优先级配置ES_JAVA_HOME&gt;JAVA_HOME&gt;ES_HOME</p>
+<h4 id="下载并解压elasticsearch"><strong>下载并解压ElasticSearch</strong><a class="anchorjs-link" href="#%e4%b8%8b%e8%bd%bd%e5%b9%b6%e8%a7%a3%e5%8e%8belasticsearch"></a></h4><p>下载地址： <a href="https://www.elastic.co/cn/downloads/past-releases#elasticsearch">https://www.elastic.co/cn/downloads/past-releases#elasticsearch</a></p>
+<p>选择版本：7.17.3</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/EFB0C67135D14C71A090FD5D65B08B08/46614" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>ElasticSearch文件目录结构</strong></p>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bin</td>
+<td>脚本文件，包括启动elasticsearch，安装插件，运行统计数据等</td>
+</tr>
+<tr>
+<td>config</td>
+<td>配置文件目录，如elasticsearch配置、角色配置、jvm配置等。</td>
+</tr>
+<tr>
+<td>jdk</td>
+<td>java运行环境</td>
+</tr>
+<tr>
+<td>data</td>
+<td>默认的数据存放目录，包含节点、分片、索引、文档的所有数据，生产环境需要修改。</td>
+</tr>
+<tr>
+<td>lib</td>
+<td>elasticsearch依赖的Java类库</td>
+</tr>
+<tr>
+<td>logs</td>
+<td>默认的日志文件存储路径，生产环境需要修改。</td>
+</tr>
+<tr>
+<td>modules</td>
+<td>包含所有的Elasticsearch模块，如Cluster、Discovery、Indices等。</td>
+</tr>
+<tr>
+<td>plugins</td>
+<td>已安装插件目录</td>
+</tr>
+</tbody>
+</table>
+<p><strong>主配置文件elasticsearch.yml</strong></p>
+<ul>
+<li>cluster.name</li>
+</ul>
+<p>当前节点所属集群名称，多个节点如果要组成同一个集群，那么集群名称一定要配置成相同。默认值elasticsearch，生产环境建议根据ES集群的使用目的修改成合适的名字。</p>
+<ul>
+<li>node.name</li>
+</ul>
+<p>当前节点名称，默认值当前节点部署所在机器的主机名，所以如果一台机器上要起多个ES节点的话，需要通过配置该属性明确指定不同的节点名称。</p>
+<ul>
+<li>path.data</li>
+</ul>
+<p>配置数据存储目录，比如索引数据等，默认值 $ES_HOME/data，生产环境下强烈建议部署到另外的安全目录，防止ES升级导致数据被误删除。</p>
+<ul>
+<li>path.logs</li>
+</ul>
+<p>配置日志存储目录，比如运行日志和集群健康信息等，默认值 $ES_HOME/logs，生产环境下强烈建议部署到另外的安全目录，防止ES升级导致数据被误删除。</p>
+<ul>
+<li>bootstrap.memory_lock</li>
+</ul>
+<p>配置ES启动时是否进行内存锁定检查，默认值true。</p>
+<p>ES对于内存的需求比较大，一般生产环境建议配置大内存，如果内存不足，容易导致内存交换到磁盘，严重影响ES的性能。所以默认启动时进行相应大小内存的锁定，如果无法锁定则会启动失败。</p>
+<p>非生产环境可能机器内存本身就很小，能够供给ES使用的就更小，如果该参数配置为true的话很可能导致无法锁定内存以致ES无法成功启动，此时可以修改为false。</p>
+<ul>
+<li>network.host</li>
+</ul>
+<p>配置能够访问当前节点的主机，默认值为当前节点所在机器的本机回环地址127.0.0.1 和[::1]，这就导致默认情况下只能通过当前节点所在主机访问当前节点。可以配置为 0.0.0.0 ，表示所有主机均可访问。</p>
+<ul>
+<li>http.port</li>
+</ul>
+<p>配置当前ES节点对外提供服务的http端口，默认值 9200</p>
+<ul>
+<li>discovery.seed_hosts</li>
+</ul>
+<p>配置参与集群节点发现过程的主机列表，说白一点就是集群中所有节点所在的主机列表，可以是具体的IP地址，也可以是可解析的域名。</p>
+<ul>
+<li>cluster.initial_master_nodes</li>
+</ul>
+<p>配置ES集群初始化时参与master选举的节点名称列表，必须与node.name配置的一致。ES集群首次构建完成后，应该将集群中所有节点的配置文件中的cluster.initial_master_nodes配置项移除，重启集群或者将新节点加入某个已存在的集群时切记不要设置该配置项。</p>
+<p>​                #ES开启远程访问   network.host: 0.0.0.0</p>
+<h4 id="修改jvm配置"><strong>修改JVM配置</strong><a class="anchorjs-link" href="#%e4%bf%ae%e6%94%b9jvm%e9%85%8d%e7%bd%ae"></a></h4><p>修改config/jvm.options配置文件，调整jvm堆内存大小</p>
+<p>​                vim jvm.options -Xms4g -Xmx4g</p>
+<p>配置的建议</p>
+<ul>
+<li>Xms和Xms设置成—样</li>
+<li>Xmx不要超过机器内存的50%</li>
+<li>不要超过30GB - <a href="https://www.elastic.co/cn/blog/a-heap-of-trouble">https://www.elastic.co/cn/blog/a-heap-of-trouble</a></li>
+</ul>
+<h4 id="启动elasticsearch服务"><strong>启动ElasticSearch服务</strong><a class="anchorjs-link" href="#%e5%90%af%e5%8a%a8elasticsearch%e6%9c%8d%e5%8a%a1"></a></h4><p><strong>Windows</strong></p>
+<p><strong>直接运行elasticsearch.bat</strong></p>
+<p><strong>Linux（centos7）</strong></p>
+<p>ES不允许使用root账号启动服务，如果你当前账号是root，则需要创建一个专有账户</p>
+<p>​                #非root用户 bin/elasticsearch  # -d 后台启动 bin/elasticsearch -d</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/26BE4E106C434191825F00C705954421/49275" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>注意：es默认不能用root用户启动，生产环境建议为elasticsearch创建用户。</p>
+<p>​                #为elaticsearch创建用户并赋予相应权限 adduser es passwd es chown -R es:es elasticsearch-17.3</p>
+<p>运行http://localhost:9200/</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/E6A5B87B529E41B2A9C90F4E0E8CA4B2/46552" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>如果ES服务启动异常，会有提示：</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/87C4B293151E422ABE8E60C982EF5314/48965" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>启动ES服务常见错误解决方案</strong></p>
+<p>[1]: max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]</p>
+<p>ES因为需要大量的创建索引文件，需要大量的打开系统的文件，所以我们需要解除linux系统当中打开文件最大数目的限制，不然ES启动就会抛错</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> <span style="color:#75715e">#切换到root用户 vim /etc/security/limits.conf 末尾添加如下配置： </span>
+</span></span><span style="display:flex;"><span> *	    soft 	nofile 	<span style="color:#ae81ff">65536</span>  
+</span></span><span style="display:flex;"><span> *     hard 	nofile 	<span style="color:#ae81ff">65536</span>  
+</span></span><span style="display:flex;"><span> *     soft 	nproc 	<span style="color:#ae81ff">4096</span>  
+</span></span><span style="display:flex;"><span> *	    hard 	nproc 	<span style="color:#ae81ff">4096</span>          
+</span></span></code></pre></div><p>​</p>
+<p>[2]: max number of threads [1024] for user [es] is too low, increase to at least [4096]</p>
+<p>无法创建本地线程问题,用户最大可创建线程数太小</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim /etc/security/limits.d/20-nproc.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>改为如下配置：
+</span></span><span style="display:flex;"><span>* soft nproc <span style="color:#ae81ff">4096</span>
+</span></span></code></pre></div><p>[3]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]</p>
+<p>最大虚拟内存太小,调大系统的虚拟内存</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim /etc/sysctl.conf
+</span></span><span style="display:flex;"><span>追加以下内容：
+</span></span><span style="display:flex;"><span>vm.max_map_count<span style="color:#f92672">=</span><span style="color:#ae81ff">262144</span>
+</span></span><span style="display:flex;"><span>保存退出之后执行如下命令：
+</span></span><span style="display:flex;"><span>sysctl -p
+</span></span></code></pre></div><p>[4]: the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configured</p>
+<p>缺少默认配置，至少需要配置discovery.seed_hosts/discovery.seed_providers/cluster.initial_master_nodes中的一个参数.</p>
+<ul>
+<li>discovery.seed_hosts:  集群主机列表</li>
+<li>discovery.seed_providers: 基于配置文件配置集群主机列表</li>
+<li>cluster.initial_master_nodes: 启动时初始化的参与选主的node，生产环境必填</li>
+</ul>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim config/elasticsearch.yml
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#添加配置</span>
+</span></span><span style="display:flex;"><span>discovery.seed_hosts: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>cluster.initial_master_nodes: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;node-1&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#或者  单节点（集群单节点）</span>
+</span></span><span style="display:flex;"><span>discovery.type: single-node
+</span></span></code></pre></div><h4 id="客户端kibana安装"><strong>客户端Kibana安装</strong><a class="anchorjs-link" href="#%e5%ae%a2%e6%88%b7%e7%ab%afkibana%e5%ae%89%e8%a3%85"></a></h4><p>Kibana是一个开源分析和可视化平台，旨在与Elasticsearch协同工作。</p>
+<p><strong>1）下载并解压缩Kibana</strong></p>
+<p>下载地址：https://www.elastic.co/cn/downloads/past-releases#kibana</p>
+<p>选择版本：7.17.3</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/D8EA84AABCCB4189B6BB4147AC87B045/46611" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>2）修改Kibana.yml</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim config/kibana.yml 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server.port: <span style="color:#ae81ff">5601</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server.host: <span style="color:#e6db74">&#34;0.0.0.0&#34;</span>  <span style="color:#75715e">#服务器ip </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>elasticsearch.hosts: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://localhost:9200&#34;</span><span style="color:#f92672">]</span>  <span style="color:#75715e">#elasticsearch的访问地址 </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>i18n.locale: <span style="color:#e6db74">&#34;zh-CN&#34;</span>   <span style="color:#75715e">#Kibana汉化              </span>
+</span></span></code></pre></div><p><strong>3）运行Kibana</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 注意：kibana也需要非root用户启动</span>
+</span></span><span style="display:flex;"><span>bin/kibana 
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 后台启动 </span>
+</span></span><span style="display:flex;"><span>nohup  bin/kibana &amp;   
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 或者</span>
+</span></span><span style="display:flex;"><span>sudo -H -u es /bin/bash -c  <span style="color:#e6db74">&#34;nohup bin/kibana &amp;&#34;</span>
+</span></span></code></pre></div><p>​</p>
+<p><strong>访问Kibana:</strong> <a href="http://localhost:5601/"><strong>http://localhost:5601/</strong></a></p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/D2612BA72B6F43F58AED880D9EDB25CE/46817" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>cat API</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/_cat/allocation         <span style="color:#75715e">#查看单节点的shard分配整体情况</span>
+</span></span><span style="display:flex;"><span>/_cat/shards          <span style="color:#75715e">#查看各shard的详细情况</span>
+</span></span><span style="display:flex;"><span>/_cat/shards/<span style="color:#f92672">{</span>index<span style="color:#f92672">}</span>     <span style="color:#75715e">#查看指定分片的详细情况</span>
+</span></span><span style="display:flex;"><span>/_cat/master          <span style="color:#75715e">#查看master节点信息</span>
+</span></span><span style="display:flex;"><span>/_cat/nodes           <span style="color:#75715e">#查看所有节点信息</span>
+</span></span><span style="display:flex;"><span>/_cat/indices         <span style="color:#75715e">#查看集群中所有index的详细信息</span>
+</span></span><span style="display:flex;"><span>/_cat/indices/<span style="color:#f92672">{</span>index<span style="color:#f92672">}</span>      <span style="color:#75715e">#查看集群中指定index的详细信息</span>
+</span></span><span style="display:flex;"><span>/_cat/segments        <span style="color:#75715e">#查看各index的segment详细信息,包括segment名, 所属shard, 内存(磁盘)占用大小, 是否刷盘</span>
+</span></span><span style="display:flex;"><span>/_cat/segments/<span style="color:#f92672">{</span>index<span style="color:#f92672">}</span><span style="color:#75715e">#查看指定index的segment详细信息</span>
+</span></span><span style="display:flex;"><span>/_cat/count           <span style="color:#75715e">#查看当前集群的doc数量</span>
+</span></span><span style="display:flex;"><span>/_cat/count/<span style="color:#f92672">{</span>index<span style="color:#f92672">}</span>   <span style="color:#75715e">#查看指定索引的doc数量</span>
+</span></span><span style="display:flex;"><span>/_cat/recovery        <span style="color:#75715e">#查看集群内每个shard的recovery过程.调整replica。</span>
+</span></span><span style="display:flex;"><span>/_cat/recovery/<span style="color:#f92672">{</span>index<span style="color:#f92672">}</span><span style="color:#75715e">#查看指定索引shard的recovery过程</span>
+</span></span><span style="display:flex;"><span>/_cat/health          <span style="color:#75715e">#查看集群当前状态：红、黄、绿</span>
+</span></span><span style="display:flex;"><span>/_cat/pending_tasks   <span style="color:#75715e">#查看当前集群的pending task</span>
+</span></span><span style="display:flex;"><span>/_cat/aliases         <span style="color:#75715e">#查看集群中所有alias信息,路由配置等</span>
+</span></span><span style="display:flex;"><span>/_cat/aliases/<span style="color:#f92672">{</span>alias<span style="color:#f92672">}</span> <span style="color:#75715e">#查看指定索引的alias信息</span>
+</span></span><span style="display:flex;"><span>/_cat/thread_pool     <span style="color:#75715e">#查看集群各节点内部不同类型的threadpool的统计信息,</span>
+</span></span><span style="display:flex;"><span>/_cat/plugins         <span style="color:#75715e">#查看集群各个节点上的plugin信息</span>
+</span></span><span style="display:flex;"><span>/_cat/fielddata       <span style="color:#75715e">#查看当前集群各个节点的fielddata内存使用情况</span>
+</span></span><span style="display:flex;"><span>/_cat/fielddata/<span style="color:#f92672">{</span>fields<span style="color:#f92672">}</span>     <span style="color:#75715e">#查看指定field的内存使用情况,里面传field属性对应的值</span>
+</span></span><span style="display:flex;"><span>/_cat/nodeattrs              <span style="color:#75715e">#查看单节点的自定义属性</span>
+</span></span><span style="display:flex;"><span>/_cat/repositories           <span style="color:#75715e">#输出集群中注册快照存储库</span>
+</span></span><span style="display:flex;"><span>/_cat/templates              <span style="color:#75715e">#输出当前正在存在的模板信息</span>
+</span></span></code></pre></div><h4 id="elasticsearch安装分词插件"><strong>Elasticsearch安装分词插件</strong><a class="anchorjs-link" href="#elasticsearch%e5%ae%89%e8%a3%85%e5%88%86%e8%af%8d%e6%8f%92%e4%bb%b6"></a></h4><p>Elasticsearch提供插件机制对系统进行扩展</p>
+<p>以安装analysis-icu这个分词插件为例</p>
+<p><strong>在线安装</strong></p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#查看已安装插件</span>
+</span></span><span style="display:flex;"><span>bin/elasticsearch-plugin list
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#安装插件</span>
+</span></span><span style="display:flex;"><span>bin/elasticsearch-plugin install analysis-icu
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#删除插件</span>
+</span></span><span style="display:flex;"><span>bin/elasticsearch-plugin remove analysis-icu
+</span></span></code></pre></div><p>注意：安装和删除完插件后，需要重启ES服务才能生效。</p>
+<p>测试分词效果</p>
+<p>​                POST _analyze {    &ldquo;analyzer&rdquo;:&ldquo;icu_analyzer&rdquo;,    &ldquo;text&rdquo;:&ldquo;中华人民共和国&rdquo; }</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/4E2EA6F5FECA45D288AE41FBB8A69F22/46920" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>离线安装</strong></p>
+<p>本地下载相应的插件，解压，然后手动上传到elasticsearch的plugins目录，然后重启ES实例就可以了。</p>
+<p>比如ik中文分词插件：https://github.com/medcl/elasticsearch-analysis-ik</p>
+<p><a href="https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v7.15.2/elasticsearch-analysis-ik-7.15.2.zip">elasticsearch-analysis-ik-7.15.2.zip</a></p>
+<p>必须对应es版本</p>
+<p>测试分词效果</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#ES的默认分词设置是standard，会单字拆分</span>
+</span></span><span style="display:flex;"><span>POST _analyze
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;analyzer&#34;</span>:<span style="color:#e6db74">&#34;standard&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;中华人民共和国&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ik_smart:会做最粗粒度的拆</span>
+</span></span><span style="display:flex;"><span>POST _analyze
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;analyzer&#34;</span>: <span style="color:#e6db74">&#34;ik_smart&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;text&#34;</span>: <span style="color:#e6db74">&#34;中华人民共和国&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#ik_max_word:会将文本做最细粒度的拆分</span>
+</span></span><span style="display:flex;"><span>POST _analyze
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;analyzer&#34;</span>:<span style="color:#e6db74">&#34;ik_max_word&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;text&#34;</span>:<span style="color:#e6db74">&#34;中华人民共和国&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>​</p>
+<p>创建索引时可以指定IK分词器作为默认分词器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PUT /es_db
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;settings&#34;</span> : <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;index&#34;</span> : <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;analysis.analyzer.default.type&#34;</span>: <span style="color:#e6db74">&#34;ik_max_word&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/C4D26DC85B57401CBC9DBB14297DB2FD/49281" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="elasticsearch基本概念"><strong>ElasticSearch基本概念</strong><a class="anchorjs-link" href="#elasticsearch%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5"></a></h3><h4 id="关系型数据库-vs-elasticsearch"><strong>关系型数据库 VS ElasticSearch</strong><a class="anchorjs-link" href="#%e5%85%b3%e7%b3%bb%e5%9e%8b%e6%95%b0%e6%8d%ae%e5%ba%93-vs-elasticsearch"></a></h4><ul>
+<li>
+<p>在7.0之前，一个 Index可以设置多个Types</p>
+</li>
+<li>
+<p>目前Type已经被Deprecated，7.0开始，一个索引只能创建一个Type - “_doc”</p>
+</li>
+<li>
+<p>传统关系型数据库和Elasticsearch的区别:</p>
+</li>
+<li>
+<ul>
+<li>Elasticsearch- Schemaless /相关性/高性能全文检索</li>
+<li>RDMS —事务性/ Join</li>
+</ul>
+</li>
+</ul>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/DA77ACFAFC764F5CB2E54E79CACE89C1/46708" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="索引index"><strong>索引（Index）</strong><a class="anchorjs-link" href="#%e7%b4%a2%e5%bc%95index"></a></h4><p>一个索引就是一个拥有几分相似特征的文档的集合。比如说，可以有一个客户数据的索引，另一个产品目录的索引，还有一个订单数据的索引。</p>
+<p>一个索引由一个名字来标识（必须全部是小写字母的），并且当我们要对对应于这个索引中的文档进行索引、搜索、更新和删除的时候，都要使用到这个名字。</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/580D9CFF2A374482B1FC99C1C37A0954/46764" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="文档document"><strong>文档（Document）</strong><a class="anchorjs-link" href="#%e6%96%87%e6%a1%a3document"></a></h4><ul>
+<li>
+<p>Elasticsearch是面向文档的，文档是所有可搜索数据的最小单位。</p>
+</li>
+<li>
+<ul>
+<li>日志文件中的日志项</li>
+<li>一本电影的具体信息/一张唱片的详细信息</li>
+<li>MP3播放器里的一首歌/一篇PDF文档中的具体内容</li>
+</ul>
+</li>
+<li>
+<p>文档会被序列化成JSON格式，保存在Elasticsearch中</p>
+</li>
+<li>
+<ul>
+<li>JSON对象由字段组成</li>
+<li>每个字段都有对应的字段类型(字符串/数值/布尔/日期/二进制/范围类型)</li>
+</ul>
+</li>
+<li>
+<p>每个文档都有一个Unique ID</p>
+</li>
+<li>
+<ul>
+<li>可以自己指定ID或者通过Elasticsearch自动生成</li>
+</ul>
+</li>
+<li>
+<p>一篇文档包含了一系列字段，类似数据库表中的一条记录</p>
+</li>
+<li>
+<p>JSON文档，格式灵活，不需要预先定义格式</p>
+</li>
+<li>
+<ul>
+<li>字段的类型可以指定或者通过Elasticsearch自动推算</li>
+<li>支持数组/支持嵌套</li>
+</ul>
+</li>
+</ul>
+<p><strong>文档元数据</strong></p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/E2374FCD99AF4E339344A48B40B202D3/46726" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>元数据，用于标注文档的相关信息：</p>
+<ul>
+<li>_index：文档所属的索引名</li>
+<li>_type：文档所属的类型名</li>
+<li>_id：文档唯—ld</li>
+<li>_source: 文档的原始Json数据</li>
+<li>_version:  文档的版本号，修改删除操作_version都会自增1</li>
+<li>_seq_no:  和_version一样，一旦数据发生更改，数据也一直是累计的。Shard级别严格递增，保证后写入的Doc的_seq_no大于先写入的Doc的_seq_no。</li>
+<li>_primary_term: _primary_term主要是用来恢复数据时处理当多个文档的_seq_no一样时的冲突，避免Primary Shard上的写入被覆盖。每当Primary Shard发生重新分配时，比如重启，Primary选举等，_primary_term会递增1。</li>
+</ul>
+<h3 id="elasticsearch索引操作"><strong>ElasticSearch索引操作</strong><a class="anchorjs-link" href="#elasticsearch%e7%b4%a2%e5%bc%95%e6%93%8d%e4%bd%9c"></a></h3><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.17/index.html">https://www.elastic.co/guide/en/elasticsearch/reference/7.17/index.html</a></p>
+<h4 id="创建索引"><strong>创建索引</strong><a class="anchorjs-link" href="#%e5%88%9b%e5%bb%ba%e7%b4%a2%e5%bc%95"></a></h4><p>索引命名必须小写，不能以下划线开头</p>
+<p>格式: PUT /索引名称</p>
+<p>​                #创建索引 PUT /es_db #创建索引时可以设置分片数和副本数 PUT /es_db {   &ldquo;settings&rdquo; : {     &ldquo;number_of_shards&rdquo; : 3,     &ldquo;number_of_replicas&rdquo; : 2   } } #修改索引配置 PUT /es_db/_settings {   &ldquo;index&rdquo; : {     &ldquo;number_of_replicas&rdquo; : 1   } }</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/B26A880F2C5B42D29F264DD80DDBE815/46891" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="查询索引"><strong>查询索引</strong><a class="anchorjs-link" href="#%e6%9f%a5%e8%af%a2%e7%b4%a2%e5%bc%95"></a></h4><p>格式: GET /索引名称</p>
+<p>​                #查询索引 GET /es_db #es_db是否存在 HEAD /es_db</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/B22F11527C874F3DBB18313D4A2E4CF9/46896" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>​</p>
+<h4 id="删除索引"><strong>删除索引</strong><a class="anchorjs-link" href="#%e5%88%a0%e9%99%a4%e7%b4%a2%e5%bc%95"></a></h4><p>格式: DELETE /索引名称</p>
+<p>​                DELETE /es_db</p>
+<h3 id="elasticsearch文档操作"><strong>ElasticSearch文档操作</strong><a class="anchorjs-link" href="#elasticsearch%e6%96%87%e6%a1%a3%e6%93%8d%e4%bd%9c"></a></h3><p>示例数据</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>PUT /es_db
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;settings&#34;</span> : <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;index&#34;</span> : <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;analysis.analyzer.default.type&#34;</span>: <span style="color:#e6db74">&#34;ik_max_word&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PUT /es_db/_doc/1
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;张三&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;sex&#34;</span>: 1,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;age&#34;</span>: 25,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;广州天河公园&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;remark&#34;</span>: <span style="color:#e6db74">&#34;java developer&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>PUT /es_db/_doc/2
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;李四&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;sex&#34;</span>: 1,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;age&#34;</span>: 28,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;广州荔湾大厦&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;remark&#34;</span>: <span style="color:#e6db74">&#34;java assistant&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PUT /es_db/_doc/3
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;王五&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;sex&#34;</span>: 0,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;age&#34;</span>: 26,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;广州白云山公园&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;remark&#34;</span>: <span style="color:#e6db74">&#34;php developer&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PUT /es_db/_doc/4
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;赵六&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;sex&#34;</span>: 0,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;age&#34;</span>: 22,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;长沙橘子洲&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;remark&#34;</span>: <span style="color:#e6db74">&#34;python assistant&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PUT /es_db/_doc/5
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;张龙&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;sex&#34;</span>: 0,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;age&#34;</span>: 19,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;长沙麓谷企业广场&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;remark&#34;</span>: <span style="color:#e6db74">&#34;java architect assistant&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>	
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>PUT /es_db/_doc/6
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;赵虎&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;sex&#34;</span>: 1,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;age&#34;</span>: 32,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;长沙麓谷兴工国际产业园&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;remark&#34;</span>: <span style="color:#e6db74">&#34;java architect&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>	
+</span></span></code></pre></div><p>​</p>
+<h4 id="添加索引文档"><strong>添加（索引）文档</strong><a class="anchorjs-link" href="#%e6%b7%bb%e5%8a%a0%e7%b4%a2%e5%bc%95%e6%96%87%e6%a1%a3"></a></h4><ul>
+<li>格式: [PUT | POST] /索引名称/[_doc  | _create ]/id</li>
+</ul>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 创建文档,指定id</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 如果id不存在，创建新的文档，否则先删除现有文档，再创建新的文档，版本会增加</span>
+</span></span><span style="display:flex;"><span>PUT /es_db/_doc/1
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;张三&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;sex&#34;</span>: 1,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;age&#34;</span>: 25,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;广州天河公园&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;remark&#34;</span>: <span style="color:#e6db74">&#34;java developer&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>	
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#创建文档，ES生成id</span>
+</span></span><span style="display:flex;"><span>POST /es_db/_doc
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;张三&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;sex&#34;</span>: 1,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;age&#34;</span>: 25,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;广州天河公园&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;remark&#34;</span>: <span style="color:#e6db74">&#34;java developer&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>​</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/68EF23CFA22A430A936F39DD7D377679/46918" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>注意:POST和PUT都能起到创建/更新的作用，PUT需要对一个具体的资源进行操作也就是要确定id才能进行更新/创建，而POST是可以针对整个资源集合进行操作的，如果不写id就由ES生成一个唯一id进行创建新文档，如果填了id那就针对这个id的文档进行创建/更新</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/D48D0213841441F68CFCEF24B7E5B5BD/47001" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>Create -如果ID已经存在，会失败</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/6A82C9E9734B4F499E4A02EF835E55D5/46977" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="修改文档"><strong>修改文档</strong><a class="anchorjs-link" href="#%e4%bf%ae%e6%94%b9%e6%96%87%e6%a1%a3"></a></h4><ul>
+<li>全量更新，整个json都会替换，格式: [PUT | POST] /索引名称/_doc/id</li>
+</ul>
+<p>如果文档存在，现有文档会被删除，新的文档会被索引</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 全量更新，替换整个json</span>
+</span></span><span style="display:flex;"><span>PUT /es_db/_doc/1/
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;张三&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;sex&#34;</span>: 1,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#ae81ff">25</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#查询文档</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/1
+</span></span></code></pre></div><p>​</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/5A32CFADC06244E9B6FDBBE430FF5128/46942" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<ul>
+<li>使用_update部分更新，格式: POST /索引名称/_update/id</li>
+</ul>
+<p>update不会删除原来的文档，而是实现真正的数据更新</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 部分更新：在原有文档上更新</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Update -文档必须已经存在，更新只会对相应字段做增量修改</span>
+</span></span><span style="display:flex;"><span>POST /es_db/_update/1
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;doc&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;age&#34;</span>: <span style="color:#ae81ff">28</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#查询文档</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/1
+</span></span></code></pre></div><p>​</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/7CAB85271F8A4E9ABBE395FB190C0B5F/46988" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<ul>
+<li>使用 _update_by_query 更新文档</li>
+</ul>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /es_db/_update_by_query
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;query&#34;</span>: <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;match&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;_id&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;script&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;source&#34;</span>: <span style="color:#e6db74">&#34;ctx._source.age = 30&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>​</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/81CD93CAB67647FD903C1628FEE322AA/47023" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="并发场景下修改文档"><strong>并发场景下修改文档</strong><a class="anchorjs-link" href="#%e5%b9%b6%e5%8f%91%e5%9c%ba%e6%99%af%e4%b8%8b%e4%bf%ae%e6%94%b9%e6%96%87%e6%a1%a3"></a></h4><p>_seq_no和_primary_term是对_version的优化，7.X版本的ES默认使用这种方式控制版本，所以当在高并发环境下使用乐观锁机制修改文档时，要带上当前文档的_seq_no和_primary_term进行更新：</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST /es_db/_doc/2?if_seq_no<span style="color:#f92672">=</span>21&amp;if_primary_term<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;李四xxx&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>如果版本号不对，会抛出版本冲突异常，如下图：</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/8F94246E955746C59A653F03DCC61ED1/50609" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="查询文档"><strong>查询文档</strong><a class="anchorjs-link" href="#%e6%9f%a5%e8%af%a2%e6%96%87%e6%a1%a3"></a></h4><ul>
+<li>根据id查询文档，格式: GET /索引名称/_doc/id</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>GET /es_db/_doc/1             
+</span></span></code></pre></div><ul>
+<li>条件查询 _search，格式： /索引名称/_doc/_search</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 查询前10条文档 </span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/_search   
+</span></span></code></pre></div><p>​</p>
+<p>ES Search API提供了两种条件查询搜索方式：</p>
+<ul>
+<li>REST风格的请求URI，直接将参数带过去</li>
+<li>封装到request body中，这种方式可以定义更加易读的JSON格式</li>
+</ul>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#通过URI搜索，使用“q”指定查询字符串，“query string syntax” KV键值对</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#条件查询, 如要查询age等于28岁的 _search?q=*:***</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/_search?q<span style="color:#f92672">=</span>age:28
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#范围查询, 如要查询age在25至26岁之间的 _search?q=***[** TO **]  注意: TO 必须为大写</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/_search?q<span style="color:#f92672">=</span>age<span style="color:#f92672">[</span><span style="color:#ae81ff">25</span> TO 26<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#查询年龄小于等于28岁的 :&lt;=</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/_search?q<span style="color:#f92672">=</span>age:&lt;<span style="color:#f92672">=</span><span style="color:#ae81ff">28</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#查询年龄大于28前的 :&gt;</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/_search?q<span style="color:#f92672">=</span>age:&gt;28
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#分页查询 from=*&amp;size=*</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/_search?q<span style="color:#f92672">=</span>age<span style="color:#f92672">[</span><span style="color:#ae81ff">25</span> TO 26<span style="color:#f92672">]</span>&amp;from<span style="color:#f92672">=</span>0&amp;size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#对查询结果只输出某些字段 _source=字段,字段</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/_search?_source<span style="color:#f92672">=</span>name,age
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#对查询结果排序 sort=字段:desc/asc</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_doc/_search?sort<span style="color:#f92672">=</span>age:desc
+</span></span></code></pre></div><p>通过请求体的搜索方式会在后面课程详细讲解（DSL）</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>GET /es_db/_search
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;query&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;match&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;广州白云&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><h4 id="删除文档"><strong>删除文档</strong><a class="anchorjs-link" href="#%e5%88%a0%e9%99%a4%e6%96%87%e6%a1%a3"></a></h4><p>格式: DELETE /索引名称/_doc/id</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>DELETE /es_db/_doc/1              
+</span></span></code></pre></div><h3 id="elasticsearch文档批量操作"><strong>ElasticSearch文档批量操作</strong><a class="anchorjs-link" href="#elasticsearch%e6%96%87%e6%a1%a3%e6%89%b9%e9%87%8f%e6%93%8d%e4%bd%9c"></a></h3><p>批量操作可以减少网络连接所产生的开销，提升性能</p>
+<ul>
+<li>支持在一次API调用中，对不同的索引进行操作</li>
+<li>可以在URI中指定Index，也可以在请求的Payload中进行</li>
+<li>操作中单条操作失败，并不会影响其他操作</li>
+<li>返回结果包括了每一条操作执行的结果</li>
+</ul>
+<h4 id="批量写入"><strong>批量写入</strong><a class="anchorjs-link" href="#%e6%89%b9%e9%87%8f%e5%86%99%e5%85%a5"></a></h4><p>批量对文档进行写操作是通过_bulk的API来实现的</p>
+<ul>
+<li>
+<p>请求方式：POST</p>
+</li>
+<li>
+<p>请求地址：_bulk</p>
+</li>
+<li>
+<p>请求参数：通过_bulk操作文档，一般至少有两行参数(或偶数行参数)</p>
+</li>
+<li>
+<ul>
+<li>第一行参数为指定操作的类型及操作的对象(index,type和id)</li>
+<li>第二行参数才是操作的数据</li>
+</ul>
+</li>
+</ul>
+<p>参数类似于：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;actionName&#34;</span>:{<span style="color:#f92672">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;indexName&#34;</span>, <span style="color:#f92672">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;typeName&#34;</span>,<span style="color:#f92672">&#34;_id&#34;</span>:<span style="color:#e6db74">&#34;id&#34;</span>}} 
+</span></span><span style="display:flex;"><span>{<span style="color:#f92672">&#34;field1&#34;</span>:<span style="color:#e6db74">&#34;value1&#34;</span>, <span style="color:#f92672">&#34;field2&#34;</span>:<span style="color:#e6db74">&#34;value2&#34;</span>}             
+</span></span></code></pre></div><ul>
+<li>actionName：表示操作类型，主要有create,index,delete和update</li>
+</ul>
+<p><strong>批量创建文档create</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST _bulk
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;create&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:3<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:3,<span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;fox老师&#34;</span>,<span style="color:#e6db74">&#34;content&#34;</span>:<span style="color:#e6db74">&#34;fox老师666&#34;</span>,<span style="color:#e6db74">&#34;tags&#34;</span>:<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;java&#34;</span>, <span style="color:#e6db74">&#34;面向对象&#34;</span><span style="color:#f92672">]</span>,<span style="color:#e6db74">&#34;create_time&#34;</span>:1554015482530<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;create&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:4<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:4,<span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;mark老师&#34;</span>,<span style="color:#e6db74">&#34;content&#34;</span>:<span style="color:#e6db74">&#34;mark老师NB&#34;</span>,<span style="color:#e6db74">&#34;tags&#34;</span>:<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;java&#34;</span>, <span style="color:#e6db74">&#34;面向对象&#34;</span><span style="color:#f92672">]</span>,<span style="color:#e6db74">&#34;create_time&#34;</span>:1554015482530<span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><strong>普通创建或全量替换index</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST _bulk
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;index&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:3<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:3,<span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;图灵徐庶老师&#34;</span>,<span style="color:#e6db74">&#34;content&#34;</span>:<span style="color:#e6db74">&#34;图灵学院徐庶老师666&#34;</span>,<span style="color:#e6db74">&#34;tags&#34;</span>:<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;java&#34;</span>, <span style="color:#e6db74">&#34;面向对象&#34;</span><span style="color:#f92672">]</span>,<span style="color:#e6db74">&#34;create_time&#34;</span>:1554015482530<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;index&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:4<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:4,<span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;图灵诸葛老师&#34;</span>,<span style="color:#e6db74">&#34;content&#34;</span>:<span style="color:#e6db74">&#34;图灵学院诸葛老师NB&#34;</span>,<span style="color:#e6db74">&#34;tags&#34;</span>:<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;java&#34;</span>, <span style="color:#e6db74">&#34;面向对象&#34;</span><span style="color:#f92672">]</span>,<span style="color:#e6db74">&#34;create_time&#34;</span>:1554015482530<span style="color:#f92672">}</span>
+</span></span></code></pre></div><ul>
+<li>如果原文档不存在，则是创建</li>
+<li>如果原文档存在，则是替换(全量修改原文档)</li>
+</ul>
+<p><strong>批量删除delete</strong></p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST _bulk
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;delete&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:3<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;delete&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:4<span style="color:#f92672">}}</span>
+</span></span></code></pre></div><p><strong>批量修改update</strong></p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST _bulk
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;update&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:3<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;doc&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;ES大法必修内功&#34;</span><span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;update&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:4<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;doc&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;create_time&#34;</span>:1554018421008<span style="color:#f92672">}}</span>
+</span></span></code></pre></div><p><strong>组合应用</strong></p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>POST _bulk
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;create&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:3<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;id&#34;</span>:3,<span style="color:#e6db74">&#34;title&#34;</span>:<span style="color:#e6db74">&#34;fox老师&#34;</span>,<span style="color:#e6db74">&#34;content&#34;</span>:<span style="color:#e6db74">&#34;fox老师666&#34;</span>,<span style="color:#e6db74">&#34;tags&#34;</span>:<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;java&#34;</span>, <span style="color:#e6db74">&#34;面向对象&#34;</span><span style="color:#f92672">]</span>,<span style="color:#e6db74">&#34;create_time&#34;</span>:1554015482530<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;delete&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:3<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;update&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;_index&#34;</span>:<span style="color:#e6db74">&#34;article&#34;</span>, <span style="color:#e6db74">&#34;_type&#34;</span>:<span style="color:#e6db74">&#34;_doc&#34;</span>, <span style="color:#e6db74">&#34;_id&#34;</span>:4<span style="color:#f92672">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;doc&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;create_time&#34;</span>:1554018421008<span style="color:#f92672">}}</span>
+</span></span></code></pre></div><h4 id="批量读取"><strong>批量读取</strong><a class="anchorjs-link" href="#%e6%89%b9%e9%87%8f%e8%af%bb%e5%8f%96"></a></h4><p>es的批量查询可以使用mget和msearch两种。其中mget是需要我们知道它的id，可以指定不同的index，也可以指定返回值source。msearch可以通过字段查询来进行一个批量的查找。</p>
+<p><strong>_mget</strong></p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#可以通过ID批量获取不同index和type的数据</span>
+</span></span><span style="display:flex;"><span>GET _mget
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;docs&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;_index&#34;</span>: <span style="color:#e6db74">&#34;es_db&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;_id&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;_index&#34;</span>: <span style="color:#e6db74">&#34;article&#34;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;_id&#34;</span>: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#可以通过ID批量获取es_db的数据</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_mget
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;docs&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;_id&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;_id&#34;</span>: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#简化后</span>
+</span></span><span style="display:flex;"><span>GET /es_db/_mget 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span> <span style="color:#e6db74">&#34;ids&#34;</span>:<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;1&#34;</span>,<span style="color:#e6db74">&#34;2&#34;</span><span style="color:#f92672">]</span>  
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>​</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/1BEA3E4F4119479199473064220508A4/47101" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>_msearch</strong></p>
+<p>在_msearch中，请求格式和bulk类似。查询一条数据需要两个对象，第一个设置index和type，第二个设置查询语句。查询语句和search相同。如果只是查询一个index，我们可以在url中带上index，这样，如果查该index可以直接用空对象表示。</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>GET /es_db/_msearch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;query&#34;</span> : <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;match_all&#34;</span> : <span style="color:#f92672">{}}</span>, <span style="color:#e6db74">&#34;from&#34;</span> : 0, <span style="color:#e6db74">&#34;size&#34;</span> : 2<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;index&#34;</span> : <span style="color:#e6db74">&#34;article&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;query&#34;</span> : <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;match_all&#34;</span> : <span style="color:#f92672">{}}}</span>
+</span></span></code></pre></div><p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/d5d5718ae542f274ba0fda4284a53231/xmlnote/B5056B6D12034C9B82F85FBF5C1B6C1F/47219" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h1 id="logstash与filebeat详解以及elk整合">Logstash与FileBeat详解以及ELK整合<a class="anchorjs-link" href="#logstash%e4%b8%8efilebeat%e8%af%a6%e8%a7%a3%e4%bb%a5%e5%8f%8aelk%e6%95%b4%e5%90%88"></a></h1><p>链接：http://note.youdao.com/noteshare?id=cd88d72a1c76d18efcf7fe767e8c2d20&amp;sub=D7819084A43243FFA52E8A8741795414</p>
+<h2 id="背景"><strong>背景</strong><a class="anchorjs-link" href="#%e8%83%8c%e6%99%af"></a></h2><p>日志管理的挑战：</p>
+<ul>
+<li>关注点很多，任何一个点都有可能引起问题</li>
+<li>日志分散在很多机器，出了问题时，才发现日志被删了</li>
+<li>很多运维人员是消防员，哪里有问题去哪里</li>
+</ul>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/555E578AD4284510B89ED6C5BED01290/52366" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>集中化日志管理思路：</p>
+<p>日志收集 ——》格式化分析 ——》检索和可视化  ——》 风险告警</p>
+<h2 id="elk架构"><strong>ELK架构</strong><a class="anchorjs-link" href="#elk%e6%9e%b6%e6%9e%84"></a></h2><p>ELK架构分为两种，一种是经典的ELK，另外一种是加上消息队列（Redis或Kafka或RabbitMQ）和Nginx结构。</p>
+<h3 id="经典的elk"><strong>经典的ELK</strong><a class="anchorjs-link" href="#%e7%bb%8f%e5%85%b8%e7%9a%84elk"></a></h3><p>经典的ELK主要是由Filebeat + Logstash + Elasticsearch + Kibana组成，如下图：（早期的ELK只有Logstash + Elasticsearch + Kibana）</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/CF4108CE00D049A7A1DEC19A252C4E48/49020" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>此架构主要适用于数据量小的开发环境，存在数据丢失的危险。</p>
+<h3 id="整合消息队列nginx架构"><strong>整合消息队列+Nginx架构</strong><a class="anchorjs-link" href="#%e6%95%b4%e5%90%88%e6%b6%88%e6%81%af%e9%98%9f%e5%88%97nginx%e6%9e%b6%e6%9e%84"></a></h3><p>这种架构，主要加上了Redis或Kafka或RabbitMQ做消息队列，保证了消息的不丢失。</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/34FDE50C0C194DA3BCAD47E33334B27A/49019" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>此种架构，主要用在生产环境，可以处理大数据量，并且不会丢失数据。</p>
+<h2 id="什么是logstash"><strong>什么是Logstash</strong><a class="anchorjs-link" href="#%e4%bb%80%e4%b9%88%e6%98%aflogstash"></a></h2><p>Logstash 是免费且开放的服务器端数据处理管道，能够从多个来源采集数据，转换数据，然后将数据发送到您最喜欢的存储库中。</p>
+<p><a href="https://www.elastic.co/cn/logstash/">https://www.elastic.co/cn/logstash/</a></p>
+<p>应用：ETL工具 / 数据采集处理引擎</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/0F80346571C14E7F91557BA085D7BCF0/50524" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="logstash核心概念"><strong>Logstash核心概念</strong><a class="anchorjs-link" href="#logstash%e6%a0%b8%e5%bf%83%e6%a6%82%e5%bf%b5"></a></h3><p><strong>Pipeline</strong></p>
+<ul>
+<li>包含了input—filter-output三个阶段的处理流程</li>
+<li>插件生命周期管理</li>
+<li>队列管理</li>
+</ul>
+<p><strong>Logstash Event</strong></p>
+<ul>
+<li>数据在内部流转时的具体表现形式。数据在input 阶段被转换为Event，在 output被转化成目标格式数据</li>
+<li>Event 其实是一个Java Object，在配置文件中，对Event 的属性进行增删改查</li>
+</ul>
+<p><strong>Codec (Code / Decode)</strong></p>
+<p>将原始数据decode成Event;将Event encode成目标数据</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/CF82CB4EAFC44D45B868DBA196A424CC/52150" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="logstash数据传输原理"><strong>Logstash数据传输原理</strong><a class="anchorjs-link" href="#logstash%e6%95%b0%e6%8d%ae%e4%bc%a0%e8%be%93%e5%8e%9f%e7%90%86"></a></h3><ol>
+<li>数据采集与输入：Logstash支持各种输入选择，能够以连续的流式传输方式，轻松地从日志、指标、Web应用以及数据存储中采集数据。</li>
+<li>实时解析和数据转换：通过Logstash过滤器解析各个事件，识别已命名的字段来构建结构，并将它们转换成通用格式，最终将数据从源端传输到存储库中。</li>
+<li>存储与数据导出：Logstash提供多种输出选择，可以将数据发送到指定的地方。</li>
+</ol>
+<p>Logstash通过管道完成数据的采集与处理，管道配置中包含input、output和filter（可选）插件，input和output用来配置输入和输出数据源、filter用来对数据进行过滤或预处理。</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/74593B9BBD7444CD95313B5E281D1F7D/50590" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="logstash配置文件结构"><strong>Logstash配置文件结构</strong><a class="anchorjs-link" href="#logstash%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e7%bb%93%e6%9e%84"></a></h3><p>参考：https://www.elastic.co/guide/en/logstash/7.17/configuration.html</p>
+<p>Logstash的管道配置文件对每种类型的插件都提供了一个单独的配置部分，用于处理管道事件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>input <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  stdin <span style="color:#f92672">{</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>filter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  grok <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{COMBINEDAPACHELOG}&#34;</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  date <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;timestamp&#34;</span> , <span style="color:#e6db74">&#34;dd/MMM/yyyy:HH:mm:ss Z&#34;</span> <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  elasticsearch <span style="color:#f92672">{</span> hosts <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;localhost:9200&#34;</span><span style="color:#f92672">]}</span>  
+</span></span><span style="display:flex;"><span>  stdout <span style="color:#f92672">{</span> codec <span style="color:#f92672">=</span>&gt; rubydebug <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>每个配置部分可以包含一个或多个插件。例如，指定多个filter插件，Logstash会按照它们在配置文件中出现的顺序进行处理。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#运行 bin/logstash -f logstash-demo.conf              </span>
+</span></span></code></pre></div><p><strong>Input Plugins</strong></p>
+<p><a href="https://www.elastic.co/guide/en/logstash/7.17/input-plugins.html">https://www.elastic.co/guide/en/logstash/7.17/input-plugins.html</a></p>
+<p>一个 Pipeline可以有多个input插件</p>
+<ul>
+<li>
+<p>Stdin / File</p>
+</li>
+<li>
+<p>Beats / Log4J /Elasticsearch / JDBC / Kafka /Rabbitmq /Redis</p>
+</li>
+<li>
+<p>JMX/ HTTP / Websocket / UDP / TCP</p>
+</li>
+<li>
+<p>Google Cloud Storage / S3</p>
+</li>
+<li>
+<p>Github / Twitter</p>
+</li>
+</ul>
+<p><strong>Output Plugins</strong></p>
+<p><a href="https://www.elastic.co/guide/en/logstash/7.17/output-plugins.html">https://www.elastic.co/guide/en/logstash/7.17/output-plugins.html</a></p>
+<p>将Event发送到特定的目的地，是 Pipeline 的最后一个阶段。</p>
+<p>常见 Output Plugins：</p>
+<ul>
+<li>Elasticsearch</li>
+<li>Email / Pageduty</li>
+<li>Influxdb / Kafka / Mongodb / Opentsdb / Zabbix</li>
+<li>Http / TCP / Websocket</li>
+</ul>
+<p><strong>Filter Plugins</strong></p>
+<p><a href="https://www.elastic.co/guide/en/logstash/7.17/filter-plugins.html">https://www.elastic.co/guide/en/logstash/7.17/filter-plugins.html</a></p>
+<p>处理Event</p>
+<p>内置的Filter Plugins:</p>
+<ul>
+<li>Mutate 一操作Event的字段</li>
+<li>Metrics — Aggregate metrics</li>
+<li>Ruby 一执行Ruby 代码</li>
+</ul>
+<p><strong>Codec Plugins</strong></p>
+<p><a href="https://www.elastic.co/guide/en/logstash/7.17/codec-plugins.html">https://www.elastic.co/guide/en/logstash/7.17/codec-plugins.html</a></p>
+<p>将原始数据decode成Event;将Event encode成目标数据</p>
+<p>内置的Codec Plugins:</p>
+<ul>
+<li>Line / Multiline</li>
+<li>JSON / Avro / Cef (ArcSight Common Event Format)</li>
+<li>Dots / Rubydebug</li>
+</ul>
+<h3 id="logstash-queue"><strong>Logstash Queue</strong><a class="anchorjs-link" href="#logstash-queue"></a></h3><ul>
+<li>In Memory Queue</li>
+</ul>
+<p>进程Crash，机器宕机，都会引起数据的丢失</p>
+<ul>
+<li>Persistent Queue</li>
+</ul>
+<p>机器宕机，数据也不会丢失; 数据保证会被消费; 可以替代 Kafka等消息队列缓冲区的作用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>queue.type: persisted <span style="color:#f92672">(</span>默认是memory<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>queue.max_bytes: 4gb
+</span></span></code></pre></div><p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/CE4E688F6DF84A129F3F289048E0376D/52192" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h3 id="logstash安装"><strong>Logstash安装</strong><a class="anchorjs-link" href="#logstash%e5%ae%89%e8%a3%85"></a></h3><p>logstash官方文档:  <a href="https://www.elastic.co/guide/en/logstash/7.17/installing-logstash.html">https://www.elastic.co/guide/en/logstash/7.17/installing-logstash.html</a></p>
+<h4 id="1下载并解压logstash"><strong>1）下载并解压logstash</strong><a class="anchorjs-link" href="#1%e4%b8%8b%e8%bd%bd%e5%b9%b6%e8%a7%a3%e5%8e%8blogstash"></a></h4><p>下载地址： <a href="https://www.elastic.co/cn/downloads/past-releases#logstash">https://www.elastic.co/cn/downloads/past-releases#logstash</a></p>
+<p>选择版本：7.17.3</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/947FADB0499C4461A8037B0DB7A68053/50498" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="2测试运行最基本的logstash管道"><strong>2）测试：运行最基本的logstash管道</strong><a class="anchorjs-link" href="#2%e6%b5%8b%e8%af%95%e8%bf%90%e8%a1%8c%e6%9c%80%e5%9f%ba%e6%9c%ac%e7%9a%84logstash%e7%ae%a1%e9%81%93"></a></h4><p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd logstash-7.17.3
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#linux</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#-e选项表示，直接把配置放在命令中，这样可以有效快速进行测试</span>
+</span></span><span style="display:flex;"><span>bin/logstash -e <span style="color:#e6db74">&#39;input { stdin { } } output { stdout {} }&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#windows</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#ae81ff">\b</span>in<span style="color:#ae81ff">\l</span>ogstash.bat -e <span style="color:#e6db74">&#34;input { stdin { } } output { stdout {} }&#34;</span>
+</span></span></code></pre></div><p>​</p>
+<p>测试结果：</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/7C245A3C48024C4484A8CAAA10DE9C1F/50564" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>window版本的logstash-7.17.3的bug:</strong></p>
+<p>windows出现错误提示could not find java; set JAVA_HOME or ensure java is in PATH</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/4F3E54A6E6BA4D9F95F6BEFF301F164A/50547" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>修改setup.bat</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/823CA03558EE4C65812B9F44E6FC36B9/50544" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/ACF40D5ED8C84C23B2F268480BE69F04/50556" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>Codec Plugin测试</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># single line</span>
+</span></span><span style="display:flex;"><span>bin/logstash -e <span style="color:#e6db74">&#34;input{stdin{codec=&gt;line}}output{stdout{codec=&gt; rubydebug}}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>bin/logstash -e <span style="color:#e6db74">&#34;input{stdin{codec=&gt;json}}output{stdout{codec=&gt; rubydebug}}&#34;</span>
+</span></span></code></pre></div><p>​</p>
+<p><strong>Codec Plugin —— Multiline</strong></p>
+<p>设置参数:</p>
+<ul>
+<li>
+<p>pattern: 设置行匹配的正则表达式</p>
+</li>
+<li>
+<p>what : 如果匹配成功，那么匹配行属于上一个事件还是下一个事件</p>
+</li>
+<li>
+<ul>
+<li>previous / next</li>
+</ul>
+</li>
+<li>
+<p>negate : 是否对pattern结果取反</p>
+</li>
+<li>
+<ul>
+<li>true / false</li>
+</ul>
+</li>
+</ul>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 多行数据，异常</span>
+</span></span><span style="display:flex;"><span>Exception in thread <span style="color:#e6db74">&#34;main&#34;</span> java.lang.NullPointerException
+</span></span><span style="display:flex;"><span>        at com.example.myproject.Book.getTitle<span style="color:#f92672">(</span>Book.java:16<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at com.example.myproject.Author.getBookTitles<span style="color:#f92672">(</span>Author.java:25<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        at com.example.myproject.Bootstrap.main<span style="color:#f92672">(</span>Bootstrap.java:14<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># multiline-exception.conf</span>
+</span></span><span style="display:flex;"><span>input <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  stdin <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    codec <span style="color:#f92672">=</span>&gt; multiline <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      pattern <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;^\s&#34;</span>
+</span></span><span style="display:flex;"><span>      what <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;previous&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>filter <span style="color:#f92672">{}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  stdout <span style="color:#f92672">{</span> codec <span style="color:#f92672">=</span>&gt; rubydebug <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#执行管道</span>
+</span></span><span style="display:flex;"><span>bin/logstash -f multiline-exception.conf
+</span></span></code></pre></div><p><strong>Input Plugin —— File</strong></p>
+<ul>
+<li>支持从文件中读取数据，如日志文件</li>
+<li>文件读取需要解决的问题：只被读取一次。重启后需要从上次读取的位置继续(通过sincedb 实现)</li>
+<li>读取到文件新内容，发现新文件</li>
+<li>文件发生归档操作(文档位置发生变化，日志rotation)，不能影响当前的内容读取</li>
+</ul>
+<p><strong>Filter Plugin</strong></p>
+<p>Filter Plugin可以对Logstash Event进行各种处理，例如解析，删除字段，类型转换</p>
+<ul>
+<li>Date: 日期解析</li>
+<li>Dissect: 分割符解析</li>
+<li>Grok: 正则匹配解析</li>
+<li>Mutate: 处理字段。重命名，删除，替换</li>
+<li>Ruby: 利用Ruby 代码来动态修改Event</li>
+</ul>
+<p><strong>Filter Plugin - Mutate</strong></p>
+<p>对字段做各种操作:</p>
+<ul>
+<li>Convert : 类型转换</li>
+<li>Gsub : 字符串替换</li>
+<li>Split / Join /Merge:  字符串切割，数组合并字符串，数组合并数组</li>
+<li>Rename: 字段重命名</li>
+<li>Update / Replace: 字段内容更新替换</li>
+<li>Remove_field: 字段删除</li>
+</ul>
+<h3 id="logstash导入数据到es"><strong>Logstash导入数据到ES</strong><a class="anchorjs-link" href="#logstash%e5%af%bc%e5%85%a5%e6%95%b0%e6%8d%ae%e5%88%b0es"></a></h3><p>1）测试数据集下载：https://grouplens.org/datasets/movielens/</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/FB13DC8EC34E40CBBE6E7092BC410E74/50573" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>2）准备logstash-movie.conf配置文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>input <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  file <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    path <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;/home/es/logstash-7.17.3/dataset/movies.csv&#34;</span>
+</span></span><span style="display:flex;"><span>    start_position <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;beginning&#34;</span>
+</span></span><span style="display:flex;"><span>    sincedb_path <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;/dev/null&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>filter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  csv <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    separator <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;,&#34;</span>
+</span></span><span style="display:flex;"><span>    columns <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;id&#34;</span>,<span style="color:#e6db74">&#34;content&#34;</span>,<span style="color:#e6db74">&#34;genre&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  mutate <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    split <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;genre&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;|&#34;</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    remove_field <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;path&#34;</span>, <span style="color:#e6db74">&#34;host&#34;</span>,<span style="color:#e6db74">&#34;@timestamp&#34;</span>,<span style="color:#e6db74">&#34;message&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  mutate <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    split <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;content&#34;</span>, <span style="color:#e6db74">&#34;(&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    add_field <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;title&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{[content][0]}&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    add_field <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;year&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{[content][1]}&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  mutate <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    convert <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;year&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;integer&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    strip <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;title&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    remove_field <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;path&#34;</span>, <span style="color:#e6db74">&#34;host&#34;</span>,<span style="color:#e6db74">&#34;@timestamp&#34;</span>,<span style="color:#e6db74">&#34;message&#34;</span>,<span style="color:#e6db74">&#34;content&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>   elasticsearch <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>     hosts <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;http://localhost:9200&#34;</span>
+</span></span><span style="display:flex;"><span>     index <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;movies&#34;</span>
+</span></span><span style="display:flex;"><span>     document_id <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{id}&#34;</span>
+</span></span><span style="display:flex;"><span>     user <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;elastic&#34;</span>
+</span></span><span style="display:flex;"><span>     password <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;123456&#34;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  stdout <span style="color:#f92672">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>​</p>
+<p>3）运行logstash</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># linux bin/logstash -f logstash-movie.conf     </span>
+</span></span></code></pre></div><p>​</p>
+<h3 id="同步数据库数据到elasticsearch"><strong>同步数据库数据到Elasticsearch</strong><a class="anchorjs-link" href="#%e5%90%8c%e6%ad%a5%e6%95%b0%e6%8d%ae%e5%ba%93%e6%95%b0%e6%8d%ae%e5%88%b0elasticsearch"></a></h3><p>需求: 将数据库中的数据同步到ES，借助ES的全文搜索,提高搜索速度</p>
+<ul>
+<li>需要把新增用户信息同步到Elasticsearch中</li>
+<li>用户信息Update 后，需要能被更新到Elasticsearch</li>
+<li>支持增量更新</li>
+<li>用户注销后，不能被ES所搜索到</li>
+</ul>
+<p><strong>实现思路</strong></p>
+<ul>
+<li>
+<p>基于canal同步数据（项目实战中讲解）</p>
+</li>
+<li>
+<p>借助JDBC Input Plugin将数据从数据库读到Logstash</p>
+</li>
+<li>
+<ul>
+<li>需要自己提供所需的 JDBC Driver；</li>
+<li>JDBC Input Plugin 支持定时任务 Scheduling，其语法来自 Rufus-scheduler，其扩展了 Cron，使用 Cron 的语法可以完成任务的触发；</li>
+<li>JDBC Input Plugin 支持通过 Tracking_column / sql_last_value 的方式记录 State，最终实现增量的更新；</li>
+<li><a href="https://www.elastic.co/cn/blog/logstash-jdbc-input-plugin">https://www.elastic.co/cn/blog/logstash-jdbc-input-plugin</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>JDBC Input Plugin实现步骤</strong></p>
+<p>1）拷贝jdbc依赖到logstash-7.17.3/drivers目录下</p>
+<p>2）准备mysql-demo.conf配置文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>input <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  jdbc <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    jdbc_driver_library <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;/home/es/logstash-7.17.3/drivers/mysql-connector-java-5.1.49.jar&#34;</span>
+</span></span><span style="display:flex;"><span>    jdbc_driver_class <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;com.mysql.jdbc.Driver&#34;</span>
+</span></span><span style="display:flex;"><span>    jdbc_connection_string <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;jdbc:mysql://localhost:3306/test?useSSL=false&#34;</span>
+</span></span><span style="display:flex;"><span>    jdbc_user <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;root&#34;</span>
+</span></span><span style="display:flex;"><span>    jdbc_password <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;123456&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#启用追踪，如果为true，则需要指定tracking_column</span>
+</span></span><span style="display:flex;"><span>    use_column_value <span style="color:#f92672">=</span>&gt; true
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#指定追踪的字段，</span>
+</span></span><span style="display:flex;"><span>    tracking_column <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;last_updated&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#追踪字段的类型，目前只有数字(numeric)和时间类型(timestamp)，默认是数字类型</span>
+</span></span><span style="display:flex;"><span>    tracking_column_type <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;numeric&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#记录最后一次运行的结果</span>
+</span></span><span style="display:flex;"><span>    record_last_run <span style="color:#f92672">=</span>&gt; true
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#上面运行结果的保存位置</span>
+</span></span><span style="display:flex;"><span>    last_run_metadata_path <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;jdbc-position.txt&#34;</span>
+</span></span><span style="display:flex;"><span>    statement <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;SELECT * FROM user where last_updated &gt;:sql_last_value;&#34;</span>
+</span></span><span style="display:flex;"><span>    schedule <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34; * * * * * *&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  elasticsearch <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    document_id <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{id}&#34;</span>
+</span></span><span style="display:flex;"><span>    document_type <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;_doc&#34;</span>
+</span></span><span style="display:flex;"><span>    index <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;users&#34;</span>
+</span></span><span style="display:flex;"><span>    hosts <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://localhost:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;elastic&#34;</span>
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;123456&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  stdout<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    codec <span style="color:#f92672">=</span>&gt; rubydebug
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>3）运行logstash</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bin/logstash -f mysql-demo.conf           
+</span></span></code></pre></div><p><figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/0283538D60E14EFAA693BAA42277AC11/52312" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>测试</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">#</span>user表
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#f92672">`</span><span style="color:#66d9ef">user</span><span style="color:#f92672">`</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">`</span>id<span style="color:#f92672">`</span> int <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">NULL</span> AUTO_INCREMENT,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">`</span>name<span style="color:#f92672">`</span> varchar(<span style="color:#ae81ff">50</span>) <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">`</span>address<span style="color:#f92672">`</span> varchar(<span style="color:#ae81ff">50</span>) CHARACTER <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">`</span>last_updated<span style="color:#f92672">`</span> bigint <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">`</span>is_deleted<span style="color:#f92672">`</span> int <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">NULL</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">PRIMARY</span> <span style="color:#66d9ef">KEY</span> (<span style="color:#f92672">`</span>id<span style="color:#f92672">`</span>)
+</span></span><span style="display:flex;"><span>) ENGINE<span style="color:#f92672">=</span>InnoDB AUTO_INCREMENT<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">DEFAULT</span> CHARSET<span style="color:#f92672">=</span>utf8mb4 <span style="color:#66d9ef">COLLATE</span><span style="color:#f92672">=</span>utf8mb4_0900_ai_ci;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#960050;background-color:#1e0010">插入数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#66d9ef">user</span>(name,address,last_updated,is_deleted) <span style="color:#66d9ef">VALUES</span>(<span style="color:#e6db74">&#34;张三&#34;</span>,<span style="color:#e6db74">&#34;广州天河&#34;</span>,unix_timestamp(NOW()),<span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/63AD9310E21343A8BAA846C84661E31F/52314" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">#</span> <span style="color:#960050;background-color:#1e0010">更新</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">update</span> <span style="color:#66d9ef">user</span> <span style="color:#66d9ef">set</span> address<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;广州白云山&#34;</span>,last_updated<span style="color:#f92672">=</span>unix_timestamp(NOW()) <span style="color:#66d9ef">where</span> name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;张三&#34;</span>
+</span></span></code></pre></div><p>​</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/0BACB4E2B47345698F97C332779954FF/52326" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#f92672">#</span><span style="color:#960050;background-color:#1e0010">删除</span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">update</span> <span style="color:#66d9ef">user</span> <span style="color:#66d9ef">set</span> is_deleted<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,last_updated<span style="color:#f92672">=</span>unix_timestamp(NOW()) <span style="color:#66d9ef">where</span> name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;张三&#34;</span>           
+</span></span></code></pre></div><p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/8D6ED1B8A61240AE8934C7DFB2F78AB0/52334" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#ES中查询</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建 alias，只显示没有被标记 deleted的用户</span>
+</span></span><span style="display:flex;"><span>POST /_aliases
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;actions&#34;</span>: <span style="color:#f92672">[</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;add&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;index&#34;</span>: <span style="color:#e6db74">&#34;users&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;alias&#34;</span>: <span style="color:#e6db74">&#34;view_users&#34;</span>,
+</span></span><span style="display:flex;"><span>         <span style="color:#e6db74">&#34;filter&#34;</span> : <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;term&#34;</span> : <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;is_deleted&#34;</span> : 0<span style="color:#f92672">}</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 通过 Alias查询，查不到被标记成 deleted的用户</span>
+</span></span><span style="display:flex;"><span>POST view_users/_search
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>POST view_users/_search
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;query&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;term&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;name.keyword&#34;</span>: <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;value&#34;</span>: <span style="color:#e6db74">&#34;张三&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>​</p>
+<h2 id="什么是beats"><strong>什么是Beats</strong><a class="anchorjs-link" href="#%e4%bb%80%e4%b9%88%e6%98%afbeats"></a></h2><p>轻量型数据采集器，文档地址： <a href="https://www.elastic.co/guide/en/beats/libbeat/7.17/index.html">https://www.elastic.co/guide/en/beats/libbeat/7.17/index.html</a></p>
+<p>Beats 是一个免费且开放的平台，集合了多种单一用途的数据采集器。它们从成百上千或成千上万台机器和系统向 Logstash 或 Elasticsearch 发送数据。</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/35F887BBDE2547EDB65BC5144FAA26F2/52346" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="filebeat简介"><strong>FileBeat简介</strong><a class="anchorjs-link" href="#filebeat%e7%ae%80%e4%bb%8b"></a></h4><p>FileBeat专门用于转发和收集日志数据的轻量级采集工具。它可以作为代理安装在服务器上，FileBeat监视指定路径的日志文件，收集日志数据，并将收集到的日志转发到Elasticsearch或者Logstash。</p>
+<h4 id="filebeat的工作原理"><strong>FileBeat的工作原理</strong><a class="anchorjs-link" href="#filebeat%e7%9a%84%e5%b7%a5%e4%bd%9c%e5%8e%9f%e7%90%86"></a></h4><p>启动FileBeat时，会启动一个或者多个输入（Input），这些Input监控指定的日志数据位置。FileBeat会针对每一个文件启动一个Harvester（收割机）。Harvester读取每一个文件的日志，将新的日志发送到libbeat，libbeat将数据收集到一起，并将数据发送给输出（Output）。</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/867736E6C783400A8BEFF89B901CC427/52385" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h4 id="logstash-vs-filebeat"><strong>logstash vs FileBeat</strong><a class="anchorjs-link" href="#logstash-vs-filebeat"></a></h4><ul>
+<li>Logstash是在jvm上运行的，资源消耗比较大。而FileBeat是基于golang编写的，功能较少但资源消耗也比较小，更轻量级。</li>
+<li>Logstash 和Filebeat都具有日志收集功能，Filebeat更轻量，占用资源更少</li>
+<li>Logstash 具有Filter功能，能过滤分析日志</li>
+<li>一般结构都是Filebeat采集日志，然后发送到消息队列、Redis、MQ中，然后Logstash去获取，利用Filter功能过滤分析，然后存储到Elasticsearch中</li>
+<li>FileBeat和Logstash配合，实现背压机制。当将数据发送到Logstash或 Elasticsearch时，Filebeat使用背压敏感协议，以应对更多的数据量。如果Logstash正在忙于处理数据，则会告诉Filebeat 减慢读取速度。一旦拥堵得到解决，Filebeat就会恢复到原来的步伐并继续传输数据。</li>
+</ul>
+<h4 id="filebeat安装"><strong>Filebeat安装</strong><a class="anchorjs-link" href="#filebeat%e5%ae%89%e8%a3%85"></a></h4><p><a href="https://www.elastic.co/guide/en/beats/filebeat/7.17/filebeat-installation-configuration.html">https://www.elastic.co/guide/en/beats/filebeat/7.17/filebeat-installation-configuration.html</a></p>
+<p><strong>1）下载并解压Filebeat</strong></p>
+<p>下载地址：https://www.elastic.co/cn/downloads/past-releases#filebeat</p>
+<p>选择版本：7.17.3</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/A056706105A64F20B051E42986D0EEF0/50501" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p><strong>2）编辑配置</strong></p>
+<p>修改 filebeat.yml 以设置连接信息：</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">output.elasticsearch</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">hosts</span>: [<span style="color:#e6db74">&#34;192.168.65.174:9200&#34;</span>,<span style="color:#e6db74">&#34;192.168.65.192:9200&#34;</span>,<span style="color:#e6db74">&#34;192.168.65.204:9200&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#34;elastic&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#34;123456&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">setup.kibana</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">host</span>: <span style="color:#e6db74">&#34;192.168.65.174:5601&#34;</span>
+</span></span></code></pre></div><p>​</p>
+<p><strong>3) 启用和配置数据收集模块</strong></p>
+<p>从安装目录中，运行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 查看可以模块列表</span>
+</span></span><span style="display:flex;"><span>./filebeat modules list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#启用nginx模块</span>
+</span></span><span style="display:flex;"><span>./filebeat modules enable nginx
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#如果需要更改nginx日志路径,修改modules.d/nginx.yml</span>
+</span></span><span style="display:flex;"><span>- module: nginx
+</span></span><span style="display:flex;"><span>  access:
+</span></span><span style="display:flex;"><span>    var.paths: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/var/log/nginx/access.log*&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#启用 Logstash 模块</span>
+</span></span><span style="display:flex;"><span>./filebeat modules enable logstash
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#在 modules.d/logstash.yml 文件中修改设置</span>
+</span></span><span style="display:flex;"><span>- module: logstash
+</span></span><span style="display:flex;"><span>  log:
+</span></span><span style="display:flex;"><span>    enabled: true
+</span></span><span style="display:flex;"><span>    var.paths: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;/home/es/logstash-7.17.3/logs/*.log&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p><strong>4）启动 Filebeat</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># setup命令加载Kibana仪表板。 如果仪表板已经设置，则忽略此命令。 </span>
+</span></span><span style="display:flex;"><span>./filebeat setup
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 启动Filebeat</span>
+</span></span><span style="display:flex;"><span>./filebeat -e 
+</span></span></code></pre></div><h2 id="elk整合实战"><strong>ELK整合实战</strong><a class="anchorjs-link" href="#elk%e6%95%b4%e5%90%88%e5%ae%9e%e6%88%98"></a></h2><h3 id="案例采集tomcat服务器日志"><strong>案例：采集tomcat服务器日志</strong><a class="anchorjs-link" href="#%e6%a1%88%e4%be%8b%e9%87%87%e9%9b%86tomcat%e6%9c%8d%e5%8a%a1%e5%99%a8%e6%97%a5%e5%bf%97"></a></h3><p>Tomcat服务器运行过程中产生很多日志信息，通过Logstash采集并存储日志信息至ElasticSearch中</p>
+<h3 id="使用filebeats将日志发送到logstash"><strong>使用FileBeats将日志发送到Logstash</strong><a class="anchorjs-link" href="#%e4%bd%bf%e7%94%a8filebeats%e5%b0%86%e6%97%a5%e5%bf%97%e5%8f%91%e9%80%81%e5%88%b0logstash"></a></h3><p>1）创建配置文件filebeat-logstash.yml，配置FileBeats将数据发送到Logstash</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim filebeat-logstash.yml
+</span></span><span style="display:flex;"><span>chmod <span style="color:#ae81ff">644</span> filebeat-logstash.yml
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#因为Tomcat的web log日志都是以IP地址开头的，所以我们需要修改下匹配字段。</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 不以ip地址开头的行追加到上一行</span>
+</span></span><span style="display:flex;"><span>filebeat.inputs:
+</span></span><span style="display:flex;"><span>- type: log
+</span></span><span style="display:flex;"><span>  enabled: true
+</span></span><span style="display:flex;"><span>  paths:
+</span></span><span style="display:flex;"><span>    - /home/es/apache-tomcat-8.5.33/logs/*access*.*
+</span></span><span style="display:flex;"><span>  multiline.pattern: <span style="color:#e6db74">&#39;^\\d+\\.\\d+\\.\\d+\\.\\d+ &#39;</span>
+</span></span><span style="display:flex;"><span>  multiline.negate: true
+</span></span><span style="display:flex;"><span>  multiline.match: after
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output.logstash:
+</span></span><span style="display:flex;"><span>  enabled: true
+</span></span><span style="display:flex;"><span>  hosts: <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;192.168.65.204:5044&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>​</p>
+<ul>
+<li>pattern：正则表达式</li>
+<li>negate：true 或 false；默认是false，匹配pattern的行合并到上一行；true，不匹配pattern的行合并到上一行</li>
+<li>match：after 或 before，合并到上一行的末尾或开头</li>
+</ul>
+<p>2）启动FileBeat，并指定使用指定的配置文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>./filebeat -e -c filebeat-logstash.yml            
+</span></span></code></pre></div><p><strong>可能出现的异常：</strong></p>
+<p>异常1：Exiting: error loading config file: config file (&ldquo;filebeat-logstash.yml&rdquo;) can only be writable by the owner but the permissions are &ldquo;-rw-rw-r&ndash;&rdquo; (to fix the permissions use: &lsquo;chmod go-w /home/es/filebeat-7.17.3-linux-x86_64/filebeat-logstash.yml&rsquo;)</p>
+<p>因为安全原因不要其他用户写的权限，去掉写的权限就可以了</p>
+<p>​                chmod 644 filebeat-logstash.yml</p>
+<p>异常2：Failed to connect to backoff(async(tcp://192.168.65.204:5044)): dial tcp 192.168.65.204:5044: connect: connection refused</p>
+<p>FileBeat将尝试建立与Logstash监听的IP和端口号进行连接。但此时，我们并没有开启并配置Logstash，所以FileBeat是无法连接到Logstash的。</p>
+<h3 id="配置logstash接收filebeat收集的数据并打印"><strong>配置Logstash接收FileBeat收集的数据并打印</strong><a class="anchorjs-link" href="#%e9%85%8d%e7%bd%aelogstash%e6%8e%a5%e6%94%b6filebeat%e6%94%b6%e9%9b%86%e7%9a%84%e6%95%b0%e6%8d%ae%e5%b9%b6%e6%89%93%e5%8d%b0"></a></h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim config/filebeat-console.conf
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 配置从FileBeat接收数据</span>
+</span></span><span style="display:flex;"><span>input <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    beats <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">5044</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    stdout <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      codec <span style="color:#f92672">=</span>&gt; rubydebug
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>测试logstash配置是否正确</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bin/logstash -f config/filebeat-console.conf --config.test_and_exit     
+</span></span></code></pre></div><p><strong>启动logstash</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># reload.automatic：修改配置文件时自动重新加载</span>
+</span></span><span style="display:flex;"><span>bin/logstash -f config/filebeat-console.conf --config.reload.automatic
+</span></span></code></pre></div><p>​</p>
+<p>测试访问tomcat，logstash是否接收到了Filebeat传过来的tomcat日志</p>
+<h3 id="logstash输出数据到elasticsearch"><strong>Logstash输出数据到Elasticsearch</strong><a class="anchorjs-link" href="#logstash%e8%be%93%e5%87%ba%e6%95%b0%e6%8d%ae%e5%88%b0elasticsearch"></a></h3><p>如果我们需要将数据输出值ES而不是控制台的话，我们修改Logstash的output配置。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim config/filebeat-elasticSearch.conf
+</span></span><span style="display:flex;"><span>input <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    beats <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">5044</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  elasticsearch <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    hosts <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://localhost:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;elastic&#34;</span>
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;123456&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  stdout<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    codec <span style="color:#f92672">=</span>&gt; rubydebug
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><strong>启动logstash</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bin/logstash -f config/filebeat-elasticSearch.conf --config.reload.automatic  
+</span></span></code></pre></div><p>​</p>
+<p>ES中会生成一个以logstash开头的索引，测试日志是否保存到了ES。</p>
+<p>思考：日志信息都保证在message字段中，是否可以把日志进行解析一个个的字段？例如：IP字段、时间、请求方式、请求URL、响应结果。</p>
+<h3 id="利用logstash过滤器解析日志"><strong>利用Logstash过滤器解析日志</strong><a class="anchorjs-link" href="#%e5%88%a9%e7%94%a8logstash%e8%bf%87%e6%bb%a4%e5%99%a8%e8%a7%a3%e6%9e%90%e6%97%a5%e5%bf%97"></a></h3><p>从日志文件中收集到的数据包含了很多有效信息，比如IP、时间等，在Logstash中可以配置过滤器Filter对采集到的数据进行过滤处理，Logstash中有大量的插件可以供我们使用。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#查看Logstash已经安装的插件 </span>
+</span></span><span style="display:flex;"><span>bin/logstash-plugin list              
+</span></span></code></pre></div><p><strong>Grok插件</strong></p>
+<p>Grok是一种将非结构化日志解析为结构化的插件。这个工具非常适合用来解析系统日志、Web服务器日志、MySQL或者是任意其他的日志格式。</p>
+<p><a href="https://www.elastic.co/guide/en/logstash/7.17/plugins-filters-grok.html">https://www.elastic.co/guide/en/logstash/7.17/plugins-filters-grok.html</a></p>
+<p><strong>Grok语法</strong></p>
+<p>Grok是通过模式匹配的方式来识别日志中的数据,可以把Grok插件简单理解为升级版本的正则表达式。它拥有更多的模式，默认Logstash拥有120个模式。如果这些模式不满足我们解析日志的需求，我们可以直接使用正则表达式来进行匹配。</p>
+<p>grok模式的语法是：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">%</span>{<span style="color:#960050;background-color:#1e0010">SYNTAX:SEMANTIC</span>}  
+</span></span></code></pre></div><p>SYNTAX（语法）指的是Grok模式名称，SEMANTIC（语义）是给模式匹配到的文本字段名。例如：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">%</span>{<span style="color:#960050;background-color:#1e0010">NUMBER:duration</span>} <span style="color:#960050;background-color:#1e0010">%</span>{<span style="color:#960050;background-color:#1e0010">IP:client</span>} 
+</span></span><span style="display:flex;"><span>  <span style="color:#960050;background-color:#1e0010">duration表示：匹配一个数字，client表示匹配一个IP地址。</span> 
+</span></span></code></pre></div><p>默认在Grok中，所有匹配到的的数据类型都是字符串，如果要转换成int类型（目前只支持int和float），可以这样：%{NUMBER:duration:int} %{IP:client}</p>
+<p>常用的Grok模式</p>
+<p><a href="https://help.aliyun.com/document_detail/129387.html?scm=20140722.184.2.173">https://help.aliyun.com/document_detail/129387.html?scm=20140722.184.2.173</a></p>
+<p><strong>用法</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>filter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  grok <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{IP:client} %{WORD:method} %{URIPATHPARAM:request} %{NUMBER:bytes} %{NUMBER:duration}&#34;</span> <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>比如，tomacat日志</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>192.168.65.103 - - <span style="color:#f92672">[</span>23/Jun/2022:22:37:23 +0800<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET /docs/images/docs-stylesheet.css HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">5780</span>      
+</span></span></code></pre></div><p>解析后的字段</p>
+<table>
+<thead>
+<tr>
+<th>字段名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>client IP</td>
+<td>浏览器端IP</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>请求的时间戳</td>
+</tr>
+<tr>
+<td>method</td>
+<td>请求方式（GET/POST）</td>
+</tr>
+<tr>
+<td>uri</td>
+<td>请求的链接地址</td>
+</tr>
+<tr>
+<td>status</td>
+<td>服务器端响应状态</td>
+</tr>
+<tr>
+<td>length</td>
+<td>响应的数据长度</td>
+</tr>
+</tbody>
+</table>
+<p>grok模式</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>%<span style="color:#f92672">{</span>IP:ip<span style="color:#f92672">}</span> - - <span style="color:#ae81ff">\[</span>%<span style="color:#f92672">{</span>HTTPDATE:date<span style="color:#f92672">}</span><span style="color:#ae81ff">\]</span> <span style="color:#ae81ff">\&#34;</span>%<span style="color:#f92672">{</span>WORD:method<span style="color:#f92672">}</span> %<span style="color:#f92672">{</span>PATH:uri<span style="color:#f92672">}</span> %<span style="color:#f92672">{</span>DATA:protocol<span style="color:#f92672">}</span><span style="color:#ae81ff">\&#34;</span> %<span style="color:#f92672">{</span>INT:status<span style="color:#f92672">}</span> %<span style="color:#f92672">{</span>INT:length<span style="color:#f92672">}</span>  
+</span></span></code></pre></div><p>​</p>
+<p>为了方便测试，我们可以使用Kibana来进行Grok开发：</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/B11C53901C84493D99F3D89FBAC40AFB/52568" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>修改Logstash配置文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim config/filebeat-console.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>input <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    beats <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">5044</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>filter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  grok <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{IP:ip} - - \[%{HTTPDATE:date}\] \&#34;%{WORD:method} %{PATH:uri} %{DATA:protocol}\&#34; %{INT:status:int} %{INT:length:int}&#34;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    stdout <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>      codec <span style="color:#f92672">=</span>&gt; rubydebug
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>启动logstash测试</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> bin/logstash -f config/filebeat-console.conf --config.reload.automatic
+</span></span></code></pre></div><p>使用mutate插件过滤掉不需要的字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mutate <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    enable_metric <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;false&#34;</span>
+</span></span><span style="display:flex;"><span>    remove_field <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;message&#34;</span>, <span style="color:#e6db74">&#34;log&#34;</span>, <span style="color:#e6db74">&#34;tags&#34;</span>, <span style="color:#e6db74">&#34;input&#34;</span>, <span style="color:#e6db74">&#34;agent&#34;</span>, <span style="color:#e6db74">&#34;host&#34;</span>, <span style="color:#e6db74">&#34;ecs&#34;</span>, <span style="color:#e6db74">&#34;@version&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>要将日期格式进行转换，我们可以使用Date插件来实现。该插件专门用来解析字段中的日期，官方说明文档：https://www.elastic.co/guide/en/logstash/7.17/plugins-filters-date.html</p>
+<p>用法如下：</p>
+<p>​    <figure>
+  <a class="paragraph-image">
+    <img data-src="https://note.youdao.com/yws/public/resource/cd88d72a1c76d18efcf7fe767e8c2d20/xmlnote/6CD8135DD5F84D0D8AF0C937D385EDE0/52596" data-action="zoom" alt="0"  class="lazyload">
+  </a>
+  
+</figure></p>
+<p>将date字段转换为「年月日 时分秒」格式。默认字段经过date插件处理后，会输出到@timestamp字段，所以，我们可以通过修改target属性来重新定义输出字段。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>date <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;date&#34;</span>,<span style="color:#e6db74">&#34;dd/MMM/yyyy:HH:mm:ss Z&#34;</span>,<span style="color:#e6db74">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    target <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;date&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>​</p>
+<h3 id="输出到elasticsearch指定索引"><strong>输出到Elasticsearch指定索引</strong><a class="anchorjs-link" href="#%e8%be%93%e5%87%ba%e5%88%b0elasticsearch%e6%8c%87%e5%ae%9a%e7%b4%a2%e5%bc%95"></a></h3><p>index来指定索引名称，默认输出的index名称为：logstash-%{+yyyy.MM.dd}。但注意，要在index中使用时间格式化，filter的输出必须包含 @timestamp字段，否则将无法解析日期。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>output <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  elasticsearch <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    index <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;tomcat_web_log_%{+YYYY-MM}&#34;</span>
+</span></span><span style="display:flex;"><span>    hosts <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://localhost:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;elastic&#34;</span>
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;123456&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>  stdout<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    codec <span style="color:#f92672">=</span>&gt; rubydebug
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>注意：index名称中，不能出现大写字符</p>
+<p>完整的Logstash配置文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim config/filebeat-filter-es.conf
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>input <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    beats <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    port <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">5044</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>filter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    grok <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">{</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;message&#34;</span> <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;%{IP:ip} - - \[%{HTTPDATE:date}\] \&#34;%{WORD:method} %{PATH:uri} %{DATA:protocol}\&#34; %{INT:status:int} %{INT:length:int}&#34;</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>mutate <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    enable_metric <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;false&#34;</span>
+</span></span><span style="display:flex;"><span>    remove_field <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;message&#34;</span>, <span style="color:#e6db74">&#34;log&#34;</span>, <span style="color:#e6db74">&#34;tags&#34;</span>, <span style="color:#e6db74">&#34;input&#34;</span>, <span style="color:#e6db74">&#34;agent&#34;</span>, <span style="color:#e6db74">&#34;host&#34;</span>, <span style="color:#e6db74">&#34;ecs&#34;</span>, <span style="color:#e6db74">&#34;@version&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>date <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    match <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;date&#34;</span>,<span style="color:#e6db74">&#34;dd/MMM/yyyy:HH:mm:ss Z&#34;</span>,<span style="color:#e6db74">&#34;yyyy-MM-dd HH:mm:ss&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    target <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;date&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    stdout <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    codec <span style="color:#f92672">=</span>&gt; rubydebug
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>elasticsearch <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    index <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;tomcat_web_log_%{+YYYY-MM}&#34;</span>
+</span></span><span style="display:flex;"><span>    hosts <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;http://localhost:9200&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    user <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;elastic&#34;</span>
+</span></span><span style="display:flex;"><span>    password <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;123456&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p><strong>启动logstash</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>bin/logstash -f config/filebeat-filter-es.conf --config.reload.automatic
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>input <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  redis <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>  host<span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;localhost&#34;</span>
+</span></span><span style="display:flex;"><span>  port <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;6379&#34;</span>
+</span></span><span style="display:flex;"><span>  password <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;9ed99d6b&#34;</span>
+</span></span><span style="display:flex;"><span>  key <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;filebeat&#34;</span>
+</span></span><span style="display:flex;"><span>  type <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;redis-input&#34;</span>
+</span></span><span style="display:flex;"><span>  data_type <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;list&#34;</span>
+</span></span><span style="display:flex;"><span>  threads <span style="color:#f92672">=</span>&gt;4 
+</span></span><span style="display:flex;"><span>  batch_count <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">10</span> 
+</span></span><span style="display:flex;"><span>  db <span style="color:#f92672">=</span>&gt; <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>filter <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output <span style="color:#f92672">{</span>   
+</span></span><span style="display:flex;"><span>elasticsearch 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span>    
+</span></span><span style="display:flex;"><span> hosts <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;http://cqzwy-mgmt-log-platform-grc055ce-0.cqzwy-mgmt-log-platform-grc055ce.013497775a1b4580924a00009a20c887.svc.cluster.local:9200&#34;</span>     
+</span></span><span style="display:flex;"><span> index <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;netlog&#34;</span>     
+</span></span><span style="display:flex;"><span> user <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;elastic&#34;</span>     
+</span></span><span style="display:flex;"><span> password <span style="color:#f92672">=</span>&gt; <span style="color:#e6db74">&#34;kuGmFNENeZyYuGkYZ4BU&#34;</span>   
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">}</span>  
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>             
+</span></span></code></pre></div><p>logstash 问题处理</p>
+<p><a href="https://blog.csdn.net/King_weng/article/details/106506996">https://blog.csdn.net/King_weng/article/details/106506996</a></p>
+<h2 id="elfk整合实战2">ELFK整合实战2<a class="anchorjs-link" href="#elfk%e6%95%b4%e5%90%88%e5%ae%9e%e6%88%982"></a></h2><p>filebeat =&gt; redis =&gt; logstash =&gt; elasticsearch  =&gt; kinbana</p>
+<h3 id="filebeat的配置">filebeat的配置<a class="anchorjs-link" href="#filebeat%e7%9a%84%e9%85%8d%e7%bd%ae"></a></h3><p>filebeat.yml</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">filebeat.inputs</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">filestream</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">/var/log/data/10.42.76.202/*.log</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">/var/log/data/10.42.76.201/*.log</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">/var/log/data/10.42.76.204/*.log</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">encoding</span>: <span style="color:#ae81ff">gbk </span> <span style="color:#75715e"># 对非utf-8的数据进行转码</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ignore_older</span>: <span style="color:#ae81ff">5m </span> <span style="color:#75715e">#只采集5分钟内更新的文件</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">filestream</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">/var/log/data/10.42.76.206/*.log</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">/var/log/data/10.42.76.207/*.log</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ignore_older</span>: <span style="color:#ae81ff">5m</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">output.redis</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">hosts</span>: [<span style="color:#e6db74">&#34;10.43.152.65:6379&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#34;9ed99d6b&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">key</span>: <span style="color:#e6db74">&#34;filebeat&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">db</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">timeout</span>: <span style="color:#ae81ff">5</span>
+</span></span></code></pre></div><p>filebeat 启动命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>nohup ./filebeat -e -c filebeat.yml &gt;/dev/null &amp;
+</span></span></code></pre></div><h3 id="logstash的配置">logstash的配置<a class="anchorjs-link" href="#logstash%e7%9a%84%e9%85%8d%e7%bd%ae"></a></h3><p>logstash_run.yml</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#ae81ff">input {</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">redis {</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">host=&gt; &#34;localhost&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">port =&gt; &#34;6379&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">password =&gt; &#34;9ed99d6b&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">key =&gt; &#34;filebeat&#34; </span> <span style="color:#75715e"># 对应redis中的key名称</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">type =&gt; &#34;redis-input&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">data_type =&gt; &#34;list&#34;</span> <span style="color:#75715e"># key的类型</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">threads =&gt;4 </span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">batch_count =&gt; 10 </span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ae81ff">db =&gt; 0</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">filter {</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">output {   </span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">elasticsearch </span>
+</span></span><span style="display:flex;"><span>{    
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">hosts =&gt; &#34;http://cqzwy-mgmt-log-platform-grc055ce-0.cqzwy-mgmt-log-platform-grc055ce.013497775a1b4580924a00009a20c887.svc.cluster.local:9200&#34;     </span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">index =&gt; &#34;netlog&#34; </span> <span style="color:#75715e"># 在es中的索引名称</span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">user =&gt; &#34;elastic&#34;     </span>
+</span></span><span style="display:flex;"><span> <span style="color:#ae81ff">password =&gt; &#34;kuGmFNENeZyYuGkYZ4BU&#34;   </span>
+</span></span><span style="display:flex;"><span> }  
+</span></span><span style="display:flex;"><span>}             
+</span></span></code></pre></div><p>通过jvm.options文件修改jvm参数</p>
+<h4 id="制作logstash镜像可选">制作logstash镜像(可选)<a class="anchorjs-link" href="#%e5%88%b6%e4%bd%9clogstash%e9%95%9c%e5%83%8f%e5%8f%af%e9%80%89"></a></h4><p>start.sh启动脚本</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e"># -f 后指定的配置文件需是新的文件</span>
+</span></span><span style="display:flex;"><span>bin/logstash -f config/logstash_run.yml --config.reload.automatic
+</span></span></code></pre></div><p>Dockerfile文件</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> centos:7</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">MAINTAINER</span><span style="color:#e6db74"> wandong</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> yum install -y wget java-1.8.0-openjdk curl unzip iproute net-tools <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    yum clean all <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    rm -rf /var/cache/yum/*<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ADD</span> logstash-7.15.2-linux-x86_64.tar.gz /opt/<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /opt/logstash-7.15.2</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> start.sh /opt/logstash-7.15.2<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">EXPOSE</span><span style="color:#e6db74"> 5044 9600</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;sh&#34;</span>,<span style="color:#e6db74">&#34;start.sh&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>log.file.path : 10.42.76.201 and message : 39.144.219.132</p>
+
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/" data-toggle="tooltip" data-placement="top" title="离线安装docker">
+              Previous<br>
+              <span>离线安装docker</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/post/elasticsearch/" data-toggle="tooltip" data-placement="top" title="ElasticSearch快速入门实战">
+              Next<br>
+              <span>ElasticSearch快速入门实战</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/docker/">docker</a>
+    
+    <a href="/tags/es/">ES</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/go/">go</a>
+    
+    <a href="/tags/helm/">helm</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/java/">java</a>
+    
+    <a href="/tags/jenkins/">jenkins</a>
+    
+    <a href="/tags/k8s/">K8S</a>
+    
+    <a href="/tags/rancher/">rancher</a>
+    
+    <a href="/tags/zookeeper/">zookeeper</a>
+    
+  </div>
+</section>
+
+        
+        
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        
+
+
+<ul class="list-inline text-center">
+
+  
+  
+  
+  
+  
+  
+  
+</ul>
+        <p class="copyright text-muted">
+          Copyright &copy; 万东的技术博客 2022
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+</body>
+
+</html>

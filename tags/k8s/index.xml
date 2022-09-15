@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>K8S on 万东的技术博客</title>
+    <link>http://example.org/tags/k8s/</link>
+    <description>Recent content in K8S on 万东的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Sep 2022 16:14:24 +0000</lastBuildDate><atom:link href="http://example.org/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>helm的使用方法介绍</title>
+      <link>http://example.org/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 14 Sep 2022 16:14:24 +0000</pubDate>
+      
+      <guid>http://example.org/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <description>HelmHelm是一个Kubernetes的包管理工具，就像Linux下的包管理器，如yum/apt等，可以很方便的将之前
+打包好的yaml文件部署到kubernetes上。
+Helm有3个重要概念：
+• **helm：**一个命令行客户端工具，主要用于Kubernetes应用chart的创建、打包、发布和管理。
+• **Chart：**应用描述，一系列用于描述 k8s 资源相关文件的集合。
+• **Release：**基于Chart的部署实体，一个 chart 被 Helm 运行后将会生成对应的一个 release；将在
+k8s中创建出真实运行的资源对象。
+Helm客户端使用helm很简单，你只需要下载一个二进制客户端包即可，会通过kubeconfig配置（通常$HOME/.kube/config）来连接Kubernetes。
+项目地址：https://github.com/helm/helm
+下载Helm客户端：
+wget https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz tar zxvf helm-v3.4.2-linux-amd64.tar.gz mv linux-amd64/helm /usr/bin/ Helm常用命令Helm管理应用生命周期：• helm create 创建Chart示例
+• helm install 部署
+• helm upgrade 更新
+• helm rollback 回滚
+• helm uninstall 卸载
+Helm基本使用：创建Chart示例创建chart：
+# 默认示例中部署的是一个nginx服务 helm create mychart 打包chart：
+helm package mychart • charts：目录里存放这个chart依赖的所有子chart。
+• Chart.yaml：用于描述这个 Chart的基本信息，包括名字、描述信息以及版本等。
+• values.yaml ：用于存储 templates 目录中模板文件中用到变量的值。
+• Templates： 目录里面存放所有yaml模板文件。</description>
+    </item>
+    
+    <item>
+      <title>rancher的安装和使用</title>
+      <link>http://example.org/post/rancher/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/post/rancher/</guid>
+      <description>RancherRancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
+Rancher 四个组成部分Rancher 由以下四个部分组成：
+1、基础设施编排
+Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。
+2、容器编排与调度
+很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher 包含了当前全部主流的编排 调度引擎，例如 Docker Swarm， Kubernetes， 和 Mesos。同一个用户可以创建 Swarm 或者 Kubernetes 集群。并且可以使用原生的 Swarm 或者 Kubernetes 工具管理应用。 除了 Swarm，Kubernetes 和 Mesos 之外，Rancher 还支持自己的 Cattle 容器编排调度引擎。 Cattle 被广泛用于编排 Rancher 自己的基础设施服务以及用于 Swarm 集群，Kubernetes 集群和 Mesos 集群的配置，管理与升级。
+3、应用商店
+Rancher 的用户可以在应用商店里一键部署由多个容器组成的应用。用户可以管理这个部署的应 用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher 提供了一个由 Rancher 社区维 护的应用商店，其中包括了一系列的流行应用。Rancher 的用户也可以创建自己的私有应用商店。
+4、企业级权限管理
+Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP， Github 等 认证方 式。</description>
+    </item>
+    
+  </channel>
+</rss>

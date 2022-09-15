@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  
+  
+    
+  
+
+  <title>rancher的安装和使用 | 万东的技术博客</title>
+
+  
+  <meta name="description" content="RancherRancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
+Rancher 四个组成部分Rancher 由以下四个部分组成：
+1、基础设施编排
+Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。
+2、容器编排与调度
+很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher 包含了当前全部主流的编排 调度引擎，例如 Docker Swarm， Kubernetes， 和 Mesos。同一个用户可以创建 Swarm 或者 Kubernetes 集群。并且可以使用原生的 Swarm 或者 Kubernetes 工具管理应用。 除了 Swarm，Kubernetes 和 Mesos 之外，Rancher 还支持自己的 Cattle 容器编排调度引擎。 Cattle 被广泛用于编排 Rancher 自己的基础设施服务以及用于 Swarm 集群，Kubernetes 集群和 Mesos 集群的配置，管理与升级。
+3、应用商店
+Rancher 的用户可以在应用商店里一键部署由多个容器组成的应用。用户可以管理这个部署的应 用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher 提供了一个由 Rancher 社区维 护的应用商店，其中包括了一系列的流行应用。Rancher 的用户也可以创建自己的私有应用商店。
+4、企业级权限管理
+Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP， Github 等 认证方 式。">
+  <meta name="keywords" content="">
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="rancher的安装和使用"/>
+<meta name="twitter:description" content="RancherRancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
+Rancher 四个组成部分Rancher 由以下四个部分组成：
+1、基础设施编排
+Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。
+2、容器编排与调度
+很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher 包含了当前全部主流的编排 调度引擎，例如 Docker Swarm， Kubernetes， 和 Mesos。同一个用户可以创建 Swarm 或者 Kubernetes 集群。并且可以使用原生的 Swarm 或者 Kubernetes 工具管理应用。 除了 Swarm，Kubernetes 和 Mesos 之外，Rancher 还支持自己的 Cattle 容器编排调度引擎。 Cattle 被广泛用于编排 Rancher 自己的基础设施服务以及用于 Swarm 集群，Kubernetes 集群和 Mesos 集群的配置，管理与升级。
+3、应用商店
+Rancher 的用户可以在应用商店里一键部署由多个容器组成的应用。用户可以管理这个部署的应 用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher 提供了一个由 Rancher 社区维 护的应用商店，其中包括了一系列的流行应用。Rancher 的用户也可以创建自己的私有应用商店。
+4、企业级权限管理
+Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP， Github 等 认证方 式。"/>
+
+  <meta property="og:title" content="rancher的安装和使用" />
+<meta property="og:description" content="RancherRancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
+Rancher 四个组成部分Rancher 由以下四个部分组成：
+1、基础设施编排
+Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。
+2、容器编排与调度
+很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher 包含了当前全部主流的编排 调度引擎，例如 Docker Swarm， Kubernetes， 和 Mesos。同一个用户可以创建 Swarm 或者 Kubernetes 集群。并且可以使用原生的 Swarm 或者 Kubernetes 工具管理应用。 除了 Swarm，Kubernetes 和 Mesos 之外，Rancher 还支持自己的 Cattle 容器编排调度引擎。 Cattle 被广泛用于编排 Rancher 自己的基础设施服务以及用于 Swarm 集群，Kubernetes 集群和 Mesos 集群的配置，管理与升级。
+3、应用商店
+Rancher 的用户可以在应用商店里一键部署由多个容器组成的应用。用户可以管理这个部署的应 用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher 提供了一个由 Rancher 社区维 护的应用商店，其中包括了一系列的流行应用。Rancher 的用户也可以创建自己的私有应用商店。
+4、企业级权限管理
+Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP， Github 等 认证方 式。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/post/rancher/" /><meta property="article:section" content="post" />
+
+
+
+
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
+  
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css">
+
+  
+  
+  <link rel="stylesheet" href="/sass/main.scss">
+
+  
+  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
+
+  
+
+  <script src="/js/lazysizes.min.js"></script>
+
+  
+  
+
+  
+</head>
+
+
+
+<body ontouchstart="">
+
+  
+  
+  
+
+  
+
+  
+  
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
+  <div class="container-fluid">
+    
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://example.org/">万东的技术博客</a>
+    </div>
+    
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+
+          <li class="search-icon">
+            <a href="javascript:void(0)">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  
+</nav>
+<script>
+  
+  
+  
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#huxblog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  var __HuxNav__ = {
+    close: function () {
+      $navbar.className = " ";
+      
+      setTimeout(function () {
+        
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    },
+    open: function () {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    },
+  };
+
+  
+  $toggle.addEventListener("click", function (e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      __HuxNav__.close();
+    } else {
+      __HuxNav__.open();
+    }
+  });
+
+  
+
+  document.addEventListener("click", function (e) {
+    if (e.target == $toggle) return;
+    if (e.target.className == "icon-bar") return;
+    __HuxNav__.close();
+  });
+</script>
+  
+<div class="search-page">
+  <div class="search-icon-close-container">
+    <span class="search-icon-close">
+      <i class="fa fa-chevron-down"></i>
+    </span>
+  </div>
+  <div class="search-main container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form></form>
+        <input type="text" id="search-input" placeholder="$ grep...">
+        </form>
+        <div id="search-results" class="mini-post-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+<style type="text/css">
+  header.intro-header {
+    position: relative;
+    background-image: url('');
+  }
+</style>
+
+<header class="intro-header style-text">
+
+  <div class="header-mask"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <div class="tags">
+            
+            <a class="tag" href="/tags/k8s/" title="K8S">K8S</a>
+            
+            <a class="tag" href="/tags/rancher/" title="rancher">rancher</a>
+            
+          </div>
+          <h1>rancher的安装和使用</h1>
+          <h2 class="subheading"></h2>
+          <span class="meta">
+            Posted by   
+            on Mon, Jan 1, 0001
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  
+
+
+<article>
+  <div class="container">
+    <div class="row">
+
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              post-container">
+        <h1 id="rancher">Rancher<a class="anchorjs-link" href="#rancher"></a></h1><p>Rancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。</p>
+<h2 id="rancher-四个组成部分">Rancher 四个组成部分<a class="anchorjs-link" href="#rancher-%e5%9b%9b%e4%b8%aa%e7%bb%84%e6%88%90%e9%83%a8%e5%88%86"></a></h2><p>Rancher 由以下四个部分组成：</p>
+<p><strong>1、基础设施编排</strong></p>
+<p>Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。</p>
+<p><strong>2、容器编排与调度</strong></p>
+<p>很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher 包含了当前全部主流的编排 调度引擎，例如 Docker Swarm， Kubernetes， 和 Mesos。同一个用户可以创建 Swarm 或者 Kubernetes 集群。并且可以使用原生的 Swarm 或者 Kubernetes 工具管理应用。 除了 Swarm，Kubernetes 和 Mesos 之外，Rancher 还支持自己的 Cattle 容器编排调度引擎。 Cattle 被广泛用于编排 Rancher 自己的基础设施服务以及用于 Swarm 集群，Kubernetes 集群和 Mesos 集群的配置，管理与升级。</p>
+<p><strong>3、应用商店</strong></p>
+<p>Rancher 的用户可以在应用商店里一键部署由多个容器组成的应用。用户可以管理这个部署的应 用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher 提供了一个由 Rancher 社区维 护的应用商店，其中包括了一系列的流行应用。Rancher 的用户也可以创建自己的私有应用商店。</p>
+<p><strong>4、企业级权限管理</strong></p>
+<p>Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP， Github 等 认证方 式。</p>
+<p><figure>
+  <a class="paragraph-image">
+    <img data-src="C:%5cUsers%5cAdministrator%5cAppData%5cRoaming%5cTypora%5ctypora-user-images%5cimage-20220809153522625.png" data-action="zoom" alt="image-20220809153522625"  class="lazyload">
+  </a>
+  
+</figure></p>
+<h1 id="使用-rancher-搭建-k8s-集群">使用 Rancher 搭建 k8s 集群<a class="anchorjs-link" href="#%e4%bd%bf%e7%94%a8-rancher-%e6%90%ad%e5%bb%ba-k8s-%e9%9b%86%e7%be%a4"></a></h1><h2 id="初始化安装机环境">初始化安装机环境<a class="anchorjs-link" href="#%e5%88%9d%e5%a7%8b%e5%8c%96%e5%ae%89%e8%a3%85%e6%9c%ba%e7%8e%af%e5%a2%83"></a></h2><p><strong>关闭selinux和防火墙</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl stop firewalld.service <span style="color:#f92672">&amp;&amp;</span> systemctl disable firewalld.service <span style="color:#f92672">&amp;&amp;</span> iptables -F <span style="color:#f92672">&amp;&amp;</span>setenforce <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><pre tabindex="0"><code>hostnamectl set-hostname master01
+hostnamectl set-hostname node01
+hostnamectl set-hostname node02
+</code></pre><p><strong>安装 docker 环境依赖</strong></p>
+<p>在线</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>yum install -y yum-utils
+</span></span><span style="display:flex;"><span>yum-config-manager --add-repo
+</span></span><span style="display:flex;"><span>http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+</span></span><span style="display:flex;"><span>yum install docker-ce docker-ce-cli containerd.io -y
+</span></span><span style="display:flex;"><span>systemctl start docker <span style="color:#f92672">&amp;&amp;</span> systemctl enable docker.service <span style="color:#f92672">&amp;&amp;</span> systemctl status docker
+</span></span></code></pre></div><p>离线安装docker</p>
+<pre tabindex="0"><code>#!/bin/bash
+#解压
+dockers images &gt;&gt;/dev/null
+if [ $? -eq 0 ];then
+echo &#34;docker is installed!!&#34;
+else
+tar -xvzf docker-20.10.14.tgz -C /opt/
+chown root:root -R /opt/docker/
+cp /opt/docker/* /usr/bin
+
+cat &lt;&lt;EOF &gt;/etc/systemd/system/docker.service
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network-online.target firewalld.service
+Wants=network-online.target
+ 
+[Service]
+Type=notify
+ExecStart=/usr/bin/dockerd
+ExecReload=/bin/kill -s HUP \$MAINPID
+LimitNOFILE=infinity
+LimitNPROC=infinity
+TimeoutStartSec=0
+Delegate=yes
+KillMode=process
+Restart=on-failure
+StartLimitBurst=3
+StartLimitInterval=60s
+ 
+[Install]
+WantedBy=multi-user.target
+EOF
+
+chmod +x /etc/systemd/system/docker.service
+
+# 加载service配置
+systemctl daemon-reload &amp;&amp; echo &#34;加载service配置 success!&#34;
+
+# dockerDamon
+tee /etc/docker/daemon.json &lt;&lt; &#39;EOF&#39;
+{
+ &#34;registry-mirrors&#34;:[&#34;https://dockerhub.azk8s.cn&#34;,&#34;http://hubmirror.c.163.com&#34;,&#34;http://qtid6917.mirror.aliyuncs.com&#34;]
+}
+EOF
+echo &#34;docker daemon.json edit success!&#34;
+#设置开机启动 并立即启动
+systemctl enable docker.service --now &amp;&amp; echo &#34;docker start success!&#34;
+fi
+</code></pre><p><strong>镜像加速，每台机器执行</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> tee /etc/docker/daemon.json <span style="color:#e6db74">&lt;&lt; &#39;EOF&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> &#34;registry-mirrors&#34;:[&#34;https://dockerhub.azk8s.cn&#34;,&#34;http://hubmirror.c.163.com&#34;,&#34;http://qtid6917.mirror.aliyuncs.com&#34;]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">EOF</span>
+</span></span></code></pre></div><p><strong>安装 rancher 平台</strong></p>
+<p>离线导入rancher镜像</p>
+<pre tabindex="0"><code> docker run -d --restart=unless-stopped -p 80:80 -p 443:443 -- privileged rancher/rancher
+</code></pre><p>注：<strong>&ndash;restart=unless-stopped</strong> ，在容器退出时总是重启容器，但是不考虑在 Docker 守护进程 启动时就已经停止了的容器</p>
+<p>安装过程如果失败需要清理后再重新安装K8S节点</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#df -h|grep kubelet |awk -F % &#39;{print $2}&#39;|xargs umount</span>
+</span></span><span style="display:flex;"><span>sudo rm /var/lib/kubelet/* -rf
+</span></span><span style="display:flex;"><span>sudo rm /etc/kubernetes/* -rf
+</span></span><span style="display:flex;"><span>sudo rm /etc/cni/* -rf
+</span></span><span style="display:flex;"><span>sudo rm /var/lib/rancher/* -rf
+</span></span><span style="display:flex;"><span>sudo rm /var/lib/etcd/* -rf
+</span></span><span style="display:flex;"><span>sudo rm /var/lib/cni/* -rf
+</span></span><span style="display:flex;"><span>sudo rm /opt/cni/* -rf
+</span></span><span style="display:flex;"><span>sudo ip link del flannel.1
+</span></span><span style="display:flex;"><span>ip link del cni0
+</span></span><span style="display:flex;"><span>iptables -F <span style="color:#f92672">&amp;&amp;</span> iptables -t nat -F
+</span></span><span style="display:flex;"><span>docker rm -f <span style="color:#e6db74">`</span>docker ps -a -q<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>docker volume ls|awk <span style="color:#e6db74">&#39;{print $2}&#39;</span>|xargs docker volume rm
+</span></span><span style="display:flex;"><span>systemctl restart docker
+</span></span></code></pre></div>
+
+        <hr style="visibility: hidden;" />
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/post/zookeeper/" data-toggle="tooltip" data-placement="top" title="zookeeper的安装和使用">
+              Previous<br>
+              <span>zookeeper的安装和使用</span>
+            </a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/post/hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" data-toggle="tooltip" data-placement="top" title="hexo博客框架的使用">
+              Next<br>
+              <span>hexo博客框架的使用</span>
+            </a>
+          </li>
+          
+        </ul>
+        <hr style="visibility: hidden;" />
+
+        
+        
+
+
+
+
+
+
+      </div>
+
+      
+      
+      
+      
+      <div class="
+              col-lg-8 col-lg-offset-2
+              col-md-10 col-md-offset-1
+              sidebar-container">
+
+        
+        
+        <section>
+  
+  
+  <hr class="hidden-sm hidden-xs">
+  
+  <h5>FEATURED TAGS</h5>
+  <div class="tags">
+    
+    <a href="/tags/docker/">docker</a>
+    
+    <a href="/tags/es/">ES</a>
+    
+    <a href="/tags/git/">git</a>
+    
+    <a href="/tags/go/">go</a>
+    
+    <a href="/tags/helm/">helm</a>
+    
+    <a href="/tags/hexo/">hexo</a>
+    
+    <a href="/tags/java/">java</a>
+    
+    <a href="/tags/jenkins/">jenkins</a>
+    
+    <a href="/tags/k8s/">K8S</a>
+    
+    <a href="/tags/rancher/">rancher</a>
+    
+    <a href="/tags/zookeeper/">zookeeper</a>
+    
+  </div>
+</section>
+
+        
+        
+
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+  
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        
+
+
+<ul class="list-inline text-center">
+
+  
+  
+  
+  
+  
+  
+  
+</ul>
+        <p class="copyright text-muted">
+          Copyright &copy; 万东的技术博客 2022
+          <br>
+          Powered by <a href="https://gohugo.io">Hugo</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+
+
+<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
+
+
+<script src="/js/simple-jekyll-search.min.js"></script>
+
+
+<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/zoomjs/zoom.min.js"></script>
+</body>
+
+</html>

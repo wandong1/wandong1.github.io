@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ES on 万东的技术博客</title>
+    <link>http://example.org/tags/es/</link>
+    <description>Recent content in ES on 万东的技术博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Aug 2021 08:15:16 +0000</lastBuildDate><atom:link href="http://example.org/tags/es/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ElasticSearch快速入门实战</title>
+      <link>http://example.org/post/elasticsearch/</link>
+      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
+      
+      <guid>http://example.org/post/elasticsearch/</guid>
+      <description>ElasticSearch快速入门实战 主讲老师：Fox
+ES版本： v7.17.3
+ES环境搭建视频：https://pan.baidu.com/s/1PsTNbpDy&amp;ndash;M-pvFWb3aehQ?pwd=nwxl
+​ 文档：1.ElasticSearch快速入门实战.note 链接：http://note.youdao.com/noteshare?id=d5d5718ae542f274ba0fda4284a53231&amp;amp;sub=68E590656C7A48858C7F6997D4A1511A
+全文检索数据分类：
+结构化数据： 固定格式，有限长度 比如mysql存的数据 非结构化数据：不定长，无固定格式 比如邮件，word文档，日志 半结构化数据： 前两者结合 比如xml，html 搜索分类：
+结构化数据搜索： 使用关系型数据库
+非结构化数据搜索
+顺序扫描 全文检索 设想一个关于搜索的场景，假设我们要搜索一首诗句内容中带“前”字的古诗
+name content author 静夜思 床前明月光,疑是地上霜。举头望明月，低头思故乡。 李白 望庐山瀑布 日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺,疑是银河落九天。 李白 &amp;hellip; &amp;hellip; &amp;hellip; 思考：用传统关系型数据库和ES 实现会有什么差别？
+如果用像 MySQL 这样的 RDBMS 来存储古诗的话，我们应该会去使用这样的 SQL 去查询
+​ select name from poems where content like &amp;ldquo;%前%&amp;rdquo;
+这种我们称为顺序扫描法，需要遍历所有的记录进行匹配。不但效率低，而且不符合我们搜索时的期望，比如我们在搜索“ABCD&amp;quot;这样的关键词时，通常还希望看到&amp;quot;A&amp;quot;,&amp;ldquo;AB&amp;rdquo;,&amp;ldquo;CD&amp;rdquo;,“ABC”的搜索结果。
+什么是全文检索全文检索是指：
+通过一个程序扫描文本中的每一个单词，针对单词建立索引，并保存该单词在文本中的位置、以及出现的次数 用户查询时，通过之前建立好的索引来查询，将索引中单词对应的文本位置、出现的次数返回给用户，因为有了具体文本的位置，所以就可以将具体内容读取出来了 ​ 搜索原理简单概括的话可以分为这么几步：
+内容爬取，停顿词过滤比如一些无用的像&amp;quot;的&amp;quot;，“了”之类的语气词/连接词 内容分词，提取关键词 根据关键词建立倒排索引 用户输入关键词进行搜索 倒排索引索引就类似于目录，平时我们使用的都是索引，都是通过主键定位到某条数据，那么倒排索引呢，刚好相反，数据对应到主键。
+​ 这里以一个博客文章的内容为例:
+正排索引（正向索引） 文章ID 文章标题 文章内容 1 浅析JAVA设计模式 JAVA设计模式是每一个JAVA程序员都应该掌握的进阶知识 2 JAVA多线程设计模式 JAVA多线程与设计模式结合 倒排索引（反向索引）</description>
+    </item>
+    
+    <item>
+      <title>离线安装docker</title>
+      <link>http://example.org/post/elasticsearch%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
+      
+      <guid>http://example.org/post/elasticsearch%E5%85%A5%E9%97%A8/</guid>
+      <description>ES版本： v7.17.3
+ES环境搭建视频：https://pan.baidu.com/s/1PsTNbpDy&amp;ndash;M-pvFWb3aehQ?pwd=nwxl
+ElasticSearch快速入门实战note 链接：http://note.youdao.com/noteshare?id=d5d5718ae542f274ba0fda4284a53231&amp;amp;sub=68E590656C7A48858C7F6997D4A1511A
+全文检索数据分类：
+结构化数据： 固定格式，有限长度 比如mysql存的数据 非结构化数据：不定长，无固定格式 比如邮件，word文档，日志 半结构化数据： 前两者结合 比如xml，html 搜索分类：
+结构化数据搜索： 使用关系型数据库
+非结构化数据搜索
+顺序扫描 全文检索 设想一个关于搜索的场景，假设我们要搜索一首诗句内容中带“前”字的古诗
+name content author 静夜思 床前明月光,疑是地上霜。举头望明月，低头思故乡。 李白 望庐山瀑布 日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺,疑是银河落九天。 李白 &amp;hellip; &amp;hellip; &amp;hellip; 思考：用传统关系型数据库和ES 实现会有什么差别？
+如果用像 MySQL 这样的 RDBMS 来存储古诗的话，我们应该会去使用这样的 SQL 去查询
+​ select name from poems where content like &amp;ldquo;%前%&amp;rdquo;
+这种我们称为顺序扫描法，需要遍历所有的记录进行匹配。不但效率低，而且不符合我们搜索时的期望，比如我们在搜索“ABCD&amp;quot;这样的关键词时，通常还希望看到&amp;quot;A&amp;quot;,&amp;ldquo;AB&amp;rdquo;,&amp;ldquo;CD&amp;rdquo;,“ABC”的搜索结果。
+什么是全文检索全文检索是指：
+通过一个程序扫描文本中的每一个单词，针对单词建立索引，并保存该单词在文本中的位置、以及出现的次数 用户查询时，通过之前建立好的索引来查询，将索引中单词对应的文本位置、出现的次数返回给用户，因为有了具体文本的位置，所以就可以将具体内容读取出来了 ​ 搜索原理简单概括的话可以分为这么几步：
+内容爬取，停顿词过滤比如一些无用的像&amp;quot;的&amp;quot;，“了”之类的语气词/连接词 内容分词，提取关键词 根据关键词建立倒排索引 用户输入关键词进行搜索 倒排索引索引就类似于目录，平时我们使用的都是索引，都是通过主键定位到某条数据，那么倒排索引呢，刚好相反，数据对应到主键。
+​ 这里以一个博客文章的内容为例:
+正排索引（正向索引）
+文章ID 文章标题 文章内容 1 浅析JAVA设计模式 JAVA设计模式是每一个JAVA程序员都应该掌握的进阶知识 2 JAVA多线程设计模式 JAVA多线程与设计模式结合 倒排索引（反向索引）</description>
+    </item>
+    
+  </channel>
+</rss>
