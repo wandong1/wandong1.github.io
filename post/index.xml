@@ -2,21 +2,207 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on 万东的云计算运维博客</title>
-    <link>https://www.sulvblog.cn/post/</link>
+    <link>https://wandong1.github.io/post/</link>
     <description>Recent content in Posts on 万东的云计算运维博客</description>
     <image>
-      <url>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 14 Sep 2022 16:14:24 +0000</lastBuildDate><atom:link href="https://www.sulvblog.cn/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hexo博客框架的使用</title>
+      <link>https://wandong1.github.io/post/hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>hexo博客框架的使用 安装node.js 官网： https://nodejs.org/en/
+安装国内淘宝npm npm install -g cnpm --registry=https://registry.npm.taobao.org 安装hexo cnpm install -g hexo-clihexo -v hexo初始化 hexo init 目录 hexo server 新建文章 文章都在source\_posts目录下
+hexo new &amp;#34;我的第一篇博客文章&amp;#34; 配置后刷新并重启服务 hexo clean hexo g hexo server 更换主题 进入项目目录
+git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia 修改项目目录下配置文件_config.yml
+theme: yilia 修复更换主题后全部文章无法显示问题 # 进入项目目录后 cnpm i hexo-generator-json-content --save # 随后在项目目录下的_config.yml文件后添加内容 jsonContent: meta: false pages: false posts: title: true date: true path: true text: false raw: false content: false slug: false updated: false comments: false link: false permalink: false excerpt: false categories: false tags: true 刷新并重启项目</description>
+    </item>
+    
+    <item>
+      <title>http常见状态码</title>
+      <link>https://wandong1.github.io/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</guid>
+      <description>各类别常见状态码：
+2xx （3种） 200 OK：表示从客户端发送给服务器的请求被正常处理并返回；
+204 No Content：表示客户端发送给客户端的请求得到了成功处理，但在返回的响应报文中不含实体的主体部分（没有资源可以返回）；
+206 Patial Content：表示客户端进行了范围请求，并且服务器成功执行了这部分的GET请求，响应报文中包含由Content-Range指定范围的实体内容。
+3xx （5种） 301 Moved Permanently：永久性重定向，表示请求的资源被分配了新的URL，之后应使用更改的URL；
+302 Found：临时性重定向，表示请求的资源被分配了新的URL，希望本次访问使用新的URL；
+301与302的区别：前者是永久移动，后者是临时移动（之后可能还会更改URL）
+303 See Other：表示请求的资源被分配了新的URL，应使用GET方法定向获取请求的资源；
+302与303的区别：后者明确表示客户端应当采用GET方式获取资源 304 Not Modified：表示客户端发送附带条件（是指采用GET方法的请求报文中包含if-Match、If-Modified-Since、If-None-Match、If-Range、If-Unmodified-Since中任一首部）的请求时，服务器端允许访问资源，但是请求为满足条件的情况下返回改状态码；
+307 Temporary Redirect：临时重定向，与303有着相同的含义，307会遵照浏览器标准不会从POST变成GET；（不同浏览器可能会出现不同的情况）；
+4xx （4种） 400 Bad Request：表示请求报文中存在语法错误；
+401 Unauthorized：未经许可，需要通过HTTP认证；
+403 Forbidden：服务器拒绝该次访问（访问权限出现问题）
+404 Not Found：表示服务器上无法找到请求的资源，除此之外，也可以在服务器拒绝请求但不想给拒绝原因时使用；
+429 当你需要限制客户端请求某个服务的数量，也就是限制请求速度时，该状态码就会非常有用。
+5xx （2种） 500 Inter Server Error：表示服务器在执行请求时发生了错误，也有可能是web应用存在的bug或某些临时的错误时；
+502 bad gateway 503 Server Unavailable：表示服务器暂时处于超负载或正在进行停机维护，无法处理请求；</description>
+    </item>
+    
+    <item>
+      <title>Hugo 博客程序搭建教程</title>
+      <link>https://wandong1.github.io/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <description>下载hugo二进制程序包 下载地址： https://github.com/gohugoio/hugo/releases
+下载后解压、将hugo路径添加到环境变量。先设置hugo变量，然后在path中添加
+验证安装 hugo version 新建站点 hugo new site myblog # 该命令会新建一个文件夹myblog ls ./myblog # archetypes/ config.toml content/ data/ # layouts/ static/ themes/ ##我目前了解如下 #config.toml 进行参数配置，与之后的theme相关 #content 之后博客(.md)的文件都储存在这里 #layout 可个性化修改博客的展示细节，需要懂网络架构知识 #static 储存一些静态文件，比如本地图片，插入到博客中 #themes 主题，接下来会介绍 下载主题（hugo没有默认主题） 有多种hugo主题可供下载：https://themes.gohugo.io/ 推荐主题： https://adityatelange.github.io/hugo-PaperMod/
+cd ./myblog git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod ls ./themes # PaperMod/ ls ./themes/PaperMod/ # LICENSE README.md assets/ go.mod i18n/ images/ layouts/ theme.toml 修改配置 papermod
+通用配置参数查询：https://gohugo.io/getting-started/configuration/
+PaperMod自定义参数查询：https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-features/
+示例配置：https://www.sulvblog.cn/posts/blog/build_hugo/#4%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6
+将 config.toml 重命名为 config.yml 然后进行修改</description>
+    </item>
+    
+    <item>
+      <title>K8S根据现有证书生成管理员kubeconfig文件</title>
+      <link>https://wandong1.github.io/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</guid>
+      <description>生成管理员证书 cat &amp;gt; admin-csr.json &amp;lt;&amp;lt;EOF { &amp;#34;CN&amp;#34;: &amp;#34;admin&amp;#34;, &amp;#34;hosts&amp;#34;: [], &amp;#34;key&amp;#34;: { &amp;#34;algo&amp;#34;: &amp;#34;rsa&amp;#34;, &amp;#34;size&amp;#34;: 2048 }, &amp;#34;names&amp;#34;: [ { &amp;#34;C&amp;#34;: &amp;#34;CN&amp;#34;, &amp;#34;L&amp;#34;: &amp;#34;BeiJing&amp;#34;, &amp;#34;ST&amp;#34;: &amp;#34;BeiJing&amp;#34;, &amp;#34;O&amp;#34;: &amp;#34;system:masters&amp;#34;, &amp;#34;OU&amp;#34;: &amp;#34;System&amp;#34; } ] } EOF 执行生成命令 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes admin-csr.json | cfssljson -bare admin 创建kubeconfig文件 # 设置集群参数 kubectl config set-cluster kubernetes \ --server=https://192.168.0.149:6443 \ --certificate-authority=ca.pem \ --embed-certs=true \ --kubeconfig=config # 设置上下文参数 kubectl config set-context default \ --cluster=kubernetes \ --user=cluster-admin \ --kubeconfig=config # 设置客户端认证参数 kubectl config set-credentials cluster-admin \ --certificate-authority=ca.</description>
+    </item>
+    
+    <item>
+      <title>mongodb的安装部署</title>
+      <link>https://wandong1.github.io/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
+      <description>软件包下载 https://www.mongodb.com/try/download/community wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-5.0.8.tgz mongodb模式介绍 三节点复制集模式 常见的复制集架构由3个成员节点组成，其中存在几种不同的模式。 PSS模式（官方推荐模式） PSS模式由一个主节点和两个备节点所组成，即Primary+Secondary+Secondary。 此模式始终提供数据集的两个完整副本，如果主节点不可用，则复制集选择备节点作为主节 点并继续正常操作。旧的主节点在可用时重新加入复制集。 复制集部署注意事项 关于硬件: 因为正常的复制集节点都有可能成为主节点，它们的地位是一样的，因此硬件配 置上必须一致; 为了保证节点不会同时宕机，各节点使用的硬件必须具有独立性。
+关于软件: 复制集各节点软件版本必须一致，以避免出现不可预知的问题。 增加节点不会增加系统写性能；
+准备配置文件 复制集的每个mongod进程应该位于不同的服务器。我们现在在一台机器上运行3个进程， 因此要为它们各自配置：
+不同的端口 （28017/28018/28019）
+不同的数据目录 mkdir ‐p /data/db{1,2,3} 不同日志文件路径 (例如：/data/db1/mongod.log)
+创建配置文件/data/db1/mongod.conf，内容如下：
+systemLog: destination: file path: /data/db1/mongod.log logAppend: true storage: dbPath: /data/db1 net: bindIp: 0.0.0.0 port: 28017 replication: replSetName: rs0 processManagement: fork: true 创建配置文件/data/db2/mongod.conf，内容如下：
+systemLog: destination: file path: /data/db2/mongod.log logAppend: true storage: dbPath: /data/db2 net: bindIp: 0.0.0.0 port: 28018 replication: replSetName: rs0 processManagement: fork: true 创建配置文件/data/db3/mongod.</description>
+    </item>
+    
+    <item>
+      <title>navicat15部署</title>
+      <link>https://wandong1.github.io/post/navicat15%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/navicat15%E9%83%A8%E7%BD%B2/</guid>
+      <description>参考地址：https://www.bilibili.com/read/cv15128680</description>
+    </item>
+    
+    <item>
+      <title>nginx的四层转发和七层转发配置示例</title>
+      <link>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</guid>
+      <description>user nginx; worker_processes auto; error_log /var/log/nginx/error.log notice; pid /var/run/nginx.pid; events { worker_connections 1024; } # 4层 stream配置 stream { log_format main &amp;#39;$remote_addr $upstream_addr - [$time_local] $status $upstream_bytes_sent&amp;#39;; access_log /var/log/nginx/dingding-access.log main; upstream dingding { server oapi.dingtalk.com:80; } upstream dingding_v2 { server oapi.dingtalk.com:443; } upstream apsoar { server soar.apsoar.com:22; } upstream timor { server timor.tech:443; } upstream timor80 { server timor.tech:80; } server { listen 22; proxy_pass apsoar; } server { listen 7003; proxy_pass timor80; } server { listen 80; proxy_pass dingding; } server { listen 443; proxy_pass dingding_v2; } } # 7层http配置 http { include /etc/nginx/mime.</description>
+    </item>
+    
+    <item>
+      <title>nginx调优方法</title>
+      <link>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</guid>
+      <description>一、优化nginx进程数以及cpu分布 修改配置文件 worker_processes 8; worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10000000; 几核就有几位二进制数，1在哪位就表示在哪个核心上。
+查看nginx worker进程分布在cpu的情况 ps -axo pid,psr,cmd,ni | grep -i &amp;#34;worker process&amp;#34; | awk &amp;#39;{print $2}&amp;#39; | sort -n | uniq -c 二、优化文件数
+ulimit -n #查看文件数限制 ulimit -SHn 65535 （注ulimit -SHn 65535 等效 ulimit -n 65535，-S指soft，-H指hard) #有如下三种修改方式： 1.在/etc/rc.local 中增加一行 ulimit -SHn 65535 2.在/etc/profile 中增加一行 ulimit -SHn 65535 3.在/etc/security/limits.conf最后增加如下两行记录 * soft nofile 65535 * hard nofile 65535 nginx配置修改：
+worker_rlimit_nofile 65535; 三、使用epoll的I/O模型，用这个模型来高效处理异步事件 在events区块中添加 use epoll; 四、每个进程允许的最多连接数，理论上每台nginx服务器的最大连接数为 # worker_processes*worker_connections。为理论上最大连接数 在events区块中添加或修改 worker_connections 65535; 五、http连接超时时间 默认是60s，功能是使客户端到服务器端的连接在设定的时间内持续有效，当出现对服务器的后继请求时，该功能避免了建立或者重新建立连接。切记这个参数也不能设置过大！否则会导致许多无效的http连接占据着nginx的连接数，终nginx崩溃！</description>
+    </item>
+    
+    <item>
+      <title>prometheus直接安装</title>
+      <link>https://wandong1.github.io/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</guid>
+      <description>一、prometheus监控 https://prometheus.io/download/ ###下载源码解压即可 https://grafana.com/grafana/dashboards ###搜索数据源为prometheus的
+安装docker mkdir /etc/yum.repos.d/back mv /etc/yum.repos.d/* /etc/yum.repos.d/back wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo yum install -y yum-utils yum-config-manager \ --add-repo \ http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo yum install -y docker-ce systemctl enable docker --now 安装grafana wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.3.4-1.x86_64.rpm yum localinstall grafana-5.3.4-1.x86_64.rpm systemctl start grafana-server 默认密码 admin/admin prometheus安装 tar -xvzf prometheus-2.34.0.linux-amd64.tar.gz -C /opt/ mv /opt/prometheus-2.34.0.linux-amd64 /opt/prometheus cd /opt/prometheus &amp;amp;&amp;amp; mkdir data # 创建启动脚本 cat &amp;lt;&amp;lt;EOF &amp;gt;start.sh #!/bin/bash ./prometheus --storage.tsdb.path=./data --storage.tsdb.retention.time=744h --web.enable-lifecycle --storage.tsdb.no-lockfile EOF # storage.</description>
+    </item>
+    
+    <item>
+      <title>rainbond对接nfs或者nas存储</title>
+      <link>https://wandong1.github.io/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</guid>
+      <description>https://www.rainbond.com/docs/ops-guide/storage/deploy-nfsclient
+添加helm仓库 helm repo add rainbond https://openchart.goodrain.com/goodrain/rainbond helm repo update nfs或者nas配置文件 nfs-client.yaml
+nfs: server: 1afc54bbca-jna4.cn-chongqing-cqzwy-d01.nas.alinetops.cqzwy.com #nfs server地址 path: / #nfs server 的路径 mountOptions: #添加参数 - hard - vers=4 - nolock - proto=tcp - rsize=1048576 - wsize=1048576 - timeo=600 - retrans=2 - noresvport 部署 helm install nfs-client-provisioner rainbond/nfs-client-provisioner \ -f nfs-client.yaml \ --version 1.2.8 创建有状态应用进行绑定 </description>
+    </item>
+    
+    <item>
+      <title>rainbond平台部署ES-filebeat</title>
+      <link>https://wandong1.github.io/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</guid>
+      <description>https://lequ7.com/guan-yu-paas-ping-tai-rainbond-tong-guo-cha-jian-zheng-he-elkefk-shi-xian-ri-zhi-shou-ji.html
+通过helm部署filebeat采集容器日志 helm repo add elastic https://helm.elastic.co helm pull elastic/filebeat tar -xvzf filebeat-7.17.3.tgz &amp;amp;&amp;amp; cd filebeat hosts: [&amp;#39;cqzwy-mgmt-log-platform-grc055ce-0.cqzwy-mgmt-log-platform-grc055ce.013497775a1b4580924a00009a20c887.svc.cluster.local:9200&amp;#39;] username: &amp;#34;elastic&amp;#34; password: &amp;#34;kuGmFNENeZyYuGkYZ4BU&amp;#34; 进入容器内ping es的svc即可获得svc全称
+helm install filebeat -n 013497775a1b4580924a00009a20c887 ./filebeat helm list -A 或者使用yaml直接不部署
+--- apiVersion: v1 kind: ConfigMap metadata: name: filebeat-config namespace: 013497775a1b4580924a00009a20c887 labels: k8s-app: filebeat data: filebeat.yml: |- filebeat.config: inputs: # Mounted `filebeat-inputs` configmap: path: ${path.config}/inputs.d/*.yml # Reload inputs configs as they change: reload.enabled: false modules: path: ${path.config}/modules.d/*.yml # Reload module configs as they change: reload.</description>
+    </item>
+    
+    <item>
+      <title>rancher的安装和使用</title>
+      <link>https://wandong1.github.io/post/rancher/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/rancher/</guid>
+      <description>Rancher Rancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
+Rancher 四个组成部分 Rancher 由以下四个部分组成：
+1、基础设施编排
+Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。
+2、容器编排与调度
+很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher 包含了当前全部主流的编排 调度引擎，例如 Docker Swarm， Kubernetes， 和 Mesos。同一个用户可以创建 Swarm 或者 Kubernetes 集群。并且可以使用原生的 Swarm 或者 Kubernetes 工具管理应用。 除了 Swarm，Kubernetes 和 Mesos 之外，Rancher 还支持自己的 Cattle 容器编排调度引擎。 Cattle 被广泛用于编排 Rancher 自己的基础设施服务以及用于 Swarm 集群，Kubernetes 集群和 Mesos 集群的配置，管理与升级。
+3、应用商店
+Rancher 的用户可以在应用商店里一键部署由多个容器组成的应用。用户可以管理这个部署的应 用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher 提供了一个由 Rancher 社区维 护的应用商店，其中包括了一系列的流行应用。Rancher 的用户也可以创建自己的私有应用商店。
+4、企业级权限管理
+Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP， Github 等 认证方 式。</description>
+    </item>
+    
+    <item>
+      <title>redis的常见问题</title>
+      <link>https://wandong1.github.io/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <description>1、缓存击穿，某些场景下，大量的key同时失效，请求直接穿过redis缓存层打到数据库上。 解决方法：对key的失效时间设置随机值避免同时失效。
+2、缓存穿透，请求进来请求本就不存在的数据，redis层找不到数据库也找不到，每个这种请求都会打到数据库造成压力。 解决方法：对请求的后端数据库不存在的数据，设置空缓存，避免恶意请求对后端数据库造成压力。
+3、雪崩，指流量进来打到redis，redis由于某些原因扛不住，流量又会打到数据库，数据库很显然更抗不住。造成系统雪崩。 解决方法：redis采用高可用的集群架构，针对某些bigkey进行打散操作。
+4、redis常见数据类型。 string，hash，list，set ，有序set。
+5、Redis有哪些适合的场景? (1)Session共享(单点登录);(2)页面缓存;(3)队列;(4)排行榜/计数器;(5)发布/订阅;
+(1)LUA脚本：在事务的基础上，假如，需要在服务端一次性的执行更复杂的操作，那么，这个时候lua就可以上场了。</description>
+    </item>
+    
+    <item>
+      <title>zookeeper的安装和使用</title>
+      <link>https://wandong1.github.io/post/zookeeper/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/zookeeper/</guid>
+      <description>zookeeper 官网 https://zookeeper.apache.org/ 找download
+一、下载软件包 https://dlcdn.apache.org/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz
+二、集群部署 1、安装JDK centos
+yum install java-1.8.0-openjdk* -y 2、zk配置文件 # The number of milliseconds of each ticktickTime=2000# The number of ticks that the initial # synchronization phase can takeinitLimit=10# The number of ticks that can pass between # sending a request and getting an acknowledgementsyncLimit=5# the directory where the snapshot is stored.# do not use /tmp for storage, /tmp here is just # example sakes.</description>
+    </item>
+    
     <item>
       <title>helm的使用方法介绍</title>
-      <link>https://www.sulvblog.cn/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <link>https://wandong1.github.io/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 14 Sep 2022 16:14:24 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://wandong1.github.io/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
       <description>Helm Helm是一个Kubernetes的包管理工具，就像Linux下的包管理器，如yum/apt等，可以很方便的将之前
 打包好的yaml文件部署到kubernetes上。
 Helm有3个重要概念：
@@ -41,173 +227,122 @@ helm package mychart • charts：目录里存放这个chart依赖的所有子ch
     
     <item>
       <title>Golang学习笔记</title>
-      <link>https://www.sulvblog.cn/post/golang/</link>
+      <link>https://wandong1.github.io/post/golang/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/golang/</guid>
+      <guid>https://wandong1.github.io/post/golang/</guid>
       <description>Golang学习笔记</description>
     </item>
     
     <item>
       <title>golang定时任务系统</title>
-      <link>https://www.sulvblog.cn/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://wandong1.github.io/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://wandong1.github.io/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</guid>
       <description>golang定时任务系统</description>
     </item>
     
     <item>
       <title>golang微服务</title>
-      <link>https://www.sulvblog.cn/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <link>https://wandong1.github.io/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>https://wandong1.github.io/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
       <description>golang微服务</description>
     </item>
     
     <item>
       <title>golang日志框架zap</title>
-      <link>https://www.sulvblog.cn/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</link>
+      <link>https://wandong1.github.io/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</guid>
+      <guid>https://wandong1.github.io/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</guid>
       <description>golang日志框架zap</description>
     </item>
     
     <item>
       <title>jdk安装教程（容器）</title>
-      <link>https://www.sulvblog.cn/post/jdk%E5%AE%89%E8%A3%85/</link>
+      <link>https://wandong1.github.io/post/jdk%E5%AE%89%E8%A3%85/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/jdk%E5%AE%89%E8%A3%85/</guid>
+      <guid>https://wandong1.github.io/post/jdk%E5%AE%89%E8%A3%85/</guid>
       <description>jdk安装教程</description>
     </item>
     
     <item>
       <title>jenkins构建go项目</title>
-      <link>https://www.sulvblog.cn/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/</link>
+      <link>https://wandong1.github.io/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/</guid>
+      <guid>https://wandong1.github.io/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/</guid>
       <description>jenkins构建go项目</description>
     </item>
     
     <item>
-      <title>git的使用方法</title>
-      <link>https://www.sulvblog.cn/post/git/</link>
-      <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
+      <title>为K8S集群添加nfs类型的sotrageClass</title>
+      <link>https://wandong1.github.io/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</link>
+      <pubDate>Sun, 15 Aug 2021 08:25:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/git/</guid>
+      <guid>https://wandong1.github.io/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</guid>
+      <description>项目源码介绍 使用nfs-subdir-external-provisioner github地址：https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner 详细介绍：https://artifacthub.io/packages/helm/nfs-subdir-external-provisioner/nfs-subdir-external-provisioner 镜像地址：https://hub.docker.com/r/eipwork/nfs-subdir-external-provisioner/tags
+NFS服务端安装 # 安装nfs服务端 yum install nfs-utils -y vim /etc/exports /opt/nfsdata 192.168.0.0/24(rw,no_root_squash,no_all_squash,sync) # 刷新并验证 exportfs -rv # 启动nfs服务，共两个服务 systemctl enable rpcbind --now systemctl enable nfs --now 所有客户端也需要安装nfs-utils，安装完成即可，无需启动服务
+yum install nfs-utils -y storageClass插件安装 # 添加helm仓库地址 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/ # 安装第一个 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata \ --set image.repository=eipwork/nfs-subdir-external-provisioner # 安装第二个(可选) helm install second-nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata2 \ --set image.</description>
+    </item>
+    
+    <item>
+      <title>Centos更新国内yum源</title>
+      <link>https://wandong1.github.io/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</link>
+      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</guid>
+      <description>Centos7
+wget -O /etc/yum.repos.d/epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo wget -O /etc/yum.repos.d/Centos-7.repo http://mirrors.aliyun.com/repo/Centos-7.repo wget -O /etc/yum.repos.d/CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo </description>
+    </item>
+    
+    <item>
+      <title>ElasticSearch快速入门实战</title>
+      <link>https://wandong1.github.io/post/elasticsearch/</link>
+      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/elasticsearch/</guid>
+      <description>ElasticSearch</description>
+    </item>
+    
+    <item>
+      <title>git的使用方法</title>
+      <link>https://wandong1.github.io/post/git/</link>
+      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/git/</guid>
       <description>Git Git 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由Linus Torvalds设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/
 打开git bash，初始化配置 git config --global user.name &amp;#34;wandong&amp;#34; git config --global user.email &amp;#34;993696910@qq.com&amp;#34; # 对已存在的目录进行git的初始化 git init # 添加远程仓库地址 git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git # git add . git commit -m &amp;#34;Initial commit&amp;#34; # 推送到远程仓库 master分支 git push -u origin master 在新的环境拉取代码，进行开发 git clone http://git.cqzwymgmt.com/root/gin-project-orm.git # 创建新的分支继续开发 git branch dev # 列出所有分支 git branch # 切换分支 git checkout dev # 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。 git add . git commit -m &amp;#34;change log function&amp;#34; # 推送到远程仓库 dev分支 git push -u origin dev 更新本地代码 # 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev # 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并 git branch dev git checkout dev git pull origin dev # 查看dev分支代码和master代码区别 将dev分支合并到master分支 git merge dev # 或者 git rebase dev 删除本地和远程仓库的分支 # 删除分支前先切换其他分支 git branch -d dev git push origin --delete dev 将你的仓库和你的gitee合并了，用填充的方法，即： git pull --rebase origin master </description>
     </item>
     
     <item>
-      <title>ElasticSearch快速入门实战</title>
-      <link>https://www.sulvblog.cn/post/elasticsearch/</link>
-      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
-      
-      <guid>https://www.sulvblog.cn/post/elasticsearch/</guid>
-      <description>ElasticSearch</description>
-    </item>
-    
-    <item>
       <title>离线安装docker</title>
-      <link>https://www.sulvblog.cn/post/elasticsearch%E5%85%A5%E9%97%A8/</link>
+      <link>https://wandong1.github.io/post/elasticsearch%E5%85%A5%E9%97%A8/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/elasticsearch%E5%85%A5%E9%97%A8/</guid>
+      <guid>https://wandong1.github.io/post/elasticsearch%E5%85%A5%E9%97%A8/</guid>
       <description>离线安装docker</description>
     </item>
     
     <item>
       <title>离线安装docker</title>
-      <link>https://www.sulvblog.cn/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <link>https://wandong1.github.io/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <guid>https://wandong1.github.io/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
       <description>离线安装docker</description>
-    </item>
-    
-    <item>
-      <title>Hello World</title>
-      <link>https://www.sulvblog.cn/post/hello-world/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.sulvblog.cn/post/hello-world/</guid>
-      <description>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start Create a new post $ hexo new &amp;#34;My New Post&amp;#34; More info: Writing
-Run server $ hexo server More info: Server
-Generate static files $ hexo generate More info: Generating
-Deploy to remote sites $ hexo deploy More info: Deployment</description>
-    </item>
-    
-    <item>
-      <title>hexo博客框架的使用</title>
-      <link>https://www.sulvblog.cn/post/hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.sulvblog.cn/post/hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
-      <description>hexo博客框架的使用 安装node.js 官网： https://nodejs.org/en/
-安装国内淘宝npm npm install -g cnpm --registry=https://registry.npm.taobao.org 安装hexo cnpm install -g hexo-clihexo -v hexo初始化 hexo init 目录 hexo server 新建文章 文章都在source\_posts目录下
-hexo new &amp;#34;我的第一篇博客文章&amp;#34; 配置后刷新并重启服务 hexo clean hexo g hexo server 更换主题 进入项目目录
-git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia 修改项目目录下配置文件_config.yml
-theme: yilia 修复更换主题后全部文章无法显示问题 # 进入项目目录后 cnpm i hexo-generator-json-content --save # 随后在项目目录下的_config.yml文件后添加内容 jsonContent: meta: false pages: false posts: title: true date: true path: true text: false raw: false content: false slug: false updated: false comments: false link: false permalink: false excerpt: false categories: false tags: true 刷新并重启项目</description>
-    </item>
-    
-    <item>
-      <title>Hugo 博客程序搭建教程</title>
-      <link>https://www.sulvblog.cn/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.sulvblog.cn/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
-      <description>下载hugo二进制程序包 下载地址： https://github.com/gohugoio/hugo/releases
-下载后解压、将hugo路径添加到环境变量。先设置hugo变量，然后在path中添加
-验证安装 hugo version 新建站点 hugo new site myblog # 该命令会新建一个文件夹myblog ls ./myblog # archetypes/ config.toml content/ data/ # layouts/ static/ themes/ ##我目前了解如下 #config.toml 进行参数配置，与之后的theme相关 #content 之后博客(.md)的文件都储存在这里 #layout 可个性化修改博客的展示细节，需要懂网络架构知识 #static 储存一些静态文件，比如本地图片，插入到博客中 #themes 主题，接下来会介绍 下载主题（hugo没有默认主题） 有多种hugo主题可供下载：https://themes.gohugo.io/ 推荐主题： https://adityatelange.github.io/hugo-PaperMod/
-cd ./myblog git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod ls ./themes # PaperMod/ ls ./themes/PaperMod/ # LICENSE README.md assets/ go.mod i18n/ images/ layouts/ theme.toml 修改配置 papermod
-通用配置参数查询：https://gohugo.io/getting-started/configuration/
-PaperMod自定义参数查询：https://adityatelange.github.io/hugo-PaperMod/posts/papermod/papermod-features/
-示例配置：https://www.sulvblog.cn/posts/blog/build_hugo/#4%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6
-将 config.toml 重命名为 config.yml 然后进行修改</description>
-    </item>
-    
-    <item>
-      <title>rancher的安装和使用</title>
-      <link>https://www.sulvblog.cn/post/rancher/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.sulvblog.cn/post/rancher/</guid>
-      <description>Rancher Rancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
-Rancher 四个组成部分 Rancher 由以下四个部分组成：
-1、基础设施编排
-Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。
-2、容器编排与调度
-很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher 包含了当前全部主流的编排 调度引擎，例如 Docker Swarm， Kubernetes， 和 Mesos。同一个用户可以创建 Swarm 或者 Kubernetes 集群。并且可以使用原生的 Swarm 或者 Kubernetes 工具管理应用。 除了 Swarm，Kubernetes 和 Mesos 之外，Rancher 还支持自己的 Cattle 容器编排调度引擎。 Cattle 被广泛用于编排 Rancher 自己的基础设施服务以及用于 Swarm 集群，Kubernetes 集群和 Mesos 集群的配置，管理与升级。
-3、应用商店
-Rancher 的用户可以在应用商店里一键部署由多个容器组成的应用。用户可以管理这个部署的应 用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher 提供了一个由 Rancher 社区维 护的应用商店，其中包括了一系列的流行应用。Rancher 的用户也可以创建自己的私有应用商店。
-4、企业级权限管理
-Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP， Github 等 认证方 式。</description>
-    </item>
-    
-    <item>
-      <title>zookeeper的安装和使用</title>
-      <link>https://www.sulvblog.cn/post/zookeeper/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.sulvblog.cn/post/zookeeper/</guid>
-      <description>zookeeper 官网 https://zookeeper.apache.org/ 找download
-一、下载软件包 https://dlcdn.apache.org/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz
-二、集群部署 1、安装JDK centos
-yum install java-1.8.0-openjdk* -y 2、zk配置文件 # The number of milliseconds of each ticktickTime=2000# The number of ticks that the initial # synchronization phase can takeinitLimit=10# The number of ticks that can pass between # sending a request and getting an acknowledgementsyncLimit=5# the directory where the snapshot is stored.# do not use /tmp for storage, /tmp here is just # example sakes.</description>
     </item>
     
     <item>
       <title>随笔</title>
-      <link>https://www.sulvblog.cn/post/%E9%9A%8F%E7%AC%94/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://wandong1.github.io/post/%E9%9A%8F%E7%AC%94/</link>
+      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/%E9%9A%8F%E7%AC%94/</guid>
+      <guid>https://wandong1.github.io/post/%E9%9A%8F%E7%AC%94/</guid>
       <description>随笔 技术的变革，一定是思想先行，云原生是一种构建和运行应用程序的方法，是一套技术体系和方法论。云原生（CloudNative）是一个组合词，Cloud+Native。Cloud表示应用程序位于云中，而不是传统的数据中心；Native表示应用程序从设计之初即考虑到云的环境，原生为云而设计，在云上以最佳姿势运行，充分利用和发挥云平台的弹性+分布式优势。
 符合云原生架构的应用程序应该是：采用开源堆栈（K8S+Docker）进行容器化，基于微服务架构提高灵活性和可维护性，借助敏捷方法、DevOps支持持续迭代和运维自动化，利用云平台设施实现弹性伸缩、动态调度、优化资源利用率。
 云原生的四要素 微服务：几乎每个云原生的定义都包含微服务，跟微服务相对的是单体应用，微服务有理论基础，那就是康威定律，指导服务怎么切分，很玄乎，凡是能称为理论定律的都简单明白不了，不然就忒没b格，大概意思是组织架构决定产品形态，不知道跟马克思的生产关系影响生产力有无关系。
@@ -226,6 +361,19 @@ DevOps：这是个组合词，Dev+Ops，就是开发和运维合体，不像开�
 6.本地部署的传统应用通常依赖系统环境，而云原生应用不会硬连接到任何系统环境，而是依赖抽象的基础架构，从而获得良好移植性。
 7.本地部署的传统应用有些是单体(巨石)应用，或者强依赖，而基于微服务架构的云原生应用，纵向划分服务，模块化更合理。
 可见，要转向云原生应用需要以新的云原生方法开展工作，云原生包括很多方面：基础架构服务、虚拟化、容器化、容器编排、微服务。幸运的是，开源社区在云原生应用方面做出了大量卓有成效的工作，很多开源的框架和设施可以通过拿来主义直接用，2013年Docker推出并很快成为容器事实标准，随后围绕容器编排的混战中，2017年诞生的k8s很快脱颖而出，而这些技术极大的降低了开发云原生应用的技术门槛。</description>
+    </item>
+    
+    <item>
+      <title>Hello World</title>
+      <link>https://wandong1.github.io/post/hello-world/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/hello-world/</guid>
+      <description>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start Create a new post $ hexo new &amp;#34;My New Post&amp;#34; More info: Writing
+Run server $ hexo server More info: Server
+Generate static files $ hexo generate More info: Generating
+Deploy to remote sites $ hexo deploy More info: Deployment</description>
     </item>
     
   </channel>

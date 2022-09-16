@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>redis on 万东的云计算运维博客</title>
+    <link>https://wandong1.github.io/tags/redis/</link>
+    <description>Recent content in redis on 万东的云计算运维博客</description>
+    <image>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>redis的常见问题</title>
+      <link>https://wandong1.github.io/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <description>1、缓存击穿，某些场景下，大量的key同时失效，请求直接穿过redis缓存层打到数据库上。 解决方法：对key的失效时间设置随机值避免同时失效。
+2、缓存穿透，请求进来请求本就不存在的数据，redis层找不到数据库也找不到，每个这种请求都会打到数据库造成压力。 解决方法：对请求的后端数据库不存在的数据，设置空缓存，避免恶意请求对后端数据库造成压力。
+3、雪崩，指流量进来打到redis，redis由于某些原因扛不住，流量又会打到数据库，数据库很显然更抗不住。造成系统雪崩。 解决方法：redis采用高可用的集群架构，针对某些bigkey进行打散操作。
+4、redis常见数据类型。 string，hash，list，set ，有序set。
+5、Redis有哪些适合的场景? (1)Session共享(单点登录);(2)页面缓存;(3)队列;(4)排行榜/计数器;(5)发布/订阅;
+(1)LUA脚本：在事务的基础上，假如，需要在服务端一次性的执行更复杂的操作，那么，这个时候lua就可以上场了。</description>
+    </item>
+    
+  </channel>
+</rss>

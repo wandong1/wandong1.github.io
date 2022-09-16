@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>ES on 万东的云计算运维博客</title>
-    <link>https://www.sulvblog.cn/tags/es/</link>
+    <link>https://wandong1.github.io/tags/es/</link>
     <description>Recent content in ES on 万东的云计算运维博客</description>
     <image>
-      <url>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 Aug 2021 08:15:16 +0000</lastBuildDate><atom:link href="https://www.sulvblog.cn/tags/es/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Aug 2021 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/es/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ElasticSearch快速入门实战</title>
-      <link>https://www.sulvblog.cn/post/elasticsearch/</link>
+      <link>https://wandong1.github.io/post/elasticsearch/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/elasticsearch/</guid>
+      <guid>https://wandong1.github.io/post/elasticsearch/</guid>
       <description>ElasticSearch</description>
     </item>
     
     <item>
       <title>离线安装docker</title>
-      <link>https://www.sulvblog.cn/post/elasticsearch%E5%85%A5%E9%97%A8/</link>
+      <link>https://wandong1.github.io/post/elasticsearch%E5%85%A5%E9%97%A8/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/elasticsearch%E5%85%A5%E9%97%A8/</guid>
+      <guid>https://wandong1.github.io/post/elasticsearch%E5%85%A5%E9%97%A8/</guid>
       <description>离线安装docker</description>
     </item>
     

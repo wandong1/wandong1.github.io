@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>linux on 万东的云计算运维博客</title>
+    <link>https://wandong1.github.io/categories/linux/</link>
+    <description>Recent content in linux on 万东的云计算运维博客</description>
+    <image>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nginx的四层转发和七层转发配置示例</title>
+      <link>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</guid>
+      <description>user nginx; worker_processes auto; error_log /var/log/nginx/error.log notice; pid /var/run/nginx.pid; events { worker_connections 1024; } # 4层 stream配置 stream { log_format main &amp;#39;$remote_addr $upstream_addr - [$time_local] $status $upstream_bytes_sent&amp;#39;; access_log /var/log/nginx/dingding-access.log main; upstream dingding { server oapi.dingtalk.com:80; } upstream dingding_v2 { server oapi.dingtalk.com:443; } upstream apsoar { server soar.apsoar.com:22; } upstream timor { server timor.tech:443; } upstream timor80 { server timor.tech:80; } server { listen 22; proxy_pass apsoar; } server { listen 7003; proxy_pass timor80; } server { listen 80; proxy_pass dingding; } server { listen 443; proxy_pass dingding_v2; } } # 7层http配置 http { include /etc/nginx/mime.</description>
+    </item>
+    
+    <item>
+      <title>nginx调优方法</title>
+      <link>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</guid>
+      <description>一、优化nginx进程数以及cpu分布 修改配置文件 worker_processes 8; worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10000000; 几核就有几位二进制数，1在哪位就表示在哪个核心上。
+查看nginx worker进程分布在cpu的情况 ps -axo pid,psr,cmd,ni | grep -i &amp;#34;worker process&amp;#34; | awk &amp;#39;{print $2}&amp;#39; | sort -n | uniq -c 二、优化文件数
+ulimit -n #查看文件数限制 ulimit -SHn 65535 （注ulimit -SHn 65535 等效 ulimit -n 65535，-S指soft，-H指hard) #有如下三种修改方式： 1.在/etc/rc.local 中增加一行 ulimit -SHn 65535 2.在/etc/profile 中增加一行 ulimit -SHn 65535 3.在/etc/security/limits.conf最后增加如下两行记录 * soft nofile 65535 * hard nofile 65535 nginx配置修改：
+worker_rlimit_nofile 65535; 三、使用epoll的I/O模型，用这个模型来高效处理异步事件 在events区块中添加 use epoll; 四、每个进程允许的最多连接数，理论上每台nginx服务器的最大连接数为 # worker_processes*worker_connections。为理论上最大连接数 在events区块中添加或修改 worker_connections 65535; 五、http连接超时时间 默认是60s，功能是使客户端到服务器端的连接在设定的时间内持续有效，当出现对服务器的后继请求时，该功能避免了建立或者重新建立连接。切记这个参数也不能设置过大！否则会导致许多无效的http连接占据着nginx的连接数，终nginx崩溃！</description>
+    </item>
+    
+    <item>
+      <title>Centos更新国内yum源</title>
+      <link>https://wandong1.github.io/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</link>
+      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</guid>
+      <description>Centos7
+wget -O /etc/yum.repos.d/epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo wget -O /etc/yum.repos.d/Centos-7.repo http://mirrors.aliyun.com/repo/Centos-7.repo wget -O /etc/yum.repos.d/CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo </description>
+    </item>
+    
+  </channel>
+</rss>

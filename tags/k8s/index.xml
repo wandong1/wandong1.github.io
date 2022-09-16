@@ -2,21 +2,71 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>K8S on 万东的云计算运维博客</title>
-    <link>https://www.sulvblog.cn/tags/k8s/</link>
+    <link>https://wandong1.github.io/tags/k8s/</link>
     <description>Recent content in K8S on 万东的云计算运维博客</description>
     <image>
-      <url>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 14 Sep 2022 16:14:24 +0000</lastBuildDate><atom:link href="https://www.sulvblog.cn/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K8S根据现有证书生成管理员kubeconfig文件</title>
+      <link>https://wandong1.github.io/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</guid>
+      <description>生成管理员证书 cat &amp;gt; admin-csr.json &amp;lt;&amp;lt;EOF { &amp;#34;CN&amp;#34;: &amp;#34;admin&amp;#34;, &amp;#34;hosts&amp;#34;: [], &amp;#34;key&amp;#34;: { &amp;#34;algo&amp;#34;: &amp;#34;rsa&amp;#34;, &amp;#34;size&amp;#34;: 2048 }, &amp;#34;names&amp;#34;: [ { &amp;#34;C&amp;#34;: &amp;#34;CN&amp;#34;, &amp;#34;L&amp;#34;: &amp;#34;BeiJing&amp;#34;, &amp;#34;ST&amp;#34;: &amp;#34;BeiJing&amp;#34;, &amp;#34;O&amp;#34;: &amp;#34;system:masters&amp;#34;, &amp;#34;OU&amp;#34;: &amp;#34;System&amp;#34; } ] } EOF 执行生成命令 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes admin-csr.json | cfssljson -bare admin 创建kubeconfig文件 # 设置集群参数 kubectl config set-cluster kubernetes \ --server=https://192.168.0.149:6443 \ --certificate-authority=ca.pem \ --embed-certs=true \ --kubeconfig=config # 设置上下文参数 kubectl config set-context default \ --cluster=kubernetes \ --user=cluster-admin \ --kubeconfig=config # 设置客户端认证参数 kubectl config set-credentials cluster-admin \ --certificate-authority=ca.</description>
+    </item>
+    
+    <item>
+      <title>rainbond对接nfs或者nas存储</title>
+      <link>https://wandong1.github.io/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</guid>
+      <description>https://www.rainbond.com/docs/ops-guide/storage/deploy-nfsclient
+添加helm仓库 helm repo add rainbond https://openchart.goodrain.com/goodrain/rainbond helm repo update nfs或者nas配置文件 nfs-client.yaml
+nfs: server: 1afc54bbca-jna4.cn-chongqing-cqzwy-d01.nas.alinetops.cqzwy.com #nfs server地址 path: / #nfs server 的路径 mountOptions: #添加参数 - hard - vers=4 - nolock - proto=tcp - rsize=1048576 - wsize=1048576 - timeo=600 - retrans=2 - noresvport 部署 helm install nfs-client-provisioner rainbond/nfs-client-provisioner \ -f nfs-client.yaml \ --version 1.2.8 创建有状态应用进行绑定 </description>
+    </item>
+    
+    <item>
+      <title>rainbond平台部署ES-filebeat</title>
+      <link>https://wandong1.github.io/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</guid>
+      <description>https://lequ7.com/guan-yu-paas-ping-tai-rainbond-tong-guo-cha-jian-zheng-he-elkefk-shi-xian-ri-zhi-shou-ji.html
+通过helm部署filebeat采集容器日志 helm repo add elastic https://helm.elastic.co helm pull elastic/filebeat tar -xvzf filebeat-7.17.3.tgz &amp;amp;&amp;amp; cd filebeat hosts: [&amp;#39;cqzwy-mgmt-log-platform-grc055ce-0.cqzwy-mgmt-log-platform-grc055ce.013497775a1b4580924a00009a20c887.svc.cluster.local:9200&amp;#39;] username: &amp;#34;elastic&amp;#34; password: &amp;#34;kuGmFNENeZyYuGkYZ4BU&amp;#34; 进入容器内ping es的svc即可获得svc全称
+helm install filebeat -n 013497775a1b4580924a00009a20c887 ./filebeat helm list -A 或者使用yaml直接不部署
+--- apiVersion: v1 kind: ConfigMap metadata: name: filebeat-config namespace: 013497775a1b4580924a00009a20c887 labels: k8s-app: filebeat data: filebeat.yml: |- filebeat.config: inputs: # Mounted `filebeat-inputs` configmap: path: ${path.config}/inputs.d/*.yml # Reload inputs configs as they change: reload.enabled: false modules: path: ${path.config}/modules.d/*.yml # Reload module configs as they change: reload.</description>
+    </item>
+    
+    <item>
+      <title>rancher的安装和使用</title>
+      <link>https://wandong1.github.io/post/rancher/</link>
+      <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/rancher/</guid>
+      <description>Rancher Rancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
+Rancher 四个组成部分 Rancher 由以下四个部分组成：
+1、基础设施编排
+Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。
+2、容器编排与调度
+很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher 包含了当前全部主流的编排 调度引擎，例如 Docker Swarm， Kubernetes， 和 Mesos。同一个用户可以创建 Swarm 或者 Kubernetes 集群。并且可以使用原生的 Swarm 或者 Kubernetes 工具管理应用。 除了 Swarm，Kubernetes 和 Mesos 之外，Rancher 还支持自己的 Cattle 容器编排调度引擎。 Cattle 被广泛用于编排 Rancher 自己的基础设施服务以及用于 Swarm 集群，Kubernetes 集群和 Mesos 集群的配置，管理与升级。
+3、应用商店
+Rancher 的用户可以在应用商店里一键部署由多个容器组成的应用。用户可以管理这个部署的应 用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher 提供了一个由 Rancher 社区维 护的应用商店，其中包括了一系列的流行应用。Rancher 的用户也可以创建自己的私有应用商店。
+4、企业级权限管理
+Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP， Github 等 认证方 式。</description>
+    </item>
+    
     <item>
       <title>helm的使用方法介绍</title>
-      <link>https://www.sulvblog.cn/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <link>https://wandong1.github.io/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 14 Sep 2022 16:14:24 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://wandong1.github.io/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
       <description>Helm Helm是一个Kubernetes的包管理工具，就像Linux下的包管理器，如yum/apt等，可以很方便的将之前
 打包好的yaml文件部署到kubernetes上。
 Helm有3个重要概念：
@@ -40,21 +90,14 @@ helm package mychart • charts：目录里存放这个chart依赖的所有子ch
     </item>
     
     <item>
-      <title>rancher的安装和使用</title>
-      <link>https://www.sulvblog.cn/post/rancher/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>为K8S集群添加nfs类型的sotrageClass</title>
+      <link>https://wandong1.github.io/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</link>
+      <pubDate>Sun, 15 Aug 2021 08:25:16 +0000</pubDate>
       
-      <guid>https://www.sulvblog.cn/post/rancher/</guid>
-      <description>Rancher Rancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
-Rancher 四个组成部分 Rancher 由以下四个部分组成：
-1、基础设施编排
-Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。
-2、容器编排与调度
-很多用户都会选择使用容器编排调度框架来运行容器化应用。Rancher 包含了当前全部主流的编排 调度引擎，例如 Docker Swarm， Kubernetes， 和 Mesos。同一个用户可以创建 Swarm 或者 Kubernetes 集群。并且可以使用原生的 Swarm 或者 Kubernetes 工具管理应用。 除了 Swarm，Kubernetes 和 Mesos 之外，Rancher 还支持自己的 Cattle 容器编排调度引擎。 Cattle 被广泛用于编排 Rancher 自己的基础设施服务以及用于 Swarm 集群，Kubernetes 集群和 Mesos 集群的配置，管理与升级。
-3、应用商店
-Rancher 的用户可以在应用商店里一键部署由多个容器组成的应用。用户可以管理这个部署的应 用，并且可以在这个应用有新的可用版本时进行自动化的升级。Rancher 提供了一个由 Rancher 社区维 护的应用商店，其中包括了一系列的流行应用。Rancher 的用户也可以创建自己的私有应用商店。
-4、企业级权限管理
-Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP， Github 等 认证方 式。</description>
+      <guid>https://wandong1.github.io/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</guid>
+      <description>项目源码介绍 使用nfs-subdir-external-provisioner github地址：https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner 详细介绍：https://artifacthub.io/packages/helm/nfs-subdir-external-provisioner/nfs-subdir-external-provisioner 镜像地址：https://hub.docker.com/r/eipwork/nfs-subdir-external-provisioner/tags
+NFS服务端安装 # 安装nfs服务端 yum install nfs-utils -y vim /etc/exports /opt/nfsdata 192.168.0.0/24(rw,no_root_squash,no_all_squash,sync) # 刷新并验证 exportfs -rv # 启动nfs服务，共两个服务 systemctl enable rpcbind --now systemctl enable nfs --now 所有客户端也需要安装nfs-utils，安装完成即可，无需启动服务
+yum install nfs-utils -y storageClass插件安装 # 添加helm仓库地址 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/ # 安装第一个 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata \ --set image.repository=eipwork/nfs-subdir-external-provisioner # 安装第二个(可选) helm install second-nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata2 \ --set image.</description>
     </item>
     
   </channel>

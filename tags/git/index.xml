@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>git on 万东的技术博客</title>
-    <link>http://example.org/tags/git/</link>
-    <description>Recent content in git on 万东的技术博客</description>
+    <title>git on 万东的云计算运维博客</title>
+    <link>https://wandong1.github.io/tags/git/</link>
+    <description>Recent content in git on 万东的云计算运维博客</description>
+    <image>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 Aug 2022 08:15:16 +0000</lastBuildDate><atom:link href="http://example.org/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 15 Aug 2021 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Git使用方法</title>
-      <link>http://example.org/post/git/</link>
-      <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
+      <title>git的使用方法</title>
+      <link>https://wandong1.github.io/post/git/</link>
+      <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>http://example.org/post/git/</guid>
-      <description>GitGit 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由Linus Torvalds设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/
-打开git bash，初始化配置git config --global user.name &amp;#34;wandong&amp;#34; git config --global user.email &amp;#34;993696910@qq.com&amp;#34; # 对已存在的目录进行git的初始化 git init # 添加远程仓库地址 git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git # git add . git commit -m &amp;#34;Initial commit&amp;#34; # 推送到远程仓库 master分支 git push -u origin master 在新的环境拉取代码，进行开发git clone http://git.cqzwymgmt.com/root/gin-project-orm.git # 创建新的分支继续开发 git branch dev # 列出所有分支 git branch # 切换分支 git checkout dev # 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。 git add . git commit -m &amp;#34;change log function&amp;#34; # 推送到远程仓库 dev分支 git push -u origin dev 更新本地代码# 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev # 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并 git branch dev git checkout dev git pull origin dev # 查看dev分支代码和master代码区别 将dev分支合并到master分支 git merge dev # 或者 git rebase dev 删除本地和远程仓库的分支# 删除分支前先切换其他分支 git branch -d dev git push origin --delete dev </description>
+      <guid>https://wandong1.github.io/post/git/</guid>
+      <description>Git Git 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由Linus Torvalds设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/
+打开git bash，初始化配置 git config --global user.name &amp;#34;wandong&amp;#34; git config --global user.email &amp;#34;993696910@qq.com&amp;#34; # 对已存在的目录进行git的初始化 git init # 添加远程仓库地址 git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git # git add . git commit -m &amp;#34;Initial commit&amp;#34; # 推送到远程仓库 master分支 git push -u origin master 在新的环境拉取代码，进行开发 git clone http://git.cqzwymgmt.com/root/gin-project-orm.git # 创建新的分支继续开发 git branch dev # 列出所有分支 git branch # 切换分支 git checkout dev # 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。 git add . git commit -m &amp;#34;change log function&amp;#34; # 推送到远程仓库 dev分支 git push -u origin dev 更新本地代码 # 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev # 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并 git branch dev git checkout dev git pull origin dev # 查看dev分支代码和master代码区别 将dev分支合并到master分支 git merge dev # 或者 git rebase dev 删除本地和远程仓库的分支 # 删除分支前先切换其他分支 git branch -d dev git push origin --delete dev 将你的仓库和你的gitee合并了，用填充的方法，即： git pull --rebase origin master </description>
     </item>
     
   </channel>
