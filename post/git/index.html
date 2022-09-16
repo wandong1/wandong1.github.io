@@ -1,392 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  
-  
-    
-  
-
-  <title>Git使用方法 | 万东的技术博客</title>
-
-  
-  <meta name="description" content="Git使用方法">
-  <meta name="keywords" content="">
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Git使用方法"/>
-<meta name="twitter:description" content="Git使用方法"/>
-
-  <meta property="og:title" content="Git使用方法" />
-<meta property="og:description" content="Git使用方法" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.org/post/git/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-08-15T08:15:16+00:00" />
-<meta property="article:modified_time" content="2022-08-15T08:15:16+00:00" />
-
-
-
-  <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
-  
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
-    type="text/css">
-
-  
-  
-  <link rel="stylesheet" href="/sass/main.scss">
-
-  
-  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
-
-  
-
-  <script src="/js/lazysizes.min.js"></script>
-
-  
-  
-
-  
-</head>
-
-
-
-<body ontouchstart="">
-
-  
-  
-  
-
-  
-
-  
-  
-
-
-
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
-  <div class="container-fluid">
-    
-    <div class="navbar-header page-scroll">
-      <button type="button" class="navbar-toggle">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="http://example.org/">万东的技术博客</a>
-    </div>
-    
-    <div id="huxblog_navbar">
-      <div class="navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          
-
-          <li class="search-icon">
-            <a href="javascript:void(0)">
-              <i class="fa fa-search"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
-  </div>
-  
-</nav>
-<script>
-  
-  
-  
-  var $body = document.body;
-  var $toggle = document.querySelector(".navbar-toggle");
-  var $navbar = document.querySelector("#huxblog_navbar");
-  var $collapse = document.querySelector(".navbar-collapse");
-
-  var __HuxNav__ = {
-    close: function () {
-      $navbar.className = " ";
-      
-      setTimeout(function () {
-        
-        if ($navbar.className.indexOf("in") < 0) {
-          $collapse.style.height = "0px";
-        }
-      }, 400);
-    },
-    open: function () {
-      $collapse.style.height = "auto";
-      $navbar.className += " in";
-    },
-  };
-
-  
-  $toggle.addEventListener("click", function (e) {
-    if ($navbar.className.indexOf("in") > 0) {
-      __HuxNav__.close();
-    } else {
-      __HuxNav__.open();
-    }
-  });
-
-  
-
-  document.addEventListener("click", function (e) {
-    if (e.target == $toggle) return;
-    if (e.target.className == "icon-bar") return;
-    __HuxNav__.close();
-  });
-</script>
-  
-<div class="search-page">
-  <div class="search-icon-close-container">
-    <span class="search-icon-close">
-      <i class="fa fa-chevron-down"></i>
-    </span>
-  </div>
-  <div class="search-main container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <form></form>
-        <input type="text" id="search-input" placeholder="$ grep...">
-        </form>
-        <div id="search-results" class="mini-post-list"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-<style type="text/css">
-  header.intro-header {
-    position: relative;
-    background-image: url('');
-  }
-</style>
-
-<header class="intro-header style-text">
-
-  <div class="header-mask"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-heading">
-          <div class="tags">
-            
-            <a class="tag" href="/tags/git/" title="git">git</a>
-            
-          </div>
-          <h1>Git使用方法</h1>
-          <h2 class="subheading"></h2>
-          <span class="meta">
-            Posted by   
-            on Mon, Aug 15, 2022
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-
-  
-
-
-<article>
-  <div class="container">
-    <div class="row">
-
-      
-      <div class="
-              col-lg-8 col-lg-offset-2
-              col-md-10 col-md-offset-1
-              post-container">
-        <h1 id="git"><strong>Git</strong><a class="anchorjs-link" href="#git"></a></h1><p><strong>Git</strong> 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由<em>Linus Torvalds</em>设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/</p>
-<h2 id="打开git-bash初始化配置">打开git bash，初始化配置<a class="anchorjs-link" href="#%e6%89%93%e5%bc%80git-bash%e5%88%9d%e5%a7%8b%e5%8c%96%e9%85%8d%e7%bd%ae"></a></h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git config --global user.name <span style="color:#e6db74">&#34;wandong&#34;</span>
-</span></span><span style="display:flex;"><span>git config --global user.email <span style="color:#e6db74">&#34;993696910@qq.com&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 对已存在的目录进行git的初始化</span>
-</span></span><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 添加远程仓库地址</span>
-</span></span><span style="display:flex;"><span>git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;Initial commit&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 推送到远程仓库 master分支</span>
-</span></span><span style="display:flex;"><span>git push -u origin master
-</span></span></code></pre></div><h2 id="在新的环境拉取代码进行开发">在新的环境拉取代码，进行开发<a class="anchorjs-link" href="#%e5%9c%a8%e6%96%b0%e7%9a%84%e7%8e%af%e5%a2%83%e6%8b%89%e5%8f%96%e4%bb%a3%e7%a0%81%e8%bf%9b%e8%a1%8c%e5%bc%80%e5%8f%91"></a></h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>git clone http://git.cqzwymgmt.com/root/gin-project-orm.git
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建新的分支继续开发</span>
-</span></span><span style="display:flex;"><span>git branch dev
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 列出所有分支</span>
-</span></span><span style="display:flex;"><span>git branch 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 切换分支</span>
-</span></span><span style="display:flex;"><span>git checkout dev
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;change log function&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 推送到远程仓库 dev分支</span>
-</span></span><span style="display:flex;"><span>git push -u origin dev
-</span></span></code></pre></div><h2 id="更新本地代码">更新本地代码<a class="anchorjs-link" href="#%e6%9b%b4%e6%96%b0%e6%9c%ac%e5%9c%b0%e4%bb%a3%e7%a0%81"></a></h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并</span>
-</span></span><span style="display:flex;"><span>git branch dev
-</span></span><span style="display:flex;"><span>git checkout dev
-</span></span><span style="display:flex;"><span>git pull origin dev
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 查看dev分支代码和master代码区别</span>
-</span></span></code></pre></div><h2 id="将dev分支合并到master分支">将dev分支合并到master分支<a class="anchorjs-link" href="#%e5%b0%86dev%e5%88%86%e6%94%af%e5%90%88%e5%b9%b6%e5%88%b0master%e5%88%86%e6%94%af"></a></h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> git merge dev
-</span></span><span style="display:flex;"><span> <span style="color:#75715e"># 或者</span>
-</span></span><span style="display:flex;"><span> git rebase dev
-</span></span></code></pre></div><h2 id="删除本地和远程仓库的分支">删除本地和远程仓库的分支<a class="anchorjs-link" href="#%e5%88%a0%e9%99%a4%e6%9c%ac%e5%9c%b0%e5%92%8c%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93%e7%9a%84%e5%88%86%e6%94%af"></a></h2><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 删除分支前先切换其他分支</span>
-</span></span><span style="display:flex;"><span>git branch -d dev
-</span></span><span style="display:flex;"><span>git push origin --delete dev
-</span></span></code></pre></div>
-
-        <hr style="visibility: hidden;" />
-        <ul class="pager">
-          
-          <li class="previous">
-            <a href="/post/golang/" data-toggle="tooltip" data-placement="top" title="Golang学习笔记">
-              Previous<br>
-              <span>Golang学习笔记</span>
-            </a>
-          </li>
-          
-          
-          <li class="next">
-            <a href="/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" data-toggle="tooltip" data-placement="top" title="helm的使用方法介绍">
-              Next<br>
-              <span>helm的使用方法介绍</span>
-            </a>
-          </li>
-          
-        </ul>
-        <hr style="visibility: hidden;" />
-
-        
-        
-
-
-
-
-
-
-      </div>
-
-      
-      
-      
-      
-      <div class="
-              col-lg-8 col-lg-offset-2
-              col-md-10 col-md-offset-1
-              sidebar-container">
-
-        
-        
-        <section>
-  
-  
-  <hr class="hidden-sm hidden-xs">
-  
-  <h5>FEATURED TAGS</h5>
-  <div class="tags">
-    
-    <a href="/tags/docker/">docker</a>
-    
-    <a href="/tags/es/">ES</a>
-    
-    <a href="/tags/git/">git</a>
-    
-    <a href="/tags/go/">go</a>
-    
-    <a href="/tags/helm/">helm</a>
-    
-    <a href="/tags/hexo/">hexo</a>
-    
-    <a href="/tags/java/">java</a>
-    
-    <a href="/tags/jenkins/">jenkins</a>
-    
-    <a href="/tags/k8s/">K8S</a>
-    
-    <a href="/tags/rancher/">rancher</a>
-    
-    <a href="/tags/zookeeper/">zookeeper</a>
-    
-  </div>
-</section>
-
-        
-        
-
-      </div>
-    </div>
-  </div>
-</article>
-
-
-
-  
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        
-        
-
-
-<ul class="list-inline text-center">
-
-  
-  
-  
-  
-  
-  
-  
-</ul>
-        <p class="copyright text-muted">
-          Copyright &copy; 万东的技术博客 2022
-          <br>
-          Powered by <a href="https://gohugo.io">Hugo</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
-
-
-<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
-
-
-<script src="/js/simple-jekyll-search.min.js"></script>
-
-
-<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/zoomjs/zoom.min.js"></script>
-</body>
-
-</html>
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>git的使用方法 | 万东的云计算运维博客</title><meta name=keywords content="标签1,标签2"><meta name=description content="Git Git 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由Linus Torvalds设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/
+打开git bash，初始化配置 git config --global user.name &#34;wandong&#34; git config --global user.email &#34;993696910@qq.com&#34; # 对已存在的目录进行git的初始化 git init # 添加远程仓库地址 git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git # git add . git commit -m &#34;Initial commit&#34; # 推送到远程仓库 master分支 git push -u origin master 在新的环境拉取代码，进行开发 git clone http://git.cqzwymgmt.com/root/gin-project-orm.git # 创建新的分支继续开发 git branch dev # 列出所有分支 git branch # 切换分支 git checkout dev # 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。 git add . git commit -m &#34;change log function&#34; # 推送到远程仓库 dev分支 git push -u origin dev 更新本地代码 # 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev # 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并 git branch dev git checkout dev git pull origin dev # 查看dev分支代码和master代码区别 将dev分支合并到master分支 git merge dev # 或者 git rebase dev 删除本地和远程仓库的分支 # 删除分支前先切换其他分支 git branch -d dev git push origin --delete dev 将你的仓库和你的gitee合并了，用填充的方法，即： git pull --rebase origin master "><meta name=author content="Sulv"><link rel=canonical href=https://www.sulvblog.cn/post/git/><link crossorigin=anonymous href=/assets/css/stylesheet.min.77d563e104d7b39d673d4f21adf63da1ad0244dbcd78291ac2b44dc25b0066e1.css integrity="sha256-d9Vj4QTXs51nPU8hrfY9oa0CRNvNeCkawrRNwlsAZuE=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js integrity="sha256-uVus3DnjejMqn4g7Hni+Srwf3KK8HyZB9V4809q9TWE=" onload=hljs.initHighlightingOnLoad()></script>
+<link rel=icon href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-123-45","auto"),ga("send","pageview"))</script><meta property="og:title" content="git的使用方法"><meta property="og:description" content="Git Git 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由Linus Torvalds设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/
+打开git bash，初始化配置 git config --global user.name &#34;wandong&#34; git config --global user.email &#34;993696910@qq.com&#34; # 对已存在的目录进行git的初始化 git init # 添加远程仓库地址 git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git # git add . git commit -m &#34;Initial commit&#34; # 推送到远程仓库 master分支 git push -u origin master 在新的环境拉取代码，进行开发 git clone http://git.cqzwymgmt.com/root/gin-project-orm.git # 创建新的分支继续开发 git branch dev # 列出所有分支 git branch # 切换分支 git checkout dev # 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。 git add . git commit -m &#34;change log function&#34; # 推送到远程仓库 dev分支 git push -u origin dev 更新本地代码 # 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev # 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并 git branch dev git checkout dev git pull origin dev # 查看dev分支代码和master代码区别 将dev分支合并到master分支 git merge dev # 或者 git rebase dev 删除本地和远程仓库的分支 # 删除分支前先切换其他分支 git branch -d dev git push origin --delete dev 将你的仓库和你的gitee合并了，用填充的方法，即： git pull --rebase origin master "><meta property="og:type" content="article"><meta property="og:url" content="https://www.sulvblog.cn/post/git/"><meta property="og:image" content="https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="post"><meta property="article:published_time" content="2022-08-10T00:00:00+00:00"><meta property="article:modified_time" content="2022-08-10T00:00:00+00:00"><meta property="og:site_name" content="ExampleSite"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="git的使用方法"><meta name=twitter:description content="Git Git 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由Linus Torvalds设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/
+打开git bash，初始化配置 git config --global user.name &#34;wandong&#34; git config --global user.email &#34;993696910@qq.com&#34; # 对已存在的目录进行git的初始化 git init # 添加远程仓库地址 git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git # git add . git commit -m &#34;Initial commit&#34; # 推送到远程仓库 master分支 git push -u origin master 在新的环境拉取代码，进行开发 git clone http://git.cqzwymgmt.com/root/gin-project-orm.git # 创建新的分支继续开发 git branch dev # 列出所有分支 git branch # 切换分支 git checkout dev # 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。 git add . git commit -m &#34;change log function&#34; # 推送到远程仓库 dev分支 git push -u origin dev 更新本地代码 # 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev # 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并 git branch dev git checkout dev git pull origin dev # 查看dev分支代码和master代码区别 将dev分支合并到master分支 git merge dev # 或者 git rebase dev 删除本地和远程仓库的分支 # 删除分支前先切换其他分支 git branch -d dev git push origin --delete dev 将你的仓库和你的gitee合并了，用填充的方法，即： git pull --rebase origin master "><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://www.sulvblog.cn/post/"},{"@type":"ListItem","position":3,"name":"git的使用方法","item":"https://www.sulvblog.cn/post/git/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"git的使用方法","name":"git的使用方法","description":"Git Git 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由Linus Torvalds设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/\n打开git bash，初始化配置 git config --global user.name \u0026#34;wandong\u0026#34; git config --global user.email \u0026#34;993696910@qq.com\u0026#34; # 对已存在的目录进行git的初始化 git init # 添加远程仓库地址 git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git # git add . git commit -m \u0026#34;Initial commit\u0026#34; # 推送到远程仓库 master分支 git push -u origin master 在新的环境拉取代码，进行开发 git clone http://git.cqzwymgmt.com/root/gin-project-orm.git # 创建新的分支继续开发 git branch dev # 列出所有分支 git branch # 切换分支 git checkout dev # 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。 git add . git commit -m \u0026#34;change log function\u0026#34; # 推送到远程仓库 dev分支 git push -u origin dev 更新本地代码 # 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev # 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并 git branch dev git checkout dev git pull origin dev # 查看dev分支代码和master代码区别 将dev分支合并到master分支 git merge dev # 或者 git rebase dev 删除本地和远程仓库的分支 # 删除分支前先切换其他分支 git branch -d dev git push origin --delete dev 将你的仓库和你的gitee合并了，用填充的方法，即： git pull --rebase origin master ","keywords":["标签1","标签2"],"articleBody":"Git Git 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由Linus Torvalds设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/\n打开git bash，初始化配置 git config --global user.name \"wandong\" git config --global user.email \"993696910@qq.com\" # 对已存在的目录进行git的初始化 git init # 添加远程仓库地址 git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git # git add . git commit -m \"Initial commit\" # 推送到远程仓库 master分支 git push -u origin master 在新的环境拉取代码，进行开发 git clone http://git.cqzwymgmt.com/root/gin-project-orm.git # 创建新的分支继续开发 git branch dev # 列出所有分支 git branch # 切换分支 git checkout dev # 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。 git add . git commit -m \"change log function\" # 推送到远程仓库 dev分支 git push -u origin dev 更新本地代码 # 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev # 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并 git branch dev git checkout dev git pull origin dev # 查看dev分支代码和master代码区别 将dev分支合并到master分支 git merge dev # 或者 git rebase dev 删除本地和远程仓库的分支 # 删除分支前先切换其他分支 git branch -d dev git push origin --delete dev 将你的仓库和你的gitee合并了，用填充的方法，即： git pull --rebase origin master ","wordCount":"131","inLanguage":"en","datePublished":"2022-08-10T00:00:00Z","dateModified":"2022-08-10T00:00:00Z","author":[{"@type":"Person","name":"Sulv"}],"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sulvblog.cn/post/git/"},"publisher":{"@type":"Organization","name":"万东的云计算运维博客","logo":{"@type":"ImageObject","url":"https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E"}}}</script></head><body class=dark id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://www.sulvblog.cn accesskey=h title="万东的云计算运维博客 (Alt + H)"><img src=https://www.sulvblog.cn/img-icon.png alt=logo aria-label=logo height=35>万东的云计算运维博客</a>
+<span class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></span></div><ul id=menu><li><a href=https://www.sulvblog.cn/categories/ title=分类><span>分类</span></a></li><li><a href=https://www.sulvblog.cn/tags/ title=标签><span>标签</span></a></li><li><a href=https://www.sulvblog.cn/archives/ title=归档><span>归档</span></a></li><li><a href=https://www.sulvblog.cn/search title=搜索><span>搜索</span></a></li></ul></nav></header><main class="main page"><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://www.sulvblog.cn>Home</a>&nbsp;»&nbsp;<a href=https://www.sulvblog.cn/post/>Posts</a></div><h1 class=post-title>git的使用方法</h1><div class=post-meta><span title='2022-08-10 00:00:00 +0000 UTC'>August 10, 2022</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;131 words&nbsp;·&nbsp;Sulv&nbsp;|&nbsp;<a href=https://github.com/%3cpath_to_repo%3e/content/post/Git.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><aside id=toc-container class="toc-container wide"><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#打开git-bash初始化配置>打开git bash，初始化配置</a></li><li><a href=#在新的环境拉取代码进行开发>在新的环境拉取代码，进行开发</a></li><li><a href=#更新本地代码>更新本地代码</a></li><li><a href=#将dev分支合并到master分支>将dev分支合并到master分支</a></li><li><a href=#删除本地和远程仓库的分支>删除本地和远程仓库的分支</a></li><li><a href=#将你的仓库和你的gitee合并了用填充的方法即>将你的仓库和你的gitee合并了，用填充的方法，即：</a></li></ul></nav></div></details></div></aside><script>let activeElement,elements;window.addEventListener("DOMContentLoaded",function(){checkTocPosition(),elements=document.querySelectorAll("h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]"),activeElement=elements[0];const t=encodeURI(activeElement.getAttribute("id")).toLowerCase();document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active")},!1),window.addEventListener("resize",function(){checkTocPosition()},!1),window.addEventListener("scroll",()=>{activeElement=Array.from(elements).find(e=>{if(getOffsetTop(e)-window.pageYOffset>0&&getOffsetTop(e)-window.pageYOffset<window.innerHeight/2)return e})||activeElement,elements.forEach(e=>{const t=encodeURI(e.getAttribute("id")).toLowerCase();e===activeElement?document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active"):document.querySelector(`.inner ul li a[href="#${t}"]`).classList.remove("active")})},!1);const main=parseInt(getComputedStyle(document.body).getPropertyValue("--article-width"),10),toc=parseInt(getComputedStyle(document.body).getPropertyValue("--toc-width"),10),gap=parseInt(getComputedStyle(document.body).getPropertyValue("--gap"),10);function checkTocPosition(){const e=document.body.scrollWidth;e-main-toc*2-gap*4>0?document.getElementById("toc-container").classList.add("wide"):document.getElementById("toc-container").classList.remove("wide")}function getOffsetTop(e){if(!e.getClientRects().length)return 0;let t=e.getBoundingClientRect(),n=e.ownerDocument.defaultView;return t.top+n.pageYOffset}</script><div class=post-content><h1 id=git><strong>Git</strong><a hidden class=anchor aria-hidden=true href=#git>#</a></h1><p><strong>Git</strong> 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由<em>Linus Torvalds</em>设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/</p><h2 id=打开git-bash初始化配置>打开git bash，初始化配置<a hidden class=anchor aria-hidden=true href=#打开git-bash初始化配置>#</a></h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>git config --global user.name <span class=s2>&#34;wandong&#34;</span>
+</span></span><span class=line><span class=cl>git config --global user.email <span class=s2>&#34;993696910@qq.com&#34;</span>
+</span></span><span class=line><span class=cl><span class=c1># 对已存在的目录进行git的初始化</span>
+</span></span><span class=line><span class=cl>git init
+</span></span><span class=line><span class=cl><span class=c1># 添加远程仓库地址</span>
+</span></span><span class=line><span class=cl>git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git
+</span></span><span class=line><span class=cl><span class=c1># </span>
+</span></span><span class=line><span class=cl>git add .
+</span></span><span class=line><span class=cl>git commit -m <span class=s2>&#34;Initial commit&#34;</span>
+</span></span><span class=line><span class=cl><span class=c1># 推送到远程仓库 master分支</span>
+</span></span><span class=line><span class=cl>git push -u origin master
+</span></span></code></pre></div><h2 id=在新的环境拉取代码进行开发>在新的环境拉取代码，进行开发<a hidden class=anchor aria-hidden=true href=#在新的环境拉取代码进行开发>#</a></h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>git clone http://git.cqzwymgmt.com/root/gin-project-orm.git
+</span></span><span class=line><span class=cl><span class=c1># 创建新的分支继续开发</span>
+</span></span><span class=line><span class=cl>git branch dev
+</span></span><span class=line><span class=cl><span class=c1># 列出所有分支</span>
+</span></span><span class=line><span class=cl>git branch 
+</span></span><span class=line><span class=cl><span class=c1># 切换分支</span>
+</span></span><span class=line><span class=cl>git checkout dev
+</span></span><span class=line><span class=cl><span class=c1># 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>git add .
+</span></span><span class=line><span class=cl>git commit -m <span class=s2>&#34;change log function&#34;</span>
+</span></span><span class=line><span class=cl><span class=c1># 推送到远程仓库 dev分支</span>
+</span></span><span class=line><span class=cl>git push -u origin dev
+</span></span></code></pre></div><h2 id=更新本地代码>更新本地代码<a hidden class=anchor aria-hidden=true href=#更新本地代码>#</a></h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev</span>
+</span></span><span class=line><span class=cl><span class=c1># 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并</span>
+</span></span><span class=line><span class=cl>git branch dev
+</span></span><span class=line><span class=cl>git checkout dev
+</span></span><span class=line><span class=cl>git pull origin dev
+</span></span><span class=line><span class=cl><span class=c1># 查看dev分支代码和master代码区别</span>
+</span></span></code></pre></div><h2 id=将dev分支合并到master分支>将dev分支合并到master分支<a hidden class=anchor aria-hidden=true href=#将dev分支合并到master分支>#</a></h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl> git merge dev
+</span></span><span class=line><span class=cl> <span class=c1># 或者</span>
+</span></span><span class=line><span class=cl> git rebase dev
+</span></span></code></pre></div><h2 id=删除本地和远程仓库的分支>删除本地和远程仓库的分支<a hidden class=anchor aria-hidden=true href=#删除本地和远程仓库的分支>#</a></h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># 删除分支前先切换其他分支</span>
+</span></span><span class=line><span class=cl>git branch -d dev
+</span></span><span class=line><span class=cl>git push origin --delete dev
+</span></span></code></pre></div><h2 id=将你的仓库和你的gitee合并了用填充的方法即>将你的仓库和你的gitee合并了，用填充的方法，即：<a hidden class=anchor aria-hidden=true href=#将你的仓库和你的gitee合并了用填充的方法即>#</a></h2><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>git pull --rebase origin master
+</span></span></code></pre></div></div><footer class=post-footer><ul class=post-tags><li><a href=https://www.sulvblog.cn/tags/%E6%A0%87%E7%AD%BE1/>标签1</a></li><li><a href=https://www.sulvblog.cn/tags/%E6%A0%87%E7%AD%BE2/>标签2</a></li></ul><nav class=paginav><a class=prev href=https://www.sulvblog.cn/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/><span class=title>« Prev Page</span><br><span>jenkins构建go项目</span></a>
+<a class=next href=https://www.sulvblog.cn/post/elasticsearch/><span class=title>Next Page »</span><br><span>ElasticSearch快速入门实战</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2022 <a href=https://www.sulvblog.cn>万东的云计算运维博客</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerText="copy";function s(){t.innerText="copied!",setTimeout(()=>{t.innerText="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

@@ -1,67 +1,50 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>go on 万东的技术博客</title>
-    <link>http://example.org/tags/go/</link>
-    <description>Recent content in go on 万东的技术博客</description>
+    <title>go on 万东的云计算运维博客</title>
+    <link>https://www.sulvblog.cn/tags/go/</link>
+    <description>Recent content in go on 万东的云计算运维博客</description>
+    <image>
+      <url>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 Aug 2022 08:15:16 +0000</lastBuildDate><atom:link href="http://example.org/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 15 Aug 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://www.sulvblog.cn/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Golang学习笔记</title>
-      <link>http://example.org/post/golang/</link>
+      <link>https://www.sulvblog.cn/post/golang/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>http://example.org/post/golang/</guid>
-      <description>推荐博客 https://www.liwenzhou.com/posts/Go/golang-menu/
-Linux 安装go语言环境# 下载地址 https://golang.google.cn/dl/ tar -xvzf go1.17.11.linux-386.tar.gz -C /usr/local yum install glibc.i686 -y mkdir -p /root/workspace cat &amp;lt;&amp;lt;EOF &amp;gt;&amp;gt; /etc/profile export PATH=$PATH:/usr/local/go/bin export GOPATH=&amp;#34;$HOME/workspace&amp;#34; EOF source /etc/profile #设置国内代理 go env -w GOPROXY=https://goproxy.cn,direct #查看go env go env Linux下创建一个go项目#查看GOPATH go env | grep -i gopath #GOPATH=&amp;#34;/root/workspace&amp;#34; cd /root/workspace;mkdir {src,bin,pkg} #进入src目录创建项目 cd src &amp;amp;&amp;amp; mkdir GoRedis #随后编写main.go文件 构建多平台运行代码go env -w GOOS=linux go env -w GOARCH=amd64 go build go env -w GOOS=windwos go env -w GOARCH=amd64 go build main.</description>
+      <guid>https://www.sulvblog.cn/post/golang/</guid>
+      <description>Golang学习笔记</description>
     </item>
     
     <item>
       <title>golang定时任务系统</title>
-      <link>http://example.org/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://www.sulvblog.cn/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>http://example.org/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</guid>
-      <description>golang定时任务系统项目地址： https://github.com/ouqiang/gocron/releases 部署方法https://github.com/ouqiang/gocron/releases/download/v1.5.3/gocron-node-v1.5.3-linux-amd64.tar.gz
-https://github.com/ouqiang/gocron/releases/download/v1.5.3/gocron-v1.5.3-linux-amd64.tar.gz
-项目分为两个包 gocron-node和gocron，gocron-node为任务节点，实际执行任务，gocron为web端
-创建gocron用户useradd gocron 解压软件包并运行tar -xvzf gocron-node-v1.5.3-linux-amd64.tar.gz -C /home/gocron tar -xvzf gocron-v1.5.3-linux-amd64.tar.gz -C /home/gocron # 修改权限 chown gocron:gocron -R /home/gocron/ # 运行gocron web端 前台运行，监听5920端口 cd /home/gocron/gocron-linux-amd64 &amp;amp;&amp;amp; su gocron &amp;amp;&amp;amp; ./gocron web # 新起窗口运行gocron node任务节点 前台运行 cd /home/gocron/gocron-node-linux-amd64 su gocron &amp;amp;&amp;amp; ./gocron-node 1、登录web页面，访问 http://localhost:5920
-2、初始化数据库，并创建登录用户，注意数据库要单独使用新库，不能有其他表
-3、然后登录，添加任务节点，添加完成后测试连接
-![image-20220721155135950](D:\typora Note\assets\image-20220721155135950.png)
-4、进入系统管理配置通知配置
-使用钉钉webhook进行通知
-![image-20220721155256643](D:\typora Note\assets\image-20220721155256643.png)
-模板文件写法：
-{ &amp;#34;at&amp;#34;: { &amp;#34;atMobiles&amp;#34;: [ &amp;#34;&amp;#34; ], &amp;#34;atUserIds&amp;#34;: [ &amp;#34;user123&amp;#34; ], &amp;#34;isAtAll&amp;#34;: &amp;#34;false&amp;#34; }, &amp;#34;text&amp;#34;: { &amp;#34;content&amp;#34;: &amp;#34;任务ID: {{.</description>
+      <guid>https://www.sulvblog.cn/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</guid>
+      <description>golang定时任务系统</description>
     </item>
     
     <item>
       <title>golang微服务</title>
-      <link>http://example.org/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <link>https://www.sulvblog.cn/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>http://example.org/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
-      <description>golang微服务1、RPC 简介⚫ 远程过程调用（Remote Procedure Call，RPC）是一个计算机通信协议
-⚫ 该协议允许运行于一台计算机的程序调用另一台计算机的子程序，而程序员无需额 外地为这个交互作用编程
-⚫ 如果涉及的软件采用面向对象编程，那么远程过程调用亦可称作远程调用或远程方 法调用
-2、golang中如何实现RPC⚫ golang 中实现 RPC 非常简单，官方提供了封装好的库，还有一些第三方的库
-⚫ golang 官方的 net/rpc 库使用 encoding/gob 进行编解码，支持 tcp 和 http 数据传输方 式，由于其他语言不支持 gob 编解码方式，所以 golang 的 RPC 只支持 golang 开发 的服务器与客户端之间的交互
-⚫ 官方还提供了 net/rpc/jsonrpc 库实现 RPC 方法，jsonrpc 采用 JSON 进行数据编解码， 因而支持跨语言调用，目前 jsonrpc 库是基于 tcp 协议实现的，暂不支持 http 传输 方式
-⚫ golang 的 RPC 必须符合 4 个条件才可以
-​	◼ 结构体字段首字母要大写，要跨域访问，所以大写
-​	◼ 函数名必须首字母大写（可以序列号导出的）
-​	◼ 函数第一个参数是接收参数，第二个参数是返回给客户端参数，必须是指针类 型</description>
+      <guid>https://www.sulvblog.cn/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <description>golang微服务</description>
     </item>
     
     <item>
       <title>golang日志框架zap</title>
-      <link>http://example.org/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</link>
+      <link>https://www.sulvblog.cn/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>http://example.org/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</guid>
-      <description>golang日志框架zappackage main import ( &amp;#34;go.uber.org/zap&amp;#34; &amp;#34;go.uber.org/zap/zapcore&amp;#34; &amp;#34;os&amp;#34; ) var logger *zap.Logger var sugarLogger *zap.SugaredLogger func InitLogger() { writeSyncer := getLogWriter() encoder := getEncoder() core := zapcore.NewCore(encoder, writeSyncer, zapcore.DebugLevel) logger = zap.New(core) sugarLogger = logger.Sugar() } func getEncoder() zapcore.Encoder { encoderConfig := zap.NewProductionEncoderConfig() encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder encoderConfig.EncodeLevel = zapcore.CapitalLevelEncoder return zapcore.NewJSONEncoder(encoderConfig) } func getLogWriter() zapcore.WriteSyncer { file, _ := os.Create(&amp;#34;./test.log&amp;#34;) return zapcore.AddSync(file) } func main() { InitLogger() defer logger.Sync() defer sugarLogger.Sync() logger.</description>
+      <guid>https://www.sulvblog.cn/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</guid>
+      <description>golang日志框架zap</description>
     </item>
     
   </channel>

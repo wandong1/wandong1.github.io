@@ -1,280 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  
-  
-    
-  
-
-  <title>ES | 万东的技术博客</title>
-
-  
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ES"/>
-<meta name="twitter:description" content=""/>
-
-  <meta property="og:title" content="ES" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://example.org/tags/es/" />
-
-
-
-  <link rel="stylesheet" href="/css/bootstrap.min.css" crossorigin="anonymous">
-  
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
-    type="text/css">
-
-  
-  
-  <link rel="stylesheet" href="/sass/main.scss">
-
-  
-  <link rel="stylesheet" href="/zoomjs/zoom.min.css">
-
-  
-
-  <script src="/js/lazysizes.min.js"></script>
-
-  
-  
-
-  <link rel="alternate" type="application/rss+xml" href="/tags/es/index.xml" title="万东的技术博客" />
-  
-</head>
-
-
-
-<body ontouchstart="">
-
-  
-  
-  
-
-  
-
-  
-  
-
-
-
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top invert">
-  <div class="container-fluid">
-    
-    <div class="navbar-header page-scroll">
-      <button type="button" class="navbar-toggle">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="http://example.org/">万东的技术博客</a>
-    </div>
-    
-    <div id="huxblog_navbar">
-      <div class="navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          
-
-          <li class="search-icon">
-            <a href="javascript:void(0)">
-              <i class="fa fa-search"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
-  </div>
-  
-</nav>
-<script>
-  
-  
-  
-  var $body = document.body;
-  var $toggle = document.querySelector(".navbar-toggle");
-  var $navbar = document.querySelector("#huxblog_navbar");
-  var $collapse = document.querySelector(".navbar-collapse");
-
-  var __HuxNav__ = {
-    close: function () {
-      $navbar.className = " ";
-      
-      setTimeout(function () {
-        
-        if ($navbar.className.indexOf("in") < 0) {
-          $collapse.style.height = "0px";
-        }
-      }, 400);
-    },
-    open: function () {
-      $collapse.style.height = "auto";
-      $navbar.className += " in";
-    },
-  };
-
-  
-  $toggle.addEventListener("click", function (e) {
-    if ($navbar.className.indexOf("in") > 0) {
-      __HuxNav__.close();
-    } else {
-      __HuxNav__.open();
-    }
-  });
-
-  
-
-  document.addEventListener("click", function (e) {
-    if (e.target == $toggle) return;
-    if (e.target.className == "icon-bar") return;
-    __HuxNav__.close();
-  });
-</script>
-  
-<div class="search-page">
-  <div class="search-icon-close-container">
-    <span class="search-icon-close">
-      <i class="fa fa-chevron-down"></i>
-    </span>
-  </div>
-  <div class="search-main container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <form></form>
-        <input type="text" id="search-input" placeholder="$ grep...">
-        </form>
-        <div id="search-results" class="mini-post-list"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  
-  
-
-
-
-<header class="intro-header style-text">
-
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        
-        <div class="site-heading">
-        
-          <h1>ES</h1>
-          
-          
-          <span class="subheading"></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-
-  
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      
-      <div class="mini-post-list">
-        
-
-        <section class="">
-          <span class="fa listing-seperator">
-            <span class="tag-text">2021</span></span>
-            
-            <div class="post-preview item" data-tags="es">
-  <a href="/post/elasticsearch%E5%85%A5%E9%97%A8/">
-      <h2 class="post-title">离线安装docker</h2>
-      <h3 class="post-subtitle"></h3>
-  </a>
-<hr>
-</div>
-            
-            <div class="post-preview item" data-tags="es">
-  <a href="/post/elasticsearch/">
-      <h2 class="post-title">ElasticSearch快速入门实战</h2>
-      <h3 class="post-subtitle"></h3>
-  </a>
-<hr>
-</div>
-            
-        </section>
-        
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-
-  
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        
-        
-
-
-<ul class="list-inline text-center">
-
-  
-  
-  
-  
-  
-  
-  
-</ul>
-        <p class="copyright text-muted">
-          Copyright &copy; 万东的技术博客 2022
-          <br>
-          Powered by <a href="https://gohugo.io">Hugo</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js" crossorigin="anonymous"></script>
-
-
-
-<script src="/js/hux-blog.min.73a6a8d8df45293e042d15867416f603045bbeb98406731e5022d6c60388cd9d.js"></script>
-
-
-<script src="/js/simple-jekyll-search.min.js"></script>
-
-
-<script src="/js/search.min.53bce5da475b4d362500e5ce5dddfa22e20e1b9018777411d2020b4b839c9310.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script src="/zoomjs/zoom.min.js"></script>
-</body>
-
-</html>
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>ES | 万东的云计算运维博客</title><meta name=keywords content><meta name=description content="ExampleSite description"><meta name=author content="Me"><link rel=canonical href=https://www.sulvblog.cn/tags/es/><link crossorigin=anonymous href=/assets/css/stylesheet.min.77d563e104d7b39d673d4f21adf63da1ad0244dbcd78291ac2b44dc25b0066e1.css integrity="sha256-d9Vj4QTXs51nPU8hrfY9oa0CRNvNeCkawrRNwlsAZuE=" rel="preload stylesheet" as=style><link rel=icon href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=https://www.sulvblog.cn/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate type=application/rss+xml href=https://www.sulvblog.cn/tags/es/index.xml><noscript><style>#theme-toggle,.top-link{display:none}</style></noscript><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-123-45","auto"),ga("send","pageview"))</script><meta property="og:title" content="ES"><meta property="og:description" content="ExampleSite description"><meta property="og:type" content="website"><meta property="og:url" content="https://www.sulvblog.cn/tags/es/"><meta property="og:image" content="https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="og:site_name" content="ExampleSite"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="ES"><meta name=twitter:description content="ExampleSite description"></head><body class="list dark" id=top><script>localStorage.getItem("pref-theme")==="light"&&document.body.classList.remove("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://www.sulvblog.cn accesskey=h title="万东的云计算运维博客 (Alt + H)"><img src=https://www.sulvblog.cn/img-icon.png alt=logo aria-label=logo height=35>万东的云计算运维博客</a>
+<span class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></span></div><ul id=menu><li><a href=https://www.sulvblog.cn/categories/ title=分类><span>分类</span></a></li><li><a href=https://www.sulvblog.cn/tags/ title=标签><span>标签</span></a></li><li><a href=https://www.sulvblog.cn/archives/ title=归档><span>归档</span></a></li><li><a href=https://www.sulvblog.cn/search title=搜索><span>搜索</span></a></li></ul></nav></header><main class=main><header class=page-header><div class=breadcrumbs><a href=https://www.sulvblog.cn>Home</a>&nbsp;»&nbsp;<a href=https://www.sulvblog.cn/tags/>Tags</a></div><h1>ES</h1></header><article class="post-entry tag-entry"><header class=entry-header><h2>ElasticSearch快速入门实战</h2></header><section class=entry-content><p>ElasticSearch快速入门实战 主讲老师：Fox
+ES版本： v7.17.3
+ES环境搭建视频：https://pan.baidu.com/s/1PsTNbpDy–M-pvFWb3aehQ?pwd=nwxl
+​ 文档：1.ElasticSearch快速入门实战.note 链接：http://note.youdao.com/noteshare?id=d5d5718ae542f274ba0fda4284a53231&sub=68E590656C7A48858C7F6997D4A1511A
+全文检索 数据分类：
+结构化数据： 固定格式，有限长度 比如mysql存的数据 非结构化数据：不定长，无固定格式 比如邮件，word文档，日志 半结构化数据： 前两者结合 比如xml，html 搜索分类：
+结构化数据搜索： 使用关系型数据库
+非结构化数据搜索
+顺序扫描 全文检索 设想一个关于搜索的场景，假设我们要搜索一首诗句内容中带“前”字的古诗
+name content author 静夜思 床前明月光,疑是地上霜。举头望明月，低头思故乡。 李白 望庐山瀑布 日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺,疑是银河落九天。 李白 … … … 思考：用传统关系型数据库和ES 实现会有什么差别？
+如果用像 MySQL 这样的 RDBMS 来存储古诗的话，我们应该会去使用这样的 SQL 去查询
+​ select name from poems where content like “%前%”
+这种我们称为顺序扫描法，需要遍历所有的记录进行匹配。不但效率低，而且不符合我们搜索时的期望，比如我们在搜索“ABCD"这样的关键词时，通常还希望看到"A",“AB”,“CD”,“ABC”的搜索结果。
+什么是全文检索 全文检索是指：
+通过一个程序扫描文本中的每一个单词，针对单词建立索引，并保存该单词在文本中的位置、以及出现的次数 用户查询时，通过之前建立好的索引来查询，将索引中单词对应的文本位置、出现的次数返回给用户，因为有了具体文本的位置，所以就可以将具体内容读取出来了 ​ 搜索原理简单概括的话可以分为这么几步：
+内容爬取，停顿词过滤比如一些无用的像"的"，“了”之类的语气词/连接词 内容分词，提取关键词 根据关键词建立倒排索引 用户输入关键词进行搜索 倒排索引 索引就类似于目录，平时我们使用的都是索引，都是通过主键定位到某条数据，那么倒排索引呢，刚好相反，数据对应到主键。
+​ 这里以一个博客文章的内容为例:...</p></section><footer class=entry-footer><span title='2021-08-15 08:15:16 +0000 UTC'>August 15, 2021</span>&nbsp;·&nbsp;13 min&nbsp;·&nbsp;2684 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to ElasticSearch快速入门实战" href=https://www.sulvblog.cn/post/elasticsearch/></a></article><article class="post-entry tag-entry"><header class=entry-header><h2>离线安装docker</h2></header><section class=entry-content><p>ES版本： v7.17.3
+ES环境搭建视频：https://pan.baidu.com/s/1PsTNbpDy–M-pvFWb3aehQ?pwd=nwxl
+ElasticSearch快速入门实战 note 链接：http://note.youdao.com/noteshare?id=d5d5718ae542f274ba0fda4284a53231&sub=68E590656C7A48858C7F6997D4A1511A
+全文检索 数据分类：
+结构化数据： 固定格式，有限长度 比如mysql存的数据 非结构化数据：不定长，无固定格式 比如邮件，word文档，日志 半结构化数据： 前两者结合 比如xml，html 搜索分类：
+结构化数据搜索： 使用关系型数据库
+非结构化数据搜索
+顺序扫描 全文检索 设想一个关于搜索的场景，假设我们要搜索一首诗句内容中带“前”字的古诗
+name content author 静夜思 床前明月光,疑是地上霜。举头望明月，低头思故乡。 李白 望庐山瀑布 日照香炉生紫烟，遥看瀑布挂前川。飞流直下三千尺,疑是银河落九天。 李白 … … … 思考：用传统关系型数据库和ES 实现会有什么差别？
+如果用像 MySQL 这样的 RDBMS 来存储古诗的话，我们应该会去使用这样的 SQL 去查询
+​ select name from poems where content like “%前%”
+这种我们称为顺序扫描法，需要遍历所有的记录进行匹配。不但效率低，而且不符合我们搜索时的期望，比如我们在搜索“ABCD"这样的关键词时，通常还希望看到"A",“AB”,“CD”,“ABC”的搜索结果。
+什么是全文检索 全文检索是指：
+通过一个程序扫描文本中的每一个单词，针对单词建立索引，并保存该单词在文本中的位置、以及出现的次数 用户查询时，通过之前建立好的索引来查询，将索引中单词对应的文本位置、出现的次数返回给用户，因为有了具体文本的位置，所以就可以将具体内容读取出来了 ​ 搜索原理简单概括的话可以分为这么几步：
+内容爬取，停顿词过滤比如一些无用的像"的"，“了”之类的语气词/连接词 内容分词，提取关键词 根据关键词建立倒排索引 用户输入关键词进行搜索 倒排索引 索引就类似于目录，平时我们使用的都是索引，都是通过主键定位到某条数据，那么倒排索引呢，刚好相反，数据对应到主键。
+​ 这里以一个博客文章的内容为例:
+正排索引（正向索引）
+文章ID 文章标题 文章内容 1 浅析JAVA设计模式 JAVA设计模式是每一个JAVA程序员都应该掌握的进阶知识 2 JAVA多线程设计模式 JAVA多线程与设计模式结合 倒排索引（反向索引）...</p></section><footer class=entry-footer><span title='2021-08-15 08:15:16 +0000 UTC'>August 15, 2021</span>&nbsp;·&nbsp;14 min&nbsp;·&nbsp;2881 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to 离线安装docker" href=https://www.sulvblog.cn/post/elasticsearch%E5%85%A5%E9%97%A8/></a></article></main><footer class=footer><span>&copy; 2022 <a href=https://www.sulvblog.cn>万东的云计算运维博客</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

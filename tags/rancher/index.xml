@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>rancher on 万东的技术博客</title>
-    <link>http://example.org/tags/rancher/</link>
-    <description>Recent content in rancher on 万东的技术博客</description>
+    <title>rancher on 万东的云计算运维博客</title>
+    <link>https://www.sulvblog.cn/tags/rancher/</link>
+    <description>Recent content in rancher on 万东的云计算运维博客</description>
+    <image>
+      <url>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://www.sulvblog.cn/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://example.org/tags/rancher/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language><atom:link href="https://www.sulvblog.cn/tags/rancher/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>rancher的安装和使用</title>
-      <link>http://example.org/post/rancher/</link>
+      <link>https://www.sulvblog.cn/post/rancher/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/post/rancher/</guid>
-      <description>RancherRancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
-Rancher 四个组成部分Rancher 由以下四个部分组成：
+      <guid>https://www.sulvblog.cn/post/rancher/</guid>
+      <description>Rancher Rancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
+Rancher 四个组成部分 Rancher 由以下四个部分组成：
 1、基础设施编排
 Rancher 可以使用任何公有云或者私有云的 Linux 主机资源。Linux 主机可以是虚拟机，也可以是 物理机。
 2、容器编排与调度
