@@ -55,11 +55,45 @@ DevOps：这是个组合词，Dev+Ops，就是开发和运维合体，不像开�
 5.本地部署的传统应用通常人肉部署手工运维，而云原生应用这一切都是自动化的。
 6.本地部署的传统应用通常依赖系统环境，而云原生应用不会硬连接到任何系统环境，而是依赖抽象的基础架构，从而获得良好移植性。
 7.本地部署的传统应用有些是单体(巨石)应用，或者强依赖，而基于微服务架构的云原生应用，纵向划分服务，模块化更合理。
-可见，要转向云原生应用需要以新的云原生方法开展工作，云原生包括很多方面：基础架构服务、虚拟化、容器化、容器编排、微服务。幸运的是，开源社区在云原生应用方面做出了大量卓有成效的工作，很多开源的框架和设施可以通过拿来主义直接用，2013年Docker推出并很快成为容器事实标准，随后围绕容器编排的混战中，2017年诞生的k8s很快脱颖而出，而这些技术极大的降低了开发云原生应用的技术门槛。</p></section><footer class=entry-footer><span title='2021-08-15 08:15:16 +0000 UTC'>August 15, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;21 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to 随笔" href=https://wandong1.github.io/post/%E9%9A%8F%E7%AC%94/></a></article><article class=post-entry><header class=entry-header><h2>Hello World</h2></header><section class=entry-content><p>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start Create a new post $ hexo new "My New Post" More info: Writing
-Run server $ hexo server More info: Server
-Generate static files $ hexo generate More info: Generating
-Deploy to remote sites $ hexo deploy More info: Deployment</p></section><footer class=entry-footer>1 min&nbsp;·&nbsp;78 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to Hello World" href=https://wandong1.github.io/post/hello-world/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://wandong1.github.io/post/page/2/>« Prev Page</a></nav></footer></main><footer class=footer><span>&copy; 2022 <a href=https://wandong1.github.io>万东的云计算运维博客</a></span>
+可见，要转向云原生应用需要以新的云原生方法开展工作，云原生包括很多方面：基础架构服务、虚拟化、容器化、容器编排、微服务。幸运的是，开源社区在云原生应用方面做出了大量卓有成效的工作，很多开源的框架和设施可以通过拿来主义直接用，2013年Docker推出并很快成为容器事实标准，随后围绕容器编排的混战中，2017年诞生的k8s很快脱颖而出，而这些技术极大的降低了开发云原生应用的技术门槛。</p></section><footer class=entry-footer><span title='2021-08-15 08:15:16 +0000 UTC'>August 15, 2021</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;21 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to 随笔" href=https://wandong1.github.io/post/%E9%9A%8F%E7%AC%94/></a></article><article class=post-entry><header class=entry-header><h2></h2></header><section class=entry-content><p>基于Docker和Kubernetes的企业级DevOps实践训练营 课程准备 离线镜像包
+百度：https://pan.baidu.com/s/1N1AYGCYftYGn6L0QPMWIMw 提取码：ev2h
+天翼云：https://cloud.189.cn/t/ENjUbmRR7FNz
+CentOS7.4版本以上 虚拟机3台（4C+8G+50G），内网互通，可连外网
+课件文档
+《训练营课件》 《安装手册》 git仓库
+https://gitee.com/agagin/python-demo.git python demo项目
+https://gitee.com/agagin/demo-resources.git demo项目演示需要的资源文件
+关于本人 李永信
+2012-2017，云平台开发工程师，先后对接过Vmware、OpenStack、Docker平台
+2017-2019， 运维开发工程师，Docker+Kubernetes的Paas平台运维开发
+2019至今，DevOps工程师
+8年多的时间，积攒了一定的开发和运维经验，跟大家分享。
+课程安排 2020.4.11 Docker + kubernetes
+2020.4.18 DevOps平台实践
+2天的时间，节奏会相对快一些
+小调研：
+A : 只听过docker，几乎没有docker的使用经验 B：有一定的docker实践经验，不熟悉或者几乎没用过k8s C：对于docker和k8s都有一定的实践经验，想更多了解如何基于docker+k8s构建devops平台 D：其他 课程介绍 最近的三年多时间，关注容器圈的话应该会知道这么几个事情：
+容器技术持续火爆
+Kubernetes(k8s)成为容器编排管理的标准
+国内外厂商均已开始了全面拥抱Kubernetes的转型， 无数中小型企业已经落地 Kubernetes，或正走落地的道路上 。基于目前的发展趋势可以预见，未来几年以kubernetes平台为核心的容器运维管理、DevOps等将迎来全面的发展。
+本着实践为核心的思想，本课程使用企业常见的基于Django + uwsgi + Nginx架构的Python Demo项目，分别讲述三个事情：
+项目的容器化
+教大家如何把公司的项目做成容器，并且运行在docker环境中
+使用Kubernetes集群来管理容器化的项目
+带大家一步一步部署k8s集群，并把容器化后的demo项目使用k8s来管理起来
+使用Jenkins和Kubernetes集成，实现demo项目的持续集成/持续交付(CI/CD)
+会使用k8s管理应用生命周期后，还差最后的环节，就是如何把开发、测试、部署的流程使用自动化工具整合起来，最后一部分呢，课程会教会大家如何优雅的使用gitlab+Jenkins+k8s构建企业级的DevOps平台
+流程示意 你将学到哪些 Docker相关
+如何使用Dockerfile快速构建镜像 Docker镜像、容器、仓库的常用操作 Docker容器的网络（Bridge下的SNAT、DNAT） Kubernetes相关
+集群的快速搭建 kubernetes的架构及工作流程 使用Pod控制器管理业务应用的生命周期 使用CoreDNS、Service和Ingress实现服务发现、负载均衡及四层、七层网络的访问 Kubernetes的认证授权体系 使用EFK构建集群业务应用的日志收集系统...</p></section><footer class=entry-footer>38 min&nbsp;·&nbsp;8052 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to " href=https://wandong1.github.io/post/%E5%9F%BA%E4%BA%8Edocker%E5%92%8Ckubernetes%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7devops%E5%AE%9E%E8%B7%B5%E8%AE%AD%E7%BB%83%E8%90%A5/></a></article><article class=post-entry><header class=entry-header><h2>docker部署jenkins</h2></header><section class=entry-content><p>创建服务 docker volume create jenkins-data docker run -d --name jenkins -p 80:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home jenkins/jenkins 查看首次登录密钥 docker logs jenkins # 或者 cat /var/jenkins_home/secrets/initialAdminPassword 修改国内插件源 # 进入jenkins_home/updates目录 sed -i 's/http:\/\/updates.jenkins.ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g' default.json sed -i 's/http:\/\/www.google.com/https:\/\/www.baidu.com/g' default.json 管理Jenkins->系统配置–>管理插件–>分别搜索Git Parameter/Git/Pipeline/kubernetes/Config File Provider， 选中点击安装。
+• Git：拉取代码
+• Git Parameter：Git参数化构建
+• Pipeline：流水线
+• kubernetes：连接Kubernetes动态创建Slave代理
+• Config File Provider：存储配置文件
+• Extended Choice Parameter：扩展选择框参数，支持多选
+pipeline { agent any stages { stage('pull code') { steps { git credentialsId: 'fd53dd28-a24f-48ce-b6a3-edaefef0c61a', url: 'https://github....</p></section><footer class=entry-footer>1 min&nbsp;·&nbsp;89 words&nbsp;·&nbsp;Me</footer><a class=entry-link aria-label="post link to docker部署jenkins" href=https://wandong1.github.io/post/docker%E9%83%A8%E7%BD%B2jenkins/></a></article><footer class=page-footer><nav class=pagination><a class=prev href=https://wandong1.github.io/post/page/2/>« Prev Page</a>
+<a class=next href=https://wandong1.github.io/post/page/4/>Next Page »</a></nav></footer></main><footer class=footer><span>&copy; 2022 <a href=https://wandong1.github.io>万东的云计算运维博客</a></span>
 <span>Powered by
 <a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
         <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

@@ -20,5 +20,21 @@
       <description>离线安装docker</description>
     </item>
     
+    <item>
+      <title>docker部署jenkins</title>
+      <link>https://wandong1.github.io/post/docker%E9%83%A8%E7%BD%B2jenkins/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/docker%E9%83%A8%E7%BD%B2jenkins/</guid>
+      <description>创建服务 docker volume create jenkins-data docker run -d --name jenkins -p 80:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home jenkins/jenkins 查看首次登录密钥 docker logs jenkins # 或者 cat /var/jenkins_home/secrets/initialAdminPassword 修改国内插件源 # 进入jenkins_home/updates目录 sed -i &amp;#39;s/http:\/\/updates.jenkins.ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&amp;#39; default.json sed -i &amp;#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&amp;#39; default.json 管理Jenkins-&amp;gt;系统配置&amp;ndash;&amp;gt;管理插件&amp;ndash;&amp;gt;分别搜索Git Parameter/Git/Pipeline/kubernetes/Config File Provider， 选中点击安装。
+• Git：拉取代码
+• Git Parameter：Git参数化构建
+• Pipeline：流水线
+• kubernetes：连接Kubernetes动态创建Slave代理
+• Config File Provider：存储配置文件
+• Extended Choice Parameter：扩展选择框参数，支持多选
+pipeline { agent any stages { stage(&amp;#39;pull code&amp;#39;) { steps { git credentialsId: &amp;#39;fd53dd28-a24f-48ce-b6a3-edaefef0c61a&amp;#39;, url: &amp;#39;https://github.</description>
+    </item>
+    
   </channel>
 </rss>

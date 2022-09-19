@@ -50,5 +50,15 @@ systemLog: destination: file path: /data/db2/mongod.log logAppend: true storage:
 (1)LUA脚本：在事务的基础上，假如，需要在服务端一次性的执行更复杂的操作，那么，这个时候lua就可以上场了。</description>
     </item>
     
+    <item>
+      <title>redis抓包分析</title>
+      <link>https://wandong1.github.io/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</guid>
+      <description>tcpdump -i bond0 tcp and port 3029 and host 10.42.23.141 -n -nn -vvv -w redis2.cap data and tcp.dstport == 3034
+import dpkt import socket from openpyxl import Workbook def analysis_of_redis_cap(cap_file,redis_port): wb = Workbook() ws = wb.active table_hed = [&amp;#39;源地址&amp;#39;,&amp;#39;目的地址&amp;#39;,&amp;#39;redis请求命令&amp;#39;] ws.append(table_hed) with open(cap_file,&amp;#39;rb&amp;#39;) as f: string_data = dpkt.pcap.Reader(f) for ts, buf in string_data: eth = dpkt.ethernet.Ethernet(buf) ip = eth.data tcp = ip.data # print(tcp.dport) if tcp.dport == int(redis_port): try: data_pre = tcp.</description>
+    </item>
+    
   </channel>
 </rss>

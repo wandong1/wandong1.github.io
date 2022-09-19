@@ -64,5 +64,20 @@ NFS服务端安装 # 安装nfs服务端 yum install nfs-utils -y vim /etc/export
 yum install nfs-utils -y storageClass插件安装 # 添加helm仓库地址 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/ # 安装第一个 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata \ --set image.repository=eipwork/nfs-subdir-external-provisioner # 安装第二个(可选) helm install second-nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata2 \ --set image.</description>
     </item>
     
+    <item>
+      <title>企业级镜像仓库harbor</title>
+      <link>https://wandong1.github.io/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</guid>
+      <description>概述 Harbor是由VMWare公司开源的容器镜像仓库。事实上，Harbor是在Docker Registry上进行了相应的企业级扩展，从而获得了更加广泛的应用，这些新的企业级特性包括：管理用户界面，基于角色的访问控制，AD/LDAP集成以及审计日志等，足以满足基本企业需求。 官方：https://goharbor.io/ Github：https://github.com/goharbor/harbor
+部署先决条件 服务器硬件配置： •最低要求：CPU2核/内存4G/硬盘40GB •推荐：CPU4核/内存8G/硬盘160GB 软件： •Docker CE 17.06版本+ •Docker Compose1.18版本+ Harbor安装有2种方式： •在线安装：从Docker Hub下载Harbor相关镜像，因此安装软件包非常小 •离线安装：安装包包含部署的相关镜像，因此安装包比较大
+Harbor部署HTTP 1、先安装Docker和Docker Compose https://github.com/docker/compose/releases
+mv docker-compose-Linux-x86_64 /usr/bin/docker-compose &amp;amp;&amp;amp; chmod +x /usr/bin/docker-compose 2、部署Harbor HTTP https://github.com/goharbor/harbor/releases
+tar zxvf harbor-offline-installer-v2.0.0.tgz cd harbor cp harbor.yml.tmpl harbor.yml vi harbor.yml hostname: reg.myharbor.com https: # 先注释https相关配置 harbor_admin_password: Harbor12345 ./prepare ./install.sh # 查看已安装的依赖容器 docker-compose ps # 重启docker-compose docker-compose down docker-compose up -d web界面登录：IP：80端口访问， 用户名 admin/Harbor12345
+http部署方式基本使用 1、配置http镜像仓库可信任
+vi /etc/docker/daemon.json {&amp;#34;insecure-registries&amp;#34;:[&amp;#34;reg.</description>
+    </item>
+    
   </channel>
 </rss>
