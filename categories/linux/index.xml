@@ -42,5 +42,73 @@ worker_rlimit_nofile 65535; 三、使用epoll的I/O模型，用这个模型来�
 wget -O /etc/yum.repos.d/epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo wget -O /etc/yum.repos.d/Centos-7.repo http://mirrors.aliyun.com/repo/Centos-7.repo wget -O /etc/yum.repos.d/CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo </description>
     </item>
     
+    <item>
+      <title>expect实现免交互登录</title>
+      <link>https://wandong1.github.io/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</guid>
+      <description>expect 安装 yum install -y expect 免交互切root用户 #!/usr/bin/expect set passwd &amp;#34;123456&amp;#34; set timeout 10 spawn su - expect { &amp;#34;Password:&amp;#34; { send &amp;#34;$passwd\r&amp;#34; } } interact 免交互ssh登录节点 #!/usr/bin/expect set timeout 10 set passwd &amp;#34;123456&amp;#34; spawn ssh wanye@172.17.0.17 -p 22 expect { &amp;#34;yes/no&amp;#34; { send &amp;#34;yes\r&amp;#34;;exp_continue } &amp;#34;password:&amp;#34; { send &amp;#34;$passwd\r&amp;#34; } } interact </description>
+    </item>
+    
+    <item>
+      <title>linux系统根分区扩容</title>
+      <link>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</guid>
+      <description>扩容硬盘后进行如下操作。
+fdisk /dev/vda1 确认只有一个vda1分区的情况下，按d删除分区，然后按n重新创建vda1分区，指定更大范围的sectors,且覆盖原有的sectors。 重启机器，后 resize2fs /dev/vda1
+https://help.aliyun.com/document_detail/113316.html</description>
+    </item>
+    
+    <item>
+      <title>linux系统负载高排查</title>
+      <link>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</guid>
+      <description>uptime 查看负载高 uptime uptime 命令用于查看服务器运行了多长时间以及有多少个用户登录，快速获知服务器的负荷情况。
+uptime 的输出包含一项内容是 load average，显示了最近 1，5，15 分钟的负荷情况。它的值代表等待CPU 处理的进程数，如果 CPU 没有时间处理这些进程，load average 值会升高；反之则会降低。load average的最佳值是 1，说明每个进程都可以马上处理并且没有CPU cycles 被丢失。对于单 CPU 的机器，1 或者2 是可以接受的值；对于多路 CPU 的机器，load average 值可能在 8 到 10 之间。也可以使用 uptime 命令来判断网络性能。例如，某个网络应用性能很低，通过运行uptime 查看服务器的负荷是否很高，如果不是，那么问题应该是网络方面造成的。
+以下是 uptime 的运行实例： 9:24am up 19:06, 1 user, load average: 0.00, 0.00, 0.00 也可以查看/proc/loadavg 和/proc/uptime 两个文件，注意不能编辑/proc 中的文件，要用 cat 等命令来查看，如：
+cat /proc/loadavg 0.0 0.00 0.00 1/55 5505 uptime 命令用法十分简单：直接输入
+uptime 例： 18:02:41 up 41 days, 23:42,	1 user,	load average: 0.</description>
+    </item>
+    
+    <item>
+      <title>lvm逻辑卷管理</title>
+      <link>https://wandong1.github.io/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</guid>
+      <description>LVM的工作原理 LVM（ Logical Volume Manager）逻辑卷管理，是在磁盘分区和文件系统之间添加的一个逻辑层，来为文件系统屏蔽下层磁盘分区布局，提供一个抽象的盘卷，在盘卷上建立文件系统。管理员利用LVM可以在磁盘不用重新分区的情况下动态调整文件系统的大小，并且利用LVM管理的文件系统可以跨越磁盘，当服务器添加了新的磁盘后，管理员不必将原有的文件移动到新的磁盘上，而是通过LVM可以直接扩展文件系统跨越磁盘
+它就是通过将底层的物理硬盘封装起来，然后以逻辑卷的方式呈现给上层应用。在LVM中，其通过对底层的硬盘进行封装，当我们对底层的物理硬盘进行操作时，其不再是针对于分区进行操作，而是通过一个叫做逻辑卷的东西来对其进行底层的磁盘管理操作。
+LVM常用的术语 物理存储介质（The physical media）:LVM存储介质可以是磁盘分区，整个磁盘，RAID阵列或SAN磁盘，设备必须初始化为LVM物理卷，才能与LVM结合使用
+物理卷PV（physical volume） ：物理卷就是LVM的基本存储逻辑块，但和基本的物理存储介质（如分区、磁盘等）比较，却包含有与LVM相关的管理参数,创建物理卷它可以用硬盘分区，也可以用硬盘本身；
+卷组VG（Volume Group） ：一个LVM卷组由一个或多个物理卷组成 
+逻辑卷LV（logical volume） ：LV建立在VG之上，可以在LV之上建立文件系统
+PE（physical extents） ：PV物理卷中可以分配的最小存储单元，PE的大小是可以指定的，默认为4MB
+LE（logical extent） ： LV逻辑卷****中可以分配的最小存储单元，在同一个卷组中，LE的大小和PE是相同的，并且一一对应
+最小存储单位总结：
+名称 最小存储单位
+硬盘 扇区（512字节）
+文件系统 block（1K或4K ）# mkfs.ext4 -b 2048 /dev/sdb1 ，最大支持到4096
+raid chunk （512K） #mdadm -C -v /dev/md5 -l 5 -n 3 -c 512 -x 1 /dev/sde{1,2,3,5}
+LVM PE （4M） # vgcreate -s 4M vg1 /dev/sdb{1,2}
+LVM主要元素构成： 总结：多个磁盘/分区/raid-》多个物理卷PV-》合成卷组VG-》从VG划出逻辑卷LV-》格式化LV挂载使用
+LVM优点 使用卷组，使多个硬盘空间看起来像是一个大的硬盘
+使用逻辑卷，可以跨多个硬盘空间的分区 sdb1 sdb2 sdc1 sdd2 sdf</description>
+    </item>
+    
+    <item>
+      <title>tsar安装和使用</title>
+      <link>https://wandong1.github.io/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
+      <description>从github上检出代码从github上检出代码 $ git clone git://github.com/alibaba/tsar.git $ cd tsar $ make $ make install 从github上下载源码 $ wget -O tsar.zip https://github.com/alibaba/tsar/archive/master.zip --no-check-certificate $ unzip tsar.zip $ cd tsar $ make $ make install 安装后生成的文件 Tsar配置文件路径：/etc/tsar/tsar.conf，tsar的采集模块和输出的具体配置； 定时任务配置:/etc/cron.d/tsar，负责每分钟调用tsar执行采集任务； 日志文件轮转配置:/etc/logrotate.d/tsar，每个月会把tsar的本地存储进行轮转； 模块路径：/usr/local/tsar/modules，各个模块的动态库so文件；
+详细参考：https://www.cnblogs.com/zafu/p/11782988.html</description>
+    </item>
+    
   </channel>
 </rss>

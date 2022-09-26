@@ -21,6 +21,17 @@
     </item>
     
     <item>
+      <title>docker入门至进阶</title>
+      <link>https://wandong1.github.io/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</guid>
+      <description>一、Docker是什么 使用最广泛的开源容器引擎 一种操作系统级的虚拟化技术 依赖于Linux内核特性：Namespace（资源隔离）和Cgroups（资源限制） 一个简单的应用程序打包工具 docker的安装docker的安装 安装依赖包 mkdir /etc/yum.repos.d/back mv /etc/yum.repos.d/* /etc/yum.repos.d/back wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo yum install -y yum-utils 添加Docker软件包源 yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo 安装Docker CE yum install -y docker-ce 启动Docker服务并设置开机启动 systemctl start docker systemctl enable docker https://docs.docker.com/engine/install/centos/ 官方文档：https://docs.docker.com 阿里云源：http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+二、镜像是什么？ 一个分层存储的文件，不是一个单一的文件 一个软件的环境 一个镜像可以创建N个容器 一种标准化的交付 一个不包含Linux内核而又精简的Linux操作系统 镜像从哪里来 Docker Hub是由Docker公司负责维护的公共镜像仓库，包含大量的容器镜像，Docker工具默认从这个公共镜像库下载镜像。 地址：https://hub.docker.com 配置镜像加速器：
+vi /etc/docker/daemon.json { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://b9pmyelo.mirror.aliyuncs.com&amp;#34;] } 镜像相关命令 镜像加速器获取地址： 阿里云&amp;gt;控制台&amp;gt;容器镜像服务&amp;gt;镜像工具&amp;gt;镜像加速器 https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors docker image docker export 9a495b209d08 -o tomcat.tar</description>
+    </item>
+    
+    <item>
       <title>docker部署jenkins</title>
       <link>https://wandong1.github.io/post/docker%E9%83%A8%E7%BD%B2jenkins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -34,6 +45,18 @@
 • Config File Provider：存储配置文件
 • Extended Choice Parameter：扩展选择框参数，支持多选
 pipeline { agent any stages { stage(&amp;#39;pull code&amp;#39;) { steps { git credentialsId: &amp;#39;fd53dd28-a24f-48ce-b6a3-edaefef0c61a&amp;#39;, url: &amp;#39;https://github.</description>
+    </item>
+    
+    <item>
+      <title>docker镜像制作</title>
+      <link>https://wandong1.github.io/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</guid>
+      <description>六、Dockerfile定制容器镜像 Dockerfile常用指令 docker build构建镜像 Usage: docker build [OPTIONS] PATH | URL | -[flags]Options: -t, &amp;ndash;tag list # 镜像名称 -f, &amp;ndash;file string # 指定Dockerfile文件位置
+docker build -t shykes/myapp . docker build -t shykes/myapp -f /path/Dockerfile /path docker build -t shykes/myapp http://www.example.com/Dockerfile CMD与ENTRYPOINT区别 CMD用法： •CMD [“executable”,“param1”,“param2”] ：exec形式（首选） •CMD [“param1”,“param2”] ：作为ENTRYPOINT的默认参数 •CMD command param1 param2 ：Shell形式 ENTRYPOINT用法： •ENTRYPOINT [&amp;ldquo;executable&amp;rdquo;, &amp;ldquo;param1&amp;rdquo;, &amp;ldquo;param2&amp;rdquo;] •ENTRYPOINT command param1 param2
+小结： 1.CMD和ENTRYPOINT指令都可以用来定义运行容器时所使用的默认命令 2.Dockerfile至少指定一个CMD或ENTRYPOINT 3.CMD可以用作ENTRYPOINT默认参数，或者用作容器的默认命令 4.docker run指定时，将会覆盖CMD 5.如果是可执行文件，希望运行时传参，应该使用ENTRYPOINT
+构建镜像例子 构建tomcat镜像，需要apache-tomcat-8.</description>
     </item>
     
   </channel>

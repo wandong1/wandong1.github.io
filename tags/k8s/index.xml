@@ -100,5 +100,55 @@ NFS服务端安装 # 安装nfs服务端 yum install nfs-utils -y vim /etc/export
 yum install nfs-utils -y storageClass插件安装 # 添加helm仓库地址 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/ # 安装第一个 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata \ --set image.repository=eipwork/nfs-subdir-external-provisioner # 安装第二个(可选) helm install second-nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata2 \ --set image.</description>
     </item>
     
+    <item>
+      <title>k8s集群负载均衡keepalived&#43;nginx实现</title>
+      <link>https://wandong1.github.io/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</guid>
+      <description>使用keepalived实现vip的动态飘逸 keepalived.conf 主
+! Configuration File for keepalived global_defs { notification_email { acassen@firewall.loc failover@firewall.loc sysadmin@firewall.loc } notification_email_from Alexandre.Cassen@firewall.loc smtp_server 192.168.200.1 smtp_connect_timeout 30 router_id LVS_DEVEL vrrp_skip_check_adv_addr vrrp_garp_interval 0 vrrp_gna_interval 0 } vrrp_script check_nginx { script &amp;#34;/etc/keepalived/check_nginx.sh&amp;#34; } vrrp_instance VI_1{ state MASTER interface ens34 virtual_router_id 51 priority 100 advert_int 1 authentication { auth_tpye PASS auth_pass 1111 } virtual_ipaddress { 192.168.200.59/24 } track_script { check_nginx } } keepalived.conf 备
+! Configuration File for keepalived global_defs { notification_email { acassen@firewall.</description>
+    </item>
+    
+    <item>
+      <title>kubeadm安装K8S集群</title>
+      <link>https://wandong1.github.io/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</guid>
+      <description>kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。
+这个工具能通过两条指令完成一个kubernetes集群的部署：
+# 创建一个 Master 节点$ kubeadm init# 将一个 Node 节点加入到当前集群中$ kubeadm join &amp;lt;Master节点的IP和端口 &amp;gt; 1. 安装要求 在开始之前，部署Kubernetes集群机器需要满足以下几个条件：
+一台或多台机器，操作系统 CentOS7.x-86_x64 硬件配置：2GB或更多RAM，2个CPU或更多CPU，硬盘30GB或更多 集群中所有机器之间网络互通 可以访问外网，需要拉取镜像 禁止swap分区 2. 准备环境 角色 IP k8s-master 192.168.31.61 k8s-node1 192.168.31.62 k8s-node2 192.168.31.63 关闭防火墙：$ systemctl stop firewalld$ systemctl disable firewalld关闭selinux：$ sed -i &amp;#39;s/enforcing/disabled/&amp;#39; /etc/selinux/config # 永久$ setenforce 0 # 临时关闭swap：$ swapoff -a # 临时$ vim /etc/fstab # 永久设置主机名：$ hostnamectl set-hostname &amp;lt;hostname&amp;gt;在master添加hosts：$ cat &amp;gt;&amp;gt; /etc/hosts &amp;lt;&amp;lt; EOF192.</description>
+    </item>
+    
+    <item>
+      <title>kubectl命令补全</title>
+      <link>https://wandong1.github.io/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</guid>
+      <description>一、kubectl命令补全 yum install -y bash-completion #临时生效
+source /usr/share/bash-completion/bash_completion #永久生效
+source &amp;lt;(kubectl completion bash) echo &amp;#34;source &amp;lt;(kubectl completion bash)&amp;#34; &amp;gt;&amp;gt; ~/.bashrc </description>
+    </item>
+    
+    <item>
+      <title>kubectl管理命令概要</title>
+      <link>https://wandong1.github.io/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</guid>
+      <description>kubectl管理命令概要 配置命令补全： http://123.207.224.155:8080/post/60
+体验 使用Deployment控制器部署镜像：
+kubectl create deployment web --image=lizhenliang/java-demo kubectl get deploy,pods 使用Service将Pod暴露出去：
+kubectl expose deployment web --port=80 --target-port=8080 --type=NodePort kubectl get service 访问应用： http://NodeIP:Port # 端口随机生成，通过get svc获取
+查看资源并显示标签
+kubectl get pods --show-labels 根据查看带有指定标签名字的资源
+kubectl get pod -l app=web https://kubernetes.io/docs 官方资料查询
+YAML字段记忆技巧 用create命令生成 kubectl create deployment nginx --image=nginx:1.16 -o yaml --dry-run=client &amp;gt; my-deploy.yaml 用get命令导出 kubectl get deploymentnginx-o yaml &amp;gt; my-deploy.yaml Pod容器的字段拼写忘记了 kubectl explain pods.spec.containers kubectl explain deployment </description>
+    </item>
+    
   </channel>
 </rss>
