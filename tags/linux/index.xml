@@ -80,6 +80,15 @@ LVM优点 使用卷组，使多个硬盘空间看起来像是一个大的硬盘
     </item>
     
     <item>
+      <title>nginx常见代理配置</title>
+      <link>https://wandong1.github.io/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wandong1.github.io/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</guid>
+      <description>user nginx; worker_processes auto; error_log /var/log/nginx/error.log notice; pid /var/run/nginx.pid; events { worker_connections 1024; } stream { log_format main &amp;#39;$remote_addr $upstream_addr - [$time_local] $status $upstream_bytes_sent&amp;#39;; access_log /var/log/nginx/dingding-access.log main; upstream dingding { server oapi.dingtalk.com:80; } upstream dingding_v2 { server oapi.dingtalk.com:443; } upstream apsoar { server soar.apsoar.com:22; } upstream mq_wdtest { server MQ_INST_1436183562454837_Bei5tXCs.cn-chongqing-cqzwy-d01.mq.namesrv.alinetcloud.cqzwy.com:9876; } upstream timor { server timor.tech:443; } upstream timor80 { server timor.tech:80; } server { listen 22; proxy_pass apsoar; } server { listen 7003; proxy_pass timor80; } server { listen 80; proxy_pass dingding; } server { listen 443; proxy_pass dingding_v2; } server { listen 9876; proxy_pass mq_wdtest; } } http { include /etc/nginx/mime.</description>
+    </item>
+    
+    <item>
       <title>nginx限流熔断</title>
       <link>https://wandong1.github.io/post/nginx%E9%99%90%E6%B5%81%E7%86%94%E6%96%AD/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
