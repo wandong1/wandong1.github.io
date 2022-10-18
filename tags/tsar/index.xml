@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>tsar on 万东的云计算运维博客</title>
-    <link>https://wandong1.github.io/tags/tsar/</link>
+    <link>https://wandong.notewan.com/tags/tsar/</link>
     <description>Recent content in tsar on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language><atom:link href="https://wandong1.github.io/tags/tsar/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language><atom:link href="https://wandong.notewan.com/tags/tsar/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>tsar安装和使用</title>
-      <link>https://wandong1.github.io/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
+      <link>https://wandong.notewan.com/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://wandong.notewan.com/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
       <description>从github上检出代码从github上检出代码 $ git clone git://github.com/alibaba/tsar.git $ cd tsar $ make $ make install 从github上下载源码 $ wget -O tsar.zip https://github.com/alibaba/tsar/archive/master.zip --no-check-certificate $ unzip tsar.zip $ cd tsar $ make $ make install 安装后生成的文件 Tsar配置文件路径：/etc/tsar/tsar.conf，tsar的采集模块和输出的具体配置； 定时任务配置:/etc/cron.d/tsar，负责每分钟调用tsar执行采集任务； 日志文件轮转配置:/etc/logrotate.d/tsar，每个月会把tsar的本地存储进行轮转； 模块路径：/usr/local/tsar/modules，各个模块的动态库so文件；
 详细参考：https://www.cnblogs.com/zafu/p/11782988.html</description>
     </item>

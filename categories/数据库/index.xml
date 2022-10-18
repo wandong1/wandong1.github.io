@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>数据库 on 万东的云计算运维博客</title>
-    <link>https://wandong1.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
+    <link>https://wandong.notewan.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
     <description>Recent content in 数据库 on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>mongodb的安装部署</title>
-      <link>https://wandong1.github.io/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
+      <link>https://wandong.notewan.com/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://wandong.notewan.com/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
       <description>软件包下载 https://www.mongodb.com/try/download/community wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-5.0.8.tgz mongodb模式介绍 三节点复制集模式 常见的复制集架构由3个成员节点组成，其中存在几种不同的模式。 PSS模式（官方推荐模式） PSS模式由一个主节点和两个备节点所组成，即Primary+Secondary+Secondary。 此模式始终提供数据集的两个完整副本，如果主节点不可用，则复制集选择备节点作为主节 点并继续正常操作。旧的主节点在可用时重新加入复制集。 复制集部署注意事项 关于硬件: 因为正常的复制集节点都有可能成为主节点，它们的地位是一样的，因此硬件配 置上必须一致; 为了保证节点不会同时宕机，各节点使用的硬件必须具有独立性。
 关于软件: 复制集各节点软件版本必须一致，以避免出现不可预知的问题。 增加节点不会增加系统写性能；
 准备配置文件 复制集的每个mongod进程应该位于不同的服务器。我们现在在一台机器上运行3个进程， 因此要为它们各自配置：
@@ -29,19 +29,19 @@ systemLog: destination: file path: /data/db2/mongod.log logAppend: true storage:
     
     <item>
       <title>navicat15部署</title>
-      <link>https://wandong1.github.io/post/navicat15%E9%83%A8%E7%BD%B2/</link>
+      <link>https://wandong.notewan.com/post/navicat15%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/navicat15%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://wandong.notewan.com/post/navicat15%E9%83%A8%E7%BD%B2/</guid>
       <description>参考地址：https://www.bilibili.com/read/cv15128680</description>
     </item>
     
     <item>
       <title>redis的常见问题</title>
-      <link>https://wandong1.github.io/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <link>https://wandong.notewan.com/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://wandong.notewan.com/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>1、缓存击穿，某些场景下，大量的key同时失效，请求直接穿过redis缓存层打到数据库上。 解决方法：对key的失效时间设置随机值避免同时失效。
 2、缓存穿透，请求进来请求本就不存在的数据，redis层找不到数据库也找不到，每个这种请求都会打到数据库造成压力。 解决方法：对请求的后端数据库不存在的数据，设置空缓存，避免恶意请求对后端数据库造成压力。
 3、雪崩，指流量进来打到redis，redis由于某些原因扛不住，流量又会打到数据库，数据库很显然更抗不住。造成系统雪崩。 解决方法：redis采用高可用的集群架构，针对某些bigkey进行打散操作。
@@ -52,10 +52,10 @@ systemLog: destination: file path: /data/db2/mongod.log logAppend: true storage:
     
     <item>
       <title>Explain详解与索引最佳实践</title>
-      <link>https://wandong1.github.io/post/explain%E8%AF%A6%E8%A7%A3%E4%B8%8E%E7%B4%A2%E5%BC%95%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
+      <link>https://wandong.notewan.com/post/explain%E8%AF%A6%E8%A7%A3%E4%B8%8E%E7%B4%A2%E5%BC%95%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/explain%E8%AF%A6%E8%A7%A3%E4%B8%8E%E7%B4%A2%E5%BC%95%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
+      <guid>https://wandong.notewan.com/post/explain%E8%AF%A6%E8%A7%A3%E4%B8%8E%E7%B4%A2%E5%BC%95%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
       <description>Explain工具介绍 使用EXPLAIN关键字可以模拟优化器执行SQL语句，分析你的查询语句或是结构的性能瓶颈
 在 select 语句之前增加 explain 关键字，MySQL 会在查询上设置一个标记，执行查询会返回执行计划的信息，而不是执行这条SQL
 注意：如果 from 中包含子查询，仍会执行该子查询，将结果放入临时表中
@@ -65,10 +65,10 @@ Explain分析示例 参考官方文档：https://dev.mysql.com/doc/refman/5.7/en
     
     <item>
       <title>mysql安装文档</title>
-      <link>https://wandong1.github.io/post/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</link>
+      <link>https://wandong.notewan.com/post/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</guid>
+      <guid>https://wandong.notewan.com/post/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</guid>
       <description>mysql5.7的安装与配置(centos7环境) 第一步：下载mysql
 wget http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz 第二步：解压文件
 tar -zxvf mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz -C /usr/local/ mv mysql-5.7.17-linux-glibc2.5-x86_64/ mysql 第三步：配置启动文件 然后去到mysql的support-files目录下,复制my.cnf到 /etc/my.cnf(mysqld启动时自动读取)
@@ -83,20 +83,20 @@ cd /usr/local/mysql/bin/ ./mysqld --initialize --user=mysql --basedir=/usr/local
     
     <item>
       <title>redis抓包分析</title>
-      <link>https://wandong1.github.io/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</link>
+      <link>https://wandong.notewan.com/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</guid>
+      <guid>https://wandong.notewan.com/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</guid>
       <description>tcpdump -i bond0 tcp and port 3029 and host 10.42.23.141 -n -nn -vvv -w redis2.cap data and tcp.dstport == 3034
 import dpkt import socket from openpyxl import Workbook def analysis_of_redis_cap(cap_file,redis_port): wb = Workbook() ws = wb.active table_hed = [&amp;#39;源地址&amp;#39;,&amp;#39;目的地址&amp;#39;,&amp;#39;redis请求命令&amp;#39;] ws.append(table_hed) with open(cap_file,&amp;#39;rb&amp;#39;) as f: string_data = dpkt.pcap.Reader(f) for ts, buf in string_data: eth = dpkt.ethernet.Ethernet(buf) ip = eth.data tcp = ip.data # print(tcp.dport) if tcp.dport == int(redis_port): try: data_pre = tcp.</description>
     </item>
     
     <item>
       <title>深入理解Mysql索引底层数据结构与算法</title>
-      <link>https://wandong1.github.io/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3mysql%E7%B4%A2%E5%BC%95%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
+      <link>https://wandong.notewan.com/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3mysql%E7%B4%A2%E5%BC%95%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3mysql%E7%B4%A2%E5%BC%95%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://wandong.notewan.com/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3mysql%E7%B4%A2%E5%BC%95%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</guid>
       <description>索引的本质 索引是帮助MySQL高效获取数据的排好序的数据结构
 索引数据结构 •二叉树
 •红黑树

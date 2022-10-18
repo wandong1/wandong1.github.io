@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>python on 万东的云计算运维博客</title>
-    <link>https://wandong1.github.io/tags/python/</link>
+    <link>https://wandong.notewan.com/tags/python/</link>
     <description>Recent content in python on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language><atom:link href="https://wandong1.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language><atom:link href="https://wandong.notewan.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>钉钉群机器人推送脚本</title>
-      <link>https://wandong1.github.io/post/%E9%92%89%E9%92%89%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A8%E9%80%81%E8%84%9A%E6%9C%AC/</link>
+      <link>https://wandong.notewan.com/post/%E9%92%89%E9%92%89%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A8%E9%80%81%E8%84%9A%E6%9C%AC/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/%E9%92%89%E9%92%89%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A8%E9%80%81%E8%84%9A%E6%9C%AC/</guid>
+      <guid>https://wandong.notewan.com/post/%E9%92%89%E9%92%89%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A8%E9%80%81%E8%84%9A%E6%9C%AC/</guid>
       <description>import requests import json import os, sys class PushMessage: def __init__(self): # self.test_ip_lst = [&amp;#39;114.114.114.114&amp;#39;,&amp;#39;223.5.5.5&amp;#39;] self.test_ip_lst = [&amp;#34;23.134.37.253&amp;#34;,&amp;#34;59.214.26.21&amp;#34;,&amp;#34;23.137.37.1&amp;#34;] self.alarm_info = &amp;#39;电子政务外网地址探测:\n&amp;#39; self.is_atall = &amp;#39;false&amp;#39; self.dingding_url = &amp;#34;https://oapi.dingtalk.com/robot/send?access_token=1c1&amp;#34; self.push = False def dingding_qun(self): headers = { &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json;charset=utf-8&amp;#39; } url = &amp;#34;&amp;#34;&amp;#34;{}&amp;#34;&amp;#34;&amp;#34;.format(self.dingding_url) # data_markdown = { # &amp;#34;msgtype&amp;#34;: &amp;#34;markdown&amp;#34;, # &amp;#34;markdown&amp;#34;: { # &amp;#34;title&amp;#34;:&amp;#34;杭州天气&amp;#34;, # &amp;#34;text&amp;#34;: &amp;#34;#### 杭州天气 @18182294500 \n&amp;gt; 9度，西北风1级，空气良89，相对温度73%\n&amp;gt; ![screenshot](https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png)\n&amp;gt; ###### 10点20分发布 [天气](https://www.dingalk.com) \n&amp;#34; # }, # &amp;#34;at&amp;#34;: { # &amp;#34;atMobiles&amp;#34;: [ # &amp;#34;18500&amp;#34; # ], # &amp;#34;atUserIds&amp;#34;: [ # &amp;#34;user123&amp;#34; # ], # &amp;#34;isAtAll&amp;#34;: &amp;#34;false&amp;#34; # } # } data_text = { &amp;#34;at&amp;#34;: { &amp;#34;atMobiles&amp;#34;: [ &amp;#34;&amp;#34; ], &amp;#34;atUserIds&amp;#34;: [ &amp;#34;user123&amp;#34; ], &amp;#34;isAtAll&amp;#34;: &amp;#34;{}&amp;#34;.</description>
     </item>
     

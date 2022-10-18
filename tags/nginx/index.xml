@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>nginx on 万东的云计算运维博客</title>
-    <link>https://wandong1.github.io/tags/nginx/</link>
+    <link>https://wandong.notewan.com/tags/nginx/</link>
     <description>Recent content in nginx on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>nginx的四层转发和七层转发配置示例</title>
-      <link>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</link>
+      <link>https://wandong.notewan.com/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</guid>
+      <guid>https://wandong.notewan.com/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</guid>
       <description>user nginx; worker_processes auto; error_log /var/log/nginx/error.log notice; pid /var/run/nginx.pid; events { worker_connections 1024; } # 4层 stream配置 stream { log_format main &amp;#39;$remote_addr $upstream_addr - [$time_local] $status $upstream_bytes_sent&amp;#39;; access_log /var/log/nginx/dingding-access.log main; upstream dingding { server oapi.dingtalk.com:80; } upstream dingding_v2 { server oapi.dingtalk.com:443; } upstream apsoar { server soar.apsoar.com:22; } upstream timor { server timor.tech:443; } upstream timor80 { server timor.tech:80; } server { listen 22; proxy_pass apsoar; } server { listen 7003; proxy_pass timor80; } server { listen 80; proxy_pass dingding; } server { listen 443; proxy_pass dingding_v2; } } # 7层http配置 http { include /etc/nginx/mime.</description>
     </item>
     
     <item>
       <title>nginx调优方法</title>
-      <link>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</link>
+      <link>https://wandong.notewan.com/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://wandong.notewan.com/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</guid>
       <description>一、优化nginx进程数以及cpu分布 修改配置文件 worker_processes 8; worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10000000; 几核就有几位二进制数，1在哪位就表示在哪个核心上。
 查看nginx worker进程分布在cpu的情况 ps -axo pid,psr,cmd,ni | grep -i &amp;#34;worker process&amp;#34; | awk &amp;#39;{print $2}&amp;#39; | sort -n | uniq -c 二、优化文件数
 ulimit -n #查看文件数限制 ulimit -SHn 65535 （注ulimit -SHn 65535 等效 ulimit -n 65535，-S指soft，-H指hard) #有如下三种修改方式： 1.在/etc/rc.local 中增加一行 ulimit -SHn 65535 2.在/etc/profile 中增加一行 ulimit -SHn 65535 3.在/etc/security/limits.conf最后增加如下两行记录 * soft nofile 65535 * hard nofile 65535 nginx配置修改：
@@ -34,19 +34,19 @@ worker_rlimit_nofile 65535; 三、使用epoll的I/O模型，用这个模型来�
     
     <item>
       <title>nginx常见代理配置</title>
-      <link>https://wandong1.github.io/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</link>
+      <link>https://wandong.notewan.com/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://wandong.notewan.com/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</guid>
       <description>user nginx; worker_processes auto; error_log /var/log/nginx/error.log notice; pid /var/run/nginx.pid; events { worker_connections 1024; } stream { log_format main &amp;#39;$remote_addr $upstream_addr - [$time_local] $status $upstream_bytes_sent&amp;#39;; access_log /var/log/nginx/dingding-access.log main; upstream dingding { server oapi.dingtalk.com:80; } upstream dingding_v2 { server oapi.dingtalk.com:443; } upstream apsoar { server soar.apsoar.com:22; } upstream mq_wdtest { server MQ_INST_1436183562454837_Bei5tXCs.cn-chongqing-cqzwy-d01.mq.namesrv.alinetcloud.cqzwy.com:9876; } upstream timor { server timor.tech:443; } upstream timor80 { server timor.tech:80; } server { listen 22; proxy_pass apsoar; } server { listen 7003; proxy_pass timor80; } server { listen 80; proxy_pass dingding; } server { listen 443; proxy_pass dingding_v2; } server { listen 9876; proxy_pass mq_wdtest; } } http { include /etc/nginx/mime.</description>
     </item>
     
     <item>
       <title>nginx限流熔断</title>
-      <link>https://wandong1.github.io/post/nginx%E9%99%90%E6%B5%81%E7%86%94%E6%96%AD/</link>
+      <link>https://wandong.notewan.com/post/nginx%E9%99%90%E6%B5%81%E7%86%94%E6%96%AD/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/nginx%E9%99%90%E6%B5%81%E7%86%94%E6%96%AD/</guid>
+      <guid>https://wandong.notewan.com/post/nginx%E9%99%90%E6%B5%81%E7%86%94%E6%96%AD/</guid>
       <description>Nginx限流熔断 作为优秀的负载均衡模块，目前是我们工作中用到最多的。其实，该模块是提供了我们需要的后端限流功能的。通过官方文档介绍，
 令牌桶算法 算法思想是：
 令牌以固定速率产生，并缓存到令牌桶中； 令牌桶放满时，多余的令牌被丢弃； 请求要消耗等比例的令牌才能被处理； 令牌不够时，请求被缓存。 漏桶算法 算法思想是：

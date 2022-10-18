@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>docker on 万东的云计算运维博客</title>
-    <link>https://wandong1.github.io/tags/docker/</link>
+    <link>https://wandong.notewan.com/tags/docker/</link>
     <description>Recent content in docker on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 Aug 2021 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Aug 2021 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>离线安装docker</title>
-      <link>https://wandong1.github.io/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <link>https://wandong.notewan.com/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <guid>https://wandong.notewan.com/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
       <description>离线安装docker</description>
     </item>
     
     <item>
       <title>docker入门至进阶</title>
-      <link>https://wandong1.github.io/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</link>
+      <link>https://wandong.notewan.com/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</guid>
+      <guid>https://wandong.notewan.com/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</guid>
       <description>一、Docker是什么 使用最广泛的开源容器引擎 一种操作系统级的虚拟化技术 依赖于Linux内核特性：Namespace（资源隔离）和Cgroups（资源限制） 一个简单的应用程序打包工具 docker的安装docker的安装 安装依赖包 mkdir /etc/yum.repos.d/back mv /etc/yum.repos.d/* /etc/yum.repos.d/back wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo yum install -y yum-utils 添加Docker软件包源 yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo 安装Docker CE yum install -y docker-ce 启动Docker服务并设置开机启动 systemctl start docker systemctl enable docker https://docs.docker.com/engine/install/centos/ 官方文档：https://docs.docker.com 阿里云源：http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 二、镜像是什么？ 一个分层存储的文件，不是一个单一的文件 一个软件的环境 一个镜像可以创建N个容器 一种标准化的交付 一个不包含Linux内核而又精简的Linux操作系统 镜像从哪里来 Docker Hub是由Docker公司负责维护的公共镜像仓库，包含大量的容器镜像，Docker工具默认从这个公共镜像库下载镜像。 地址：https://hub.docker.com 配置镜像加速器：
 vi /etc/docker/daemon.json { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://b9pmyelo.mirror.aliyuncs.com&amp;#34;] } 镜像相关命令 镜像加速器获取地址： 阿里云&amp;gt;控制台&amp;gt;容器镜像服务&amp;gt;镜像工具&amp;gt;镜像加速器 https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors docker image docker export 9a495b209d08 -o tomcat.tar</description>
@@ -33,10 +33,10 @@ vi /etc/docker/daemon.json { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https
     
     <item>
       <title>docker部署jenkins</title>
-      <link>https://wandong1.github.io/post/docker%E9%83%A8%E7%BD%B2jenkins/</link>
+      <link>https://wandong.notewan.com/post/docker%E9%83%A8%E7%BD%B2jenkins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/docker%E9%83%A8%E7%BD%B2jenkins/</guid>
+      <guid>https://wandong.notewan.com/post/docker%E9%83%A8%E7%BD%B2jenkins/</guid>
       <description>创建服务 docker volume create jenkins-data docker run -d --name jenkins -p 80:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home jenkins/jenkins 查看首次登录密钥 docker logs jenkins # 或者 cat /var/jenkins_home/secrets/initialAdminPassword 修改国内插件源 # 进入jenkins_home/updates目录 sed -i &amp;#39;s/http:\/\/updates.jenkins.ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&amp;#39; default.json sed -i &amp;#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&amp;#39; default.json 管理Jenkins-&amp;gt;系统配置&amp;ndash;&amp;gt;管理插件&amp;ndash;&amp;gt;分别搜索Git Parameter/Git/Pipeline/kubernetes/Config File Provider， 选中点击安装。
 • Git：拉取代码
 • Git Parameter：Git参数化构建
@@ -49,10 +49,10 @@ pipeline { agent any stages { stage(&amp;#39;pull code&amp;#39;) { steps { git c
     
     <item>
       <title>docker镜像制作</title>
-      <link>https://wandong1.github.io/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</link>
+      <link>https://wandong.notewan.com/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</guid>
+      <guid>https://wandong.notewan.com/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</guid>
       <description>六、Dockerfile定制容器镜像 Dockerfile常用指令 docker build构建镜像 Usage: docker build [OPTIONS] PATH | URL | -[flags]Options: -t, &amp;ndash;tag list # 镜像名称 -f, &amp;ndash;file string # 指定Dockerfile文件位置
 docker build -t shykes/myapp . docker build -t shykes/myapp -f /path/Dockerfile /path docker build -t shykes/myapp http://www.example.com/Dockerfile CMD与ENTRYPOINT区别 CMD用法： •CMD [“executable”,“param1”,“param2”] ：exec形式（首选） •CMD [“param1”,“param2”] ：作为ENTRYPOINT的默认参数 •CMD command param1 param2 ：Shell形式 ENTRYPOINT用法： •ENTRYPOINT [&amp;ldquo;executable&amp;rdquo;, &amp;ldquo;param1&amp;rdquo;, &amp;ldquo;param2&amp;rdquo;] •ENTRYPOINT command param1 param2
 小结： 1.CMD和ENTRYPOINT指令都可以用来定义运行容器时所使用的默认命令 2.Dockerfile至少指定一个CMD或ENTRYPOINT 3.CMD可以用作ENTRYPOINT默认参数，或者用作容器的默认命令 4.docker run指定时，将会覆盖CMD 5.如果是可执行文件，希望运行时传参，应该使用ENTRYPOINT

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>博客 on 万东的云计算运维博客</title>
-    <link>https://wandong1.github.io/categories/%E5%8D%9A%E5%AE%A2/</link>
+    <link>https://wandong.notewan.com/categories/%E5%8D%9A%E5%AE%A2/</link>
     <description>Recent content in 博客 on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/categories/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/categories/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo 博客程序搭建教程</title>
-      <link>https://wandong1.github.io/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <link>https://wandong.notewan.com/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <guid>https://wandong.notewan.com/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
       <description>下载hugo二进制程序包 下载地址： https://github.com/gohugoio/hugo/releases
 下载后解压、将hugo路径添加到环境变量。先设置hugo变量，然后在path中添加
 验证安装 hugo version 新建站点 hugo new site myblog # 该命令会新建一个文件夹myblog ls ./myblog # archetypes/ config.toml content/ data/ # layouts/ static/ themes/ ##我目前了解如下 #config.toml 进行参数配置，与之后的theme相关 #content 之后博客(.md)的文件都储存在这里 #layout 可个性化修改博客的展示细节，需要懂网络架构知识 #static 储存一些静态文件，比如本地图片，插入到博客中 #themes 主题，接下来会介绍 下载主题（hugo没有默认主题） 有多种hugo主题可供下载：https://themes.gohugo.io/ 推荐主题： https://adityatelange.github.io/hugo-PaperMod/

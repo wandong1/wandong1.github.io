@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>java on 万东的云计算运维博客</title>
-    <link>https://wandong1.github.io/tags/java/</link>
+    <link>https://wandong.notewan.com/tags/java/</link>
     <description>Recent content in java on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>zookeeper的安装和使用</title>
-      <link>https://wandong1.github.io/post/zookeeper/</link>
+      <link>https://wandong.notewan.com/post/zookeeper/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/zookeeper/</guid>
+      <guid>https://wandong.notewan.com/post/zookeeper/</guid>
       <description>zookeeper 官网 https://zookeeper.apache.org/ 找download
 一、下载软件包 https://dlcdn.apache.org/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz
 二、集群部署 1、安装JDK centos
@@ -25,10 +25,10 @@ yum install java-1.8.0-openjdk* -y 2、zk配置文件 # The number of millisecon
     
     <item>
       <title>jdk安装教程（容器）</title>
-      <link>https://wandong1.github.io/post/jdk%E5%AE%89%E8%A3%85/</link>
+      <link>https://wandong.notewan.com/post/jdk%E5%AE%89%E8%A3%85/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong1.github.io/post/jdk%E5%AE%89%E8%A3%85/</guid>
+      <guid>https://wandong.notewan.com/post/jdk%E5%AE%89%E8%A3%85/</guid>
       <description>jdk安装教程</description>
     </item>
     
