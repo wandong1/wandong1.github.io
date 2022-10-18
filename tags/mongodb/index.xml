@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>mongodb on 万东的云计算运维博客</title>
-    <link>https://wandong.notewan.com/tags/mongodb/</link>
+    <link>https://wandong1.github.io/tags/mongodb/</link>
     <description>Recent content in mongodb on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/mongodb/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>mongodb的安装部署</title>
-      <link>https://wandong.notewan.com/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
+      <link>https://wandong1.github.io/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://wandong1.github.io/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
       <description>软件包下载 https://www.mongodb.com/try/download/community wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-5.0.8.tgz mongodb模式介绍 三节点复制集模式 常见的复制集架构由3个成员节点组成，其中存在几种不同的模式。 PSS模式（官方推荐模式） PSS模式由一个主节点和两个备节点所组成，即Primary+Secondary+Secondary。 此模式始终提供数据集的两个完整副本，如果主节点不可用，则复制集选择备节点作为主节 点并继续正常操作。旧的主节点在可用时重新加入复制集。 复制集部署注意事项 关于硬件: 因为正常的复制集节点都有可能成为主节点，它们的地位是一样的，因此硬件配 置上必须一致; 为了保证节点不会同时宕机，各节点使用的硬件必须具有独立性。
 关于软件: 复制集各节点软件版本必须一致，以避免出现不可预知的问题。 增加节点不会增加系统写性能；
 准备配置文件 复制集的每个mongod进程应该位于不同的服务器。我们现在在一台机器上运行3个进程， 因此要为它们各自配置：

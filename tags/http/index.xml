@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>http on 万东的云计算运维博客</title>
-    <link>https://wandong.notewan.com/tags/http/</link>
+    <link>https://wandong1.github.io/tags/http/</link>
     <description>Recent content in http on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/http/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>http常见状态码</title>
-      <link>https://wandong.notewan.com/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</link>
+      <link>https://wandong1.github.io/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</guid>
+      <guid>https://wandong1.github.io/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</guid>
       <description>各类别常见状态码：
 2xx （3种） 200 OK：表示从客户端发送给服务器的请求被正常处理并返回；
 204 No Content：表示客户端发送给客户端的请求得到了成功处理，但在返回的响应报文中不含实体的主体部分（没有资源可以返回）；

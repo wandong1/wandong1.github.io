@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>万东的云计算运维博客</title>
-    <link>https://wandong.notewan.com/</link>
+    <link>https://wandong1.github.io/</link>
     <description>Recent content on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hexo博客框架的使用</title>
-      <link>https://wandong.notewan.com/post/hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <link>https://wandong1.github.io/post/hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://wandong1.github.io/post/hexo%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
       <description>hexo博客框架的使用 安装node.js 官网： https://nodejs.org/en/
 安装国内淘宝npm npm install -g cnpm --registry=https://registry.npm.taobao.org 安装hexo cnpm install -g hexo-clihexo -v hexo初始化 hexo init 目录 hexo server 新建文章 文章都在source\_posts目录下
 hexo new &amp;#34;我的第一篇博客文章&amp;#34; 配置后刷新并重启服务 hexo clean hexo g hexo server 更换主题 进入项目目录
@@ -26,10 +26,10 @@ theme: yilia 修复更换主题后全部文章无法显示问题 # 进入项目�
     
     <item>
       <title>http常见状态码</title>
-      <link>https://wandong.notewan.com/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</link>
+      <link>https://wandong1.github.io/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</guid>
+      <guid>https://wandong1.github.io/post/http%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81/</guid>
       <description>各类别常见状态码：
 2xx （3种） 200 OK：表示从客户端发送给服务器的请求被正常处理并返回；
 204 No Content：表示客户端发送给客户端的请求得到了成功处理，但在返回的响应报文中不含实体的主体部分（没有资源可以返回）；
@@ -51,10 +51,10 @@ theme: yilia 修复更换主题后全部文章无法显示问题 # 进入项目�
     
     <item>
       <title>Hugo 博客程序搭建教程</title>
-      <link>https://wandong.notewan.com/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
+      <link>https://wandong1.github.io/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
+      <guid>https://wandong1.github.io/post/hugo-%E5%8D%9A%E5%AE%A2%E7%A8%8B%E5%BA%8F%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</guid>
       <description>下载hugo二进制程序包 下载地址： https://github.com/gohugoio/hugo/releases
 下载后解压、将hugo路径添加到环境变量。先设置hugo变量，然后在path中添加
 验证安装 hugo version 新建站点 hugo new site myblog # 该命令会新建一个文件夹myblog ls ./myblog # archetypes/ config.toml content/ data/ # layouts/ static/ themes/ ##我目前了解如下 #config.toml 进行参数配置，与之后的theme相关 #content 之后博客(.md)的文件都储存在这里 #layout 可个性化修改博客的展示细节，需要懂网络架构知识 #static 储存一些静态文件，比如本地图片，插入到博客中 #themes 主题，接下来会介绍 下载主题（hugo没有默认主题） 有多种hugo主题可供下载：https://themes.gohugo.io/ 推荐主题： https://adityatelange.github.io/hugo-PaperMod/
@@ -67,19 +67,19 @@ PaperMod自定义参数查询：https://adityatelange.github.io/hugo-PaperMod/po
     
     <item>
       <title>K8S根据现有证书生成管理员kubeconfig文件</title>
-      <link>https://wandong.notewan.com/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</link>
+      <link>https://wandong1.github.io/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</guid>
+      <guid>https://wandong1.github.io/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</guid>
       <description>生成管理员证书 cat &amp;gt; admin-csr.json &amp;lt;&amp;lt;EOF { &amp;#34;CN&amp;#34;: &amp;#34;admin&amp;#34;, &amp;#34;hosts&amp;#34;: [], &amp;#34;key&amp;#34;: { &amp;#34;algo&amp;#34;: &amp;#34;rsa&amp;#34;, &amp;#34;size&amp;#34;: 2048 }, &amp;#34;names&amp;#34;: [ { &amp;#34;C&amp;#34;: &amp;#34;CN&amp;#34;, &amp;#34;L&amp;#34;: &amp;#34;BeiJing&amp;#34;, &amp;#34;ST&amp;#34;: &amp;#34;BeiJing&amp;#34;, &amp;#34;O&amp;#34;: &amp;#34;system:masters&amp;#34;, &amp;#34;OU&amp;#34;: &amp;#34;System&amp;#34; } ] } EOF 执行生成命令 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes admin-csr.json | cfssljson -bare admin 创建kubeconfig文件 # 设置集群参数 kubectl config set-cluster kubernetes \ --server=https://192.168.0.149:6443 \ --certificate-authority=ca.pem \ --embed-certs=true \ --kubeconfig=config # 设置上下文参数 kubectl config set-context default \ --cluster=kubernetes \ --user=cluster-admin \ --kubeconfig=config # 设置客户端认证参数 kubectl config set-credentials cluster-admin \ --certificate-authority=ca.</description>
     </item>
     
     <item>
       <title>mongodb的安装部署</title>
-      <link>https://wandong.notewan.com/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
+      <link>https://wandong1.github.io/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://wandong1.github.io/post/mongodb%E7%9A%84%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid>
       <description>软件包下载 https://www.mongodb.com/try/download/community wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel70-5.0.8.tgz mongodb模式介绍 三节点复制集模式 常见的复制集架构由3个成员节点组成，其中存在几种不同的模式。 PSS模式（官方推荐模式） PSS模式由一个主节点和两个备节点所组成，即Primary+Secondary+Secondary。 此模式始终提供数据集的两个完整副本，如果主节点不可用，则复制集选择备节点作为主节 点并继续正常操作。旧的主节点在可用时重新加入复制集。 复制集部署注意事项 关于硬件: 因为正常的复制集节点都有可能成为主节点，它们的地位是一样的，因此硬件配 置上必须一致; 为了保证节点不会同时宕机，各节点使用的硬件必须具有独立性。
 关于软件: 复制集各节点软件版本必须一致，以避免出现不可预知的问题。 增加节点不会增加系统写性能；
 准备配置文件 复制集的每个mongod进程应该位于不同的服务器。我们现在在一台机器上运行3个进程， 因此要为它们各自配置：
@@ -92,28 +92,28 @@ systemLog: destination: file path: /data/db2/mongod.log logAppend: true storage:
     
     <item>
       <title>navicat15部署</title>
-      <link>https://wandong.notewan.com/post/navicat15%E9%83%A8%E7%BD%B2/</link>
+      <link>https://wandong1.github.io/post/navicat15%E9%83%A8%E7%BD%B2/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/navicat15%E9%83%A8%E7%BD%B2/</guid>
+      <guid>https://wandong1.github.io/post/navicat15%E9%83%A8%E7%BD%B2/</guid>
       <description>参考地址：https://www.bilibili.com/read/cv15128680</description>
     </item>
     
     <item>
       <title>nginx的四层转发和七层转发配置示例</title>
-      <link>https://wandong.notewan.com/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</link>
+      <link>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</guid>
+      <guid>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</guid>
       <description>user nginx; worker_processes auto; error_log /var/log/nginx/error.log notice; pid /var/run/nginx.pid; events { worker_connections 1024; } # 4层 stream配置 stream { log_format main &amp;#39;$remote_addr $upstream_addr - [$time_local] $status $upstream_bytes_sent&amp;#39;; access_log /var/log/nginx/dingding-access.log main; upstream dingding { server oapi.dingtalk.com:80; } upstream dingding_v2 { server oapi.dingtalk.com:443; } upstream apsoar { server soar.apsoar.com:22; } upstream timor { server timor.tech:443; } upstream timor80 { server timor.tech:80; } server { listen 22; proxy_pass apsoar; } server { listen 7003; proxy_pass timor80; } server { listen 80; proxy_pass dingding; } server { listen 443; proxy_pass dingding_v2; } } # 7层http配置 http { include /etc/nginx/mime.</description>
     </item>
     
     <item>
       <title>nginx调优方法</title>
-      <link>https://wandong.notewan.com/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</link>
+      <link>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</guid>
       <description>一、优化nginx进程数以及cpu分布 修改配置文件 worker_processes 8; worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10000000; 几核就有几位二进制数，1在哪位就表示在哪个核心上。
 查看nginx worker进程分布在cpu的情况 ps -axo pid,psr,cmd,ni | grep -i &amp;#34;worker process&amp;#34; | awk &amp;#39;{print $2}&amp;#39; | sort -n | uniq -c 二、优化文件数
 ulimit -n #查看文件数限制 ulimit -SHn 65535 （注ulimit -SHn 65535 等效 ulimit -n 65535，-S指soft，-H指hard) #有如下三种修改方式： 1.在/etc/rc.local 中增加一行 ulimit -SHn 65535 2.在/etc/profile 中增加一行 ulimit -SHn 65535 3.在/etc/security/limits.conf最后增加如下两行记录 * soft nofile 65535 * hard nofile 65535 nginx配置修改：
@@ -122,20 +122,20 @@ worker_rlimit_nofile 65535; 三、使用epoll的I/O模型，用这个模型来�
     
     <item>
       <title>prometheus直接安装</title>
-      <link>https://wandong.notewan.com/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</link>
+      <link>https://wandong1.github.io/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</guid>
+      <guid>https://wandong1.github.io/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</guid>
       <description>一、prometheus监控 https://prometheus.io/download/ ###下载源码解压即可 https://grafana.com/grafana/dashboards ###搜索数据源为prometheus的
 安装docker mkdir /etc/yum.repos.d/back mv /etc/yum.repos.d/* /etc/yum.repos.d/back wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo yum install -y yum-utils yum-config-manager \ --add-repo \ http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo yum install -y docker-ce systemctl enable docker --now 安装grafana wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.3.4-1.x86_64.rpm yum localinstall grafana-5.3.4-1.x86_64.rpm systemctl start grafana-server 默认密码 admin/admin prometheus安装 tar -xvzf prometheus-2.34.0.linux-amd64.tar.gz -C /opt/ mv /opt/prometheus-2.34.0.linux-amd64 /opt/prometheus cd /opt/prometheus &amp;amp;&amp;amp; mkdir data # 创建启动脚本 cat &amp;lt;&amp;lt;EOF &amp;gt;start.sh #!/bin/bash ./prometheus --storage.tsdb.path=./data --storage.tsdb.retention.time=744h --web.enable-lifecycle --storage.tsdb.no-lockfile EOF # storage.</description>
     </item>
     
     <item>
       <title>rainbond对接nfs或者nas存储</title>
-      <link>https://wandong.notewan.com/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</link>
+      <link>https://wandong1.github.io/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</guid>
+      <guid>https://wandong1.github.io/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</guid>
       <description>https://www.rainbond.com/docs/ops-guide/storage/deploy-nfsclient
 添加helm仓库 helm repo add rainbond https://openchart.goodrain.com/goodrain/rainbond helm repo update nfs或者nas配置文件 nfs-client.yaml
 nfs: server: 1afc54bbca-jna4.cn-chongqing-cqzwy-d01.nas.alinetops.cqzwy.com #nfs server地址 path: / #nfs server 的路径 mountOptions: #添加参数 - hard - vers=4 - nolock - proto=tcp - rsize=1048576 - wsize=1048576 - timeo=600 - retrans=2 - noresvport 部署 helm install nfs-client-provisioner rainbond/nfs-client-provisioner \ -f nfs-client.yaml \ --version 1.2.8 创建有状态应用进行绑定 </description>
@@ -143,10 +143,10 @@ nfs: server: 1afc54bbca-jna4.cn-chongqing-cqzwy-d01.nas.alinetops.cqzwy.com #nfs
     
     <item>
       <title>rainbond平台部署ES-filebeat</title>
-      <link>https://wandong.notewan.com/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</link>
+      <link>https://wandong1.github.io/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</guid>
+      <guid>https://wandong1.github.io/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</guid>
       <description>https://lequ7.com/guan-yu-paas-ping-tai-rainbond-tong-guo-cha-jian-zheng-he-elkefk-shi-xian-ri-zhi-shou-ji.html
 通过helm部署filebeat采集容器日志 helm repo add elastic https://helm.elastic.co helm pull elastic/filebeat tar -xvzf filebeat-7.17.3.tgz &amp;amp;&amp;amp; cd filebeat hosts: [&amp;#39;cqzwy-mgmt-log-platform-grc055ce-0.cqzwy-mgmt-log-platform-grc055ce.013497775a1b4580924a00009a20c887.svc.cluster.local:9200&amp;#39;] username: &amp;#34;elastic&amp;#34; password: &amp;#34;kuGmFNENeZyYuGkYZ4BU&amp;#34; 进入容器内ping es的svc即可获得svc全称
 helm install filebeat -n 013497775a1b4580924a00009a20c887 ./filebeat helm list -A 或者使用yaml直接不部署
@@ -155,10 +155,10 @@ helm install filebeat -n 013497775a1b4580924a00009a20c887 ./filebeat helm list -
     
     <item>
       <title>rancher的安装和使用</title>
-      <link>https://wandong.notewan.com/post/rancher/</link>
+      <link>https://wandong1.github.io/post/rancher/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/rancher/</guid>
+      <guid>https://wandong1.github.io/post/rancher/</guid>
       <description>Rancher Rancher 是一套容器管理平台，它可以帮助组织在生产环境中轻松快捷的部署和管理容器。 Rancher 可以轻松地管理各种环境的 Kubernetes，满足 IT 需求并为 DevOps 团队提供支持。
 Rancher 四个组成部分 Rancher 由以下四个部分组成：
 1、基础设施编排
@@ -173,10 +173,10 @@ Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP
     
     <item>
       <title>redis的常见问题</title>
-      <link>https://wandong.notewan.com/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <link>https://wandong1.github.io/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://wandong1.github.io/post/redis%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>1、缓存击穿，某些场景下，大量的key同时失效，请求直接穿过redis缓存层打到数据库上。 解决方法：对key的失效时间设置随机值避免同时失效。
 2、缓存穿透，请求进来请求本就不存在的数据，redis层找不到数据库也找不到，每个这种请求都会打到数据库造成压力。 解决方法：对请求的后端数据库不存在的数据，设置空缓存，避免恶意请求对后端数据库造成压力。
 3、雪崩，指流量进来打到redis，redis由于某些原因扛不住，流量又会打到数据库，数据库很显然更抗不住。造成系统雪崩。 解决方法：redis采用高可用的集群架构，针对某些bigkey进行打散操作。
@@ -187,10 +187,10 @@ Rancher 支持灵活的插件式的用户认证。支持 Active Directory，LDAP
     
     <item>
       <title>zookeeper的安装和使用</title>
-      <link>https://wandong.notewan.com/post/zookeeper/</link>
+      <link>https://wandong1.github.io/post/zookeeper/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/zookeeper/</guid>
+      <guid>https://wandong1.github.io/post/zookeeper/</guid>
       <description>zookeeper 官网 https://zookeeper.apache.org/ 找download
 一、下载软件包 https://dlcdn.apache.org/zookeeper/zookeeper-3.8.0/apache-zookeeper-3.8.0-bin.tar.gz
 二、集群部署 1、安装JDK centos
@@ -199,10 +199,10 @@ yum install java-1.8.0-openjdk* -y 2、zk配置文件 # The number of millisecon
     
     <item>
       <title>helm的使用方法介绍</title>
-      <link>https://wandong.notewan.com/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <link>https://wandong1.github.io/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 14 Sep 2022 16:14:24 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://wandong1.github.io/post/helm%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
       <description>Helm Helm是一个Kubernetes的包管理工具，就像Linux下的包管理器，如yum/apt等，可以很方便的将之前
 打包好的yaml文件部署到kubernetes上。
 Helm有3个重要概念：
@@ -227,64 +227,64 @@ helm package mychart • charts：目录里存放这个chart依赖的所有子ch
     
     <item>
       <title>Golang学习笔记</title>
-      <link>https://wandong.notewan.com/post/golang/</link>
+      <link>https://wandong1.github.io/post/golang/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/golang/</guid>
+      <guid>https://wandong1.github.io/post/golang/</guid>
       <description>Golang学习笔记</description>
     </item>
     
     <item>
       <title>golang定时任务系统</title>
-      <link>https://wandong.notewan.com/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</link>
+      <link>https://wandong1.github.io/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</guid>
+      <guid>https://wandong1.github.io/post/golang%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E7%B3%BB%E7%BB%9F/</guid>
       <description>golang定时任务系统</description>
     </item>
     
     <item>
       <title>golang微服务</title>
-      <link>https://wandong.notewan.com/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <link>https://wandong1.github.io/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <guid>https://wandong1.github.io/post/golang%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
       <description>golang微服务</description>
     </item>
     
     <item>
       <title>golang日志框架zap</title>
-      <link>https://wandong.notewan.com/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</link>
+      <link>https://wandong1.github.io/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</guid>
+      <guid>https://wandong1.github.io/post/golang%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6zap/</guid>
       <description>golang日志框架zap</description>
     </item>
     
     <item>
       <title>jdk安装教程（容器）</title>
-      <link>https://wandong.notewan.com/post/jdk%E5%AE%89%E8%A3%85/</link>
+      <link>https://wandong1.github.io/post/jdk%E5%AE%89%E8%A3%85/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/jdk%E5%AE%89%E8%A3%85/</guid>
+      <guid>https://wandong1.github.io/post/jdk%E5%AE%89%E8%A3%85/</guid>
       <description>jdk安装教程</description>
     </item>
     
     <item>
       <title>jenkins构建go项目</title>
-      <link>https://wandong.notewan.com/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/</link>
+      <link>https://wandong1.github.io/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/</link>
       <pubDate>Mon, 15 Aug 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/</guid>
+      <guid>https://wandong1.github.io/post/jenkins%E6%9E%84%E5%BB%BAgo%E9%A1%B9%E7%9B%AE/</guid>
       <description>jenkins构建go项目</description>
     </item>
     
     <item>
       <title>为K8S集群添加nfs类型的sotrageClass</title>
-      <link>https://wandong.notewan.com/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</link>
+      <link>https://wandong1.github.io/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</link>
       <pubDate>Sun, 15 Aug 2021 08:25:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</guid>
+      <guid>https://wandong1.github.io/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</guid>
       <description>项目源码介绍 使用nfs-subdir-external-provisioner github地址：https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner 详细介绍：https://artifacthub.io/packages/helm/nfs-subdir-external-provisioner/nfs-subdir-external-provisioner 镜像地址：https://hub.docker.com/r/eipwork/nfs-subdir-external-provisioner/tags
 NFS服务端安装 # 安装nfs服务端 yum install nfs-utils -y vim /etc/exports /opt/nfsdata 192.168.0.0/24(rw,no_root_squash,no_all_squash,sync) # 刷新并验证 exportfs -rv # 启动nfs服务，共两个服务 systemctl enable rpcbind --now systemctl enable nfs --now 所有客户端也需要安装nfs-utils，安装完成即可，无需启动服务
 yum install nfs-utils -y storageClass插件安装 # 添加helm仓库地址 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/ # 安装第一个 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata \ --set image.repository=eipwork/nfs-subdir-external-provisioner # 安装第二个(可选) helm install second-nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata2 \ --set image.</description>
@@ -292,57 +292,57 @@ yum install nfs-utils -y storageClass插件安装 # 添加helm仓库地址 helm 
     
     <item>
       <title>Centos更新国内yum源</title>
-      <link>https://wandong.notewan.com/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</link>
+      <link>https://wandong1.github.io/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</guid>
+      <guid>https://wandong1.github.io/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</guid>
       <description>Centos7
 wget -O /etc/yum.repos.d/epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo wget -O /etc/yum.repos.d/Centos-7.repo http://mirrors.aliyun.com/repo/Centos-7.repo wget -O /etc/yum.repos.d/CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo </description>
     </item>
     
     <item>
       <title>ElasticSearch快速入门实战</title>
-      <link>https://wandong.notewan.com/post/elasticsearch/</link>
+      <link>https://wandong1.github.io/post/elasticsearch/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/elasticsearch/</guid>
+      <guid>https://wandong1.github.io/post/elasticsearch/</guid>
       <description>ElasticSearch</description>
     </item>
     
     <item>
       <title>git的使用方法</title>
-      <link>https://wandong.notewan.com/post/git/</link>
+      <link>https://wandong1.github.io/post/git/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/git/</guid>
+      <guid>https://wandong1.github.io/post/git/</guid>
       <description>Git Git 是一个开源的分布式版本控制软件,用以有效、高速的处理从很小到非常大的项目版本管理。 Git 最初是由Linus Torvalds设计开发的，用于管理Linux内核开发。Git 是根据GNU通用公共许可证版本2的条款分发的自由/免费软件，安装参见：http://git-scm.com/
 打开git bash，初始化配置 git config --global user.name &amp;#34;wandong&amp;#34; git config --global user.email &amp;#34;993696910@qq.com&amp;#34; # 对已存在的目录进行git的初始化 git init # 添加远程仓库地址 git remote add origin http://git.cqzwymgmt.com/root/gin-project-orm.git # git add . git commit -m &amp;#34;Initial commit&amp;#34; # 推送到远程仓库 master分支 git push -u origin master 在新的环境拉取代码，进行开发 git clone http://git.cqzwymgmt.com/root/gin-project-orm.git # 创建新的分支继续开发 git branch dev # 列出所有分支 git branch # 切换分支 git checkout dev # 可以开始开发新功能了，尽量开发新的文件，避免合并的时候出现冲突进而解决冲突。 git add . git commit -m &amp;#34;change log function&amp;#34; # 推送到远程仓库 dev分支 git push -u origin dev 更新本地代码 # 拉取最新的dev分支代码，如果本地没有该分支，先创建 git branch dev # 使用pull命令更新分支代码的时候，要先处于该分支，不然会被合并 git branch dev git checkout dev git pull origin dev # 查看dev分支代码和master代码区别 将dev分支合并到master分支 git merge dev # 或者 git rebase dev 删除本地和远程仓库的分支 # 删除分支前先切换其他分支 git branch -d dev git push origin --delete dev 将你的仓库和你的gitee合并了，用填充的方法，即： git pull --rebase origin master </description>
     </item>
     
     <item>
       <title>离线安装docker</title>
-      <link>https://wandong.notewan.com/post/elasticsearch%E5%85%A5%E9%97%A8/</link>
+      <link>https://wandong1.github.io/post/elasticsearch%E5%85%A5%E9%97%A8/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/elasticsearch%E5%85%A5%E9%97%A8/</guid>
+      <guid>https://wandong1.github.io/post/elasticsearch%E5%85%A5%E9%97%A8/</guid>
       <description>离线安装docker</description>
     </item>
     
     <item>
       <title>离线安装docker</title>
-      <link>https://wandong.notewan.com/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
+      <link>https://wandong1.github.io/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
+      <guid>https://wandong1.github.io/post/%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker/</guid>
       <description>离线安装docker</description>
     </item>
     
     <item>
       <title>随笔</title>
-      <link>https://wandong.notewan.com/post/%E9%9A%8F%E7%AC%94/</link>
+      <link>https://wandong1.github.io/post/%E9%9A%8F%E7%AC%94/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E9%9A%8F%E7%AC%94/</guid>
+      <guid>https://wandong1.github.io/post/%E9%9A%8F%E7%AC%94/</guid>
       <description>随笔 技术的变革，一定是思想先行，云原生是一种构建和运行应用程序的方法，是一套技术体系和方法论。云原生（CloudNative）是一个组合词，Cloud+Native。Cloud表示应用程序位于云中，而不是传统的数据中心；Native表示应用程序从设计之初即考虑到云的环境，原生为云而设计，在云上以最佳姿势运行，充分利用和发挥云平台的弹性+分布式优势。
 符合云原生架构的应用程序应该是：采用开源堆栈（K8S+Docker）进行容器化，基于微服务架构提高灵活性和可维护性，借助敏捷方法、DevOps支持持续迭代和运维自动化，利用云平台设施实现弹性伸缩、动态调度、优化资源利用率。
 云原生的四要素 微服务：几乎每个云原生的定义都包含微服务，跟微服务相对的是单体应用，微服务有理论基础，那就是康威定律，指导服务怎么切分，很玄乎，凡是能称为理论定律的都简单明白不了，不然就忒没b格，大概意思是组织架构决定产品形态，不知道跟马克思的生产关系影响生产力有无关系。
@@ -365,10 +365,10 @@ DevOps：这是个组合词，Dev+Ops，就是开发和运维合体，不像开�
     
     <item>
       <title></title>
-      <link>https://wandong.notewan.com/post/%E5%9F%BA%E4%BA%8Edocker%E5%92%8Ckubernetes%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7devops%E5%AE%9E%E8%B7%B5%E8%AE%AD%E7%BB%83%E8%90%A5/</link>
+      <link>https://wandong1.github.io/post/%E5%9F%BA%E4%BA%8Edocker%E5%92%8Ckubernetes%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7devops%E5%AE%9E%E8%B7%B5%E8%AE%AD%E7%BB%83%E8%90%A5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E5%9F%BA%E4%BA%8Edocker%E5%92%8Ckubernetes%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7devops%E5%AE%9E%E8%B7%B5%E8%AE%AD%E7%BB%83%E8%90%A5/</guid>
+      <guid>https://wandong1.github.io/post/%E5%9F%BA%E4%BA%8Edocker%E5%92%8Ckubernetes%E7%9A%84%E4%BC%81%E4%B8%9A%E7%BA%A7devops%E5%AE%9E%E8%B7%B5%E8%AE%AD%E7%BB%83%E8%90%A5/</guid>
       <description>基于Docker和Kubernetes的企业级DevOps实践训练营 课程准备 离线镜像包
 百度：https://pan.baidu.com/s/1N1AYGCYftYGn6L0QPMWIMw 提取码：ev2h
 天翼云：https://cloud.189.cn/t/ENjUbmRR7FNz
@@ -404,10 +404,10 @@ Kubernetes(k8s)成为容器编排管理的标准
     
     <item>
       <title>docker入门至进阶</title>
-      <link>https://wandong.notewan.com/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</link>
+      <link>https://wandong1.github.io/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</guid>
+      <guid>https://wandong1.github.io/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</guid>
       <description>一、Docker是什么 使用最广泛的开源容器引擎 一种操作系统级的虚拟化技术 依赖于Linux内核特性：Namespace（资源隔离）和Cgroups（资源限制） 一个简单的应用程序打包工具 docker的安装docker的安装 安装依赖包 mkdir /etc/yum.repos.d/back mv /etc/yum.repos.d/* /etc/yum.repos.d/back wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo yum install -y yum-utils 添加Docker软件包源 yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo 安装Docker CE yum install -y docker-ce 启动Docker服务并设置开机启动 systemctl start docker systemctl enable docker https://docs.docker.com/engine/install/centos/ 官方文档：https://docs.docker.com 阿里云源：http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 二、镜像是什么？ 一个分层存储的文件，不是一个单一的文件 一个软件的环境 一个镜像可以创建N个容器 一种标准化的交付 一个不包含Linux内核而又精简的Linux操作系统 镜像从哪里来 Docker Hub是由Docker公司负责维护的公共镜像仓库，包含大量的容器镜像，Docker工具默认从这个公共镜像库下载镜像。 地址：https://hub.docker.com 配置镜像加速器：
 vi /etc/docker/daemon.json { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://b9pmyelo.mirror.aliyuncs.com&amp;#34;] } 镜像相关命令 镜像加速器获取地址： 阿里云&amp;gt;控制台&amp;gt;容器镜像服务&amp;gt;镜像工具&amp;gt;镜像加速器 https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors docker image docker export 9a495b209d08 -o tomcat.tar</description>
@@ -415,10 +415,10 @@ vi /etc/docker/daemon.json { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https
     
     <item>
       <title>docker部署jenkins</title>
-      <link>https://wandong.notewan.com/post/docker%E9%83%A8%E7%BD%B2jenkins/</link>
+      <link>https://wandong1.github.io/post/docker%E9%83%A8%E7%BD%B2jenkins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/docker%E9%83%A8%E7%BD%B2jenkins/</guid>
+      <guid>https://wandong1.github.io/post/docker%E9%83%A8%E7%BD%B2jenkins/</guid>
       <description>创建服务 docker volume create jenkins-data docker run -d --name jenkins -p 80:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home jenkins/jenkins 查看首次登录密钥 docker logs jenkins # 或者 cat /var/jenkins_home/secrets/initialAdminPassword 修改国内插件源 # 进入jenkins_home/updates目录 sed -i &amp;#39;s/http:\/\/updates.jenkins.ci.org\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g&amp;#39; default.json sed -i &amp;#39;s/http:\/\/www.google.com/https:\/\/www.baidu.com/g&amp;#39; default.json 管理Jenkins-&amp;gt;系统配置&amp;ndash;&amp;gt;管理插件&amp;ndash;&amp;gt;分别搜索Git Parameter/Git/Pipeline/kubernetes/Config File Provider， 选中点击安装。
 • Git：拉取代码
 • Git Parameter：Git参数化构建
@@ -431,10 +431,10 @@ pipeline { agent any stages { stage(&amp;#39;pull code&amp;#39;) { steps { git c
     
     <item>
       <title>docker镜像制作</title>
-      <link>https://wandong.notewan.com/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</link>
+      <link>https://wandong1.github.io/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</guid>
+      <guid>https://wandong1.github.io/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</guid>
       <description>六、Dockerfile定制容器镜像 Dockerfile常用指令 docker build构建镜像 Usage: docker build [OPTIONS] PATH | URL | -[flags]Options: -t, &amp;ndash;tag list # 镜像名称 -f, &amp;ndash;file string # 指定Dockerfile文件位置
 docker build -t shykes/myapp . docker build -t shykes/myapp -f /path/Dockerfile /path docker build -t shykes/myapp http://www.example.com/Dockerfile CMD与ENTRYPOINT区别 CMD用法： •CMD [“executable”,“param1”,“param2”] ：exec形式（首选） •CMD [“param1”,“param2”] ：作为ENTRYPOINT的默认参数 •CMD command param1 param2 ：Shell形式 ENTRYPOINT用法： •ENTRYPOINT [&amp;ldquo;executable&amp;rdquo;, &amp;ldquo;param1&amp;rdquo;, &amp;ldquo;param2&amp;rdquo;] •ENTRYPOINT command param1 param2
 小结： 1.CMD和ENTRYPOINT指令都可以用来定义运行容器时所使用的默认命令 2.Dockerfile至少指定一个CMD或ENTRYPOINT 3.CMD可以用作ENTRYPOINT默认参数，或者用作容器的默认命令 4.docker run指定时，将会覆盖CMD 5.如果是可执行文件，希望运行时传参，应该使用ENTRYPOINT
@@ -443,19 +443,19 @@ docker build -t shykes/myapp . docker build -t shykes/myapp -f /path/Dockerfile 
     
     <item>
       <title>expect实现免交互登录</title>
-      <link>https://wandong.notewan.com/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</link>
+      <link>https://wandong1.github.io/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</guid>
+      <guid>https://wandong1.github.io/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</guid>
       <description>expect 安装 yum install -y expect 免交互切root用户 #!/usr/bin/expect set passwd &amp;#34;123456&amp;#34; set timeout 10 spawn su - expect { &amp;#34;Password:&amp;#34; { send &amp;#34;$passwd\r&amp;#34; } } interact 免交互ssh登录节点 #!/usr/bin/expect set timeout 10 set passwd &amp;#34;123456&amp;#34; spawn ssh wanye@172.17.0.17 -p 22 expect { &amp;#34;yes/no&amp;#34; { send &amp;#34;yes\r&amp;#34;;exp_continue } &amp;#34;password:&amp;#34; { send &amp;#34;$passwd\r&amp;#34; } } interact </description>
     </item>
     
     <item>
       <title>Explain详解与索引最佳实践</title>
-      <link>https://wandong.notewan.com/post/explain%E8%AF%A6%E8%A7%A3%E4%B8%8E%E7%B4%A2%E5%BC%95%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
+      <link>https://wandong1.github.io/post/explain%E8%AF%A6%E8%A7%A3%E4%B8%8E%E7%B4%A2%E5%BC%95%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/explain%E8%AF%A6%E8%A7%A3%E4%B8%8E%E7%B4%A2%E5%BC%95%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
+      <guid>https://wandong1.github.io/post/explain%E8%AF%A6%E8%A7%A3%E4%B8%8E%E7%B4%A2%E5%BC%95%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
       <description>Explain工具介绍 使用EXPLAIN关键字可以模拟优化器执行SQL语句，分析你的查询语句或是结构的性能瓶颈
 在 select 语句之前增加 explain 关键字，MySQL 会在查询上设置一个标记，执行查询会返回执行计划的信息，而不是执行这条SQL
 注意：如果 from 中包含子查询，仍会执行该子查询，将结果放入临时表中
@@ -465,10 +465,10 @@ Explain分析示例 参考官方文档：https://dev.mysql.com/doc/refman/5.7/en
     
     <item>
       <title>Hello World</title>
-      <link>https://wandong.notewan.com/post/hello-world/</link>
+      <link>https://wandong1.github.io/post/hello-world/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/hello-world/</guid>
+      <guid>https://wandong1.github.io/post/hello-world/</guid>
       <description>Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
 Quick Start Create a new post $ hexo new &amp;#34;My New Post&amp;#34; More info: Writing
 Run server $ hexo server More info: Server
@@ -478,10 +478,10 @@ Deploy to remote sites $ hexo deploy More info: Deployment</description>
     
     <item>
       <title>k8s集群负载均衡keepalived&#43;nginx实现</title>
-      <link>https://wandong.notewan.com/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://wandong1.github.io/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://wandong1.github.io/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</guid>
       <description>使用keepalived实现vip的动态飘逸 keepalived.conf 主
 ! Configuration File for keepalived global_defs { notification_email { acassen@firewall.loc failover@firewall.loc sysadmin@firewall.loc } notification_email_from Alexandre.Cassen@firewall.loc smtp_server 192.168.200.1 smtp_connect_timeout 30 router_id LVS_DEVEL vrrp_skip_check_adv_addr vrrp_garp_interval 0 vrrp_gna_interval 0 } vrrp_script check_nginx { script &amp;#34;/etc/keepalived/check_nginx.sh&amp;#34; } vrrp_instance VI_1{ state MASTER interface ens34 virtual_router_id 51 priority 100 advert_int 1 authentication { auth_tpye PASS auth_pass 1111 } virtual_ipaddress { 192.168.200.59/24 } track_script { check_nginx } } keepalived.conf 备
 ! Configuration File for keepalived global_defs { notification_email { acassen@firewall.</description>
@@ -489,10 +489,10 @@ Deploy to remote sites $ hexo deploy More info: Deployment</description>
     
     <item>
       <title>kubeadm安装K8S集群</title>
-      <link>https://wandong.notewan.com/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</link>
+      <link>https://wandong1.github.io/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</guid>
+      <guid>https://wandong1.github.io/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</guid>
       <description>kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。
 这个工具能通过两条指令完成一个kubernetes集群的部署：
 # 创建一个 Master 节点$ kubeadm init# 将一个 Node 节点加入到当前集群中$ kubeadm join &amp;lt;Master节点的IP和端口 &amp;gt; 1. 安装要求 在开始之前，部署Kubernetes集群机器需要满足以下几个条件：
@@ -501,10 +501,10 @@ Deploy to remote sites $ hexo deploy More info: Deployment</description>
     
     <item>
       <title>kubectl命令补全</title>
-      <link>https://wandong.notewan.com/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</link>
+      <link>https://wandong1.github.io/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</guid>
+      <guid>https://wandong1.github.io/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</guid>
       <description>一、kubectl命令补全 yum install -y bash-completion #临时生效
 source /usr/share/bash-completion/bash_completion #永久生效
 source &amp;lt;(kubectl completion bash) echo &amp;#34;source &amp;lt;(kubectl completion bash)&amp;#34; &amp;gt;&amp;gt; ~/.bashrc </description>
@@ -512,10 +512,10 @@ source &amp;lt;(kubectl completion bash) echo &amp;#34;source &amp;lt;(kubectl c
     
     <item>
       <title>kubectl管理命令概要</title>
-      <link>https://wandong.notewan.com/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</link>
+      <link>https://wandong1.github.io/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</guid>
+      <guid>https://wandong1.github.io/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</guid>
       <description>kubectl管理命令概要 配置命令补全： http://123.207.224.155:8080/post/60
 体验 使用Deployment控制器部署镜像：
 kubectl create deployment web --image=lizhenliang/java-demo kubectl get deploy,pods 使用Service将Pod暴露出去：
@@ -528,10 +528,10 @@ YAML字段记忆技巧 用create命令生成 kubectl create deployment nginx --i
     
     <item>
       <title>linux系统根分区扩容</title>
-      <link>https://wandong.notewan.com/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</link>
+      <link>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</guid>
+      <guid>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</guid>
       <description>扩容硬盘后进行如下操作。
 fdisk /dev/vda1 确认只有一个vda1分区的情况下，按d删除分区，然后按n重新创建vda1分区，指定更大范围的sectors,且覆盖原有的sectors。 重启机器，后 resize2fs /dev/vda1
 https://help.aliyun.com/document_detail/113316.html</description>
@@ -539,10 +539,10 @@ https://help.aliyun.com/document_detail/113316.html</description>
     
     <item>
       <title>linux系统负载高排查</title>
-      <link>https://wandong.notewan.com/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</link>
+      <link>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</guid>
+      <guid>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</guid>
       <description>uptime 查看负载高 uptime uptime 命令用于查看服务器运行了多长时间以及有多少个用户登录，快速获知服务器的负荷情况。
 uptime 的输出包含一项内容是 load average，显示了最近 1，5，15 分钟的负荷情况。它的值代表等待CPU 处理的进程数，如果 CPU 没有时间处理这些进程，load average 值会升高；反之则会降低。load average的最佳值是 1，说明每个进程都可以马上处理并且没有CPU cycles 被丢失。对于单 CPU 的机器，1 或者2 是可以接受的值；对于多路 CPU 的机器，load average 值可能在 8 到 10 之间。也可以使用 uptime 命令来判断网络性能。例如，某个网络应用性能很低，通过运行uptime 查看服务器的负荷是否很高，如果不是，那么问题应该是网络方面造成的。
 以下是 uptime 的运行实例： 9:24am up 19:06, 1 user, load average: 0.00, 0.00, 0.00 也可以查看/proc/loadavg 和/proc/uptime 两个文件，注意不能编辑/proc 中的文件，要用 cat 等命令来查看，如：
@@ -552,10 +552,10 @@ uptime 例： 18:02:41 up 41 days, 23:42,	1 user,	load average: 0.</description>
     
     <item>
       <title>lvm逻辑卷管理</title>
-      <link>https://wandong.notewan.com/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</link>
+      <link>https://wandong1.github.io/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</guid>
+      <guid>https://wandong1.github.io/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</guid>
       <description>LVM的工作原理 LVM（ Logical Volume Manager）逻辑卷管理，是在磁盘分区和文件系统之间添加的一个逻辑层，来为文件系统屏蔽下层磁盘分区布局，提供一个抽象的盘卷，在盘卷上建立文件系统。管理员利用LVM可以在磁盘不用重新分区的情况下动态调整文件系统的大小，并且利用LVM管理的文件系统可以跨越磁盘，当服务器添加了新的磁盘后，管理员不必将原有的文件移动到新的磁盘上，而是通过LVM可以直接扩展文件系统跨越磁盘
 它就是通过将底层的物理硬盘封装起来，然后以逻辑卷的方式呈现给上层应用。在LVM中，其通过对底层的硬盘进行封装，当我们对底层的物理硬盘进行操作时，其不再是针对于分区进行操作，而是通过一个叫做逻辑卷的东西来对其进行底层的磁盘管理操作。
 LVM常用的术语 物理存储介质（The physical media）:LVM存储介质可以是磁盘分区，整个磁盘，RAID阵列或SAN磁盘，设备必须初始化为LVM物理卷，才能与LVM结合使用
@@ -577,10 +577,10 @@ LVM优点 使用卷组，使多个硬盘空间看起来像是一个大的硬盘
     
     <item>
       <title>mysql安装文档</title>
-      <link>https://wandong.notewan.com/post/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</link>
+      <link>https://wandong1.github.io/post/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</guid>
+      <guid>https://wandong1.github.io/post/mysql%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/</guid>
       <description>mysql5.7的安装与配置(centos7环境) 第一步：下载mysql
 wget http://mirrors.sohu.com/mysql/MySQL-5.7/mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz 第二步：解压文件
 tar -zxvf mysql-5.7.17-linux-glibc2.5-x86_64.tar.gz -C /usr/local/ mv mysql-5.7.17-linux-glibc2.5-x86_64/ mysql 第三步：配置启动文件 然后去到mysql的support-files目录下,复制my.cnf到 /etc/my.cnf(mysqld启动时自动读取)
@@ -595,19 +595,19 @@ cd /usr/local/mysql/bin/ ./mysqld --initialize --user=mysql --basedir=/usr/local
     
     <item>
       <title>nginx常见代理配置</title>
-      <link>https://wandong.notewan.com/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</link>
+      <link>https://wandong1.github.io/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://wandong1.github.io/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</guid>
       <description>user nginx; worker_processes auto; error_log /var/log/nginx/error.log notice; pid /var/run/nginx.pid; events { worker_connections 1024; } stream { log_format main &amp;#39;$remote_addr $upstream_addr - [$time_local] $status $upstream_bytes_sent&amp;#39;; access_log /var/log/nginx/dingding-access.log main; upstream dingding { server oapi.dingtalk.com:80; } upstream dingding_v2 { server oapi.dingtalk.com:443; } upstream apsoar { server soar.apsoar.com:22; } upstream mq_wdtest { server MQ_INST_1436183562454837_Bei5tXCs.cn-chongqing-cqzwy-d01.mq.namesrv.alinetcloud.cqzwy.com:9876; } upstream timor { server timor.tech:443; } upstream timor80 { server timor.tech:80; } server { listen 22; proxy_pass apsoar; } server { listen 7003; proxy_pass timor80; } server { listen 80; proxy_pass dingding; } server { listen 443; proxy_pass dingding_v2; } server { listen 9876; proxy_pass mq_wdtest; } } http { include /etc/nginx/mime.</description>
     </item>
     
     <item>
       <title>nginx限流熔断</title>
-      <link>https://wandong.notewan.com/post/nginx%E9%99%90%E6%B5%81%E7%86%94%E6%96%AD/</link>
+      <link>https://wandong1.github.io/post/nginx%E9%99%90%E6%B5%81%E7%86%94%E6%96%AD/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/nginx%E9%99%90%E6%B5%81%E7%86%94%E6%96%AD/</guid>
+      <guid>https://wandong1.github.io/post/nginx%E9%99%90%E6%B5%81%E7%86%94%E6%96%AD/</guid>
       <description>Nginx限流熔断 作为优秀的负载均衡模块，目前是我们工作中用到最多的。其实，该模块是提供了我们需要的后端限流功能的。通过官方文档介绍，
 令牌桶算法 算法思想是：
 令牌以固定速率产生，并缓存到令牌桶中； 令牌桶放满时，多余的令牌被丢弃； 请求要消耗等比例的令牌才能被处理； 令牌不够时，请求被缓存。 漏桶算法 算法思想是：
@@ -626,19 +626,19 @@ limit_zone one $binary_remote_addr 10m; 定义一个叫“one”的记录区，�
     
     <item>
       <title>python consul注册中心客户端代码范例</title>
-      <link>https://wandong.notewan.com/post/python-consul%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%8C%83%E4%BE%8B/</link>
+      <link>https://wandong1.github.io/post/python-consul%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%8C%83%E4%BE%8B/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/python-consul%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%8C%83%E4%BE%8B/</guid>
+      <guid>https://wandong1.github.io/post/python-consul%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%A3%E7%A0%81%E8%8C%83%E4%BE%8B/</guid>
       <description>import consul from random import randint import requests import json class ConsulClient(): &amp;#39;&amp;#39;&amp;#39;定义consul操作类&amp;#39;&amp;#39;&amp;#39; def __init__(self, host=None, port=None, token=None): &amp;#39;&amp;#39;&amp;#39;初始化，指定consul主机、端口和token&amp;#39;&amp;#39;&amp;#39; self.host = host # consul 主机 self.port = port # consul 端口 self.token = token self.consul = consul.Consul(host=host, port=port) def register(self, name, service_id, address, port, tags, interval, url): &amp;#39;&amp;#39;&amp;#39;注册服务&amp;#39;&amp;#39;&amp;#39; # 设置检测模式：http和tcp # tcp模式 # check=consul.Check().tcp(self.host, self.port, # &amp;#34;5s&amp;#34;, &amp;#34;30s&amp;#34;, &amp;#34;30s&amp;#34;) # http模式 check = consul.Check().http(url, interval, timeout=None, deregister=None, header=None) self.consul.agent.service.register(name, service_id=service_id, address=address, port=port, tags=tags, interval=interval, check=check) def getService(self, name): &amp;#39;&amp;#39;&amp;#39;通过负载均衡获取服务实例&amp;#39;&amp;#39;&amp;#39; # 获取相应服务下的DataCenter url = &amp;#39;http://&amp;#39; + self.</description>
     </item>
     
     <item>
       <title>redis工具之redis_rdb_tools</title>
-      <link>https://wandong.notewan.com/post/redis%E5%B7%A5%E5%85%B7%E4%B9%8Bredis_rdb_tools/</link>
+      <link>https://wandong1.github.io/post/redis%E5%B7%A5%E5%85%B7%E4%B9%8Bredis_rdb_tools/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/redis%E5%B7%A5%E5%85%B7%E4%B9%8Bredis_rdb_tools/</guid>
+      <guid>https://wandong1.github.io/post/redis%E5%B7%A5%E5%85%B7%E4%B9%8Bredis_rdb_tools/</guid>
       <description>安装工具 指定pip源安装
 pip install rdbtools -i https://mirrors.aliyun.com/pypi/simple/ pip install python-lzf -i https://mirrors.aliyun.com/pypi/simple/ 生成内存报告 rdb -c memory dump.rdb &amp;gt; redis_memory_report.csv
 详细参考：https://www.cnblogs.com/xingxia/p/redis_rdb_tools.html</description>
@@ -646,10 +646,10 @@ pip install rdbtools -i https://mirrors.aliyun.com/pypi/simple/ pip install pyth
     
     <item>
       <title>redis抓包分析</title>
-      <link>https://wandong.notewan.com/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</link>
+      <link>https://wandong1.github.io/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</guid>
+      <guid>https://wandong1.github.io/post/redis%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90/</guid>
       <description>tcpdump -i bond0 tcp and port 3029 and host 10.42.23.141 -n -nn -vvv -w redis2.cap data and tcp.dstport == 3034
 import dpkt import socket from openpyxl import Workbook def analysis_of_redis_cap(cap_file,redis_port): wb = Workbook() ws = wb.active table_hed = [&amp;#39;源地址&amp;#39;,&amp;#39;目的地址&amp;#39;,&amp;#39;redis请求命令&amp;#39;] ws.append(table_hed) with open(cap_file,&amp;#39;rb&amp;#39;) as f: string_data = dpkt.pcap.Reader(f) for ts, buf in string_data: eth = dpkt.ethernet.Ethernet(buf) ip = eth.data tcp = ip.data # print(tcp.dport) if tcp.dport == int(redis_port): try: data_pre = tcp.</description>
     </item>
@@ -657,10 +657,10 @@ import dpkt import socket from openpyxl import Workbook def analysis_of_redis_ca
     
     <item>
       <title>tcp三次握手和四次挥手</title>
-      <link>https://wandong.notewan.com/post/tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</link>
+      <link>https://wandong1.github.io/post/tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</guid>
+      <guid>https://wandong1.github.io/post/tcp%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B/</guid>
       <description>TCP 协议简述 TCP 提供面向有连接的通信传输，面向有连接是指在传送数据之前必须先建立连接，数据传送完成后要释放连接。
 无论哪一方向另一方发送数据之前，都必须先在双方之间建立一条连接。在TCP/IP协议中，TCP协议提供可靠的连接服务，连接是通过三次握手进行初始化的。 同时由于TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议，TCP是全双工模式，所以需要四次挥手关闭连接。
 TCP包首部 网络中传输的数据包由两部分组成：一部分是协议所要用到的首部，另一部分是上一层传过来的数据。首部的结构由协议的具体规范详细定义。在数据包的首部，明确标明了协议应该如何读取数据。反过来说，看到首部，也就能够了解该协议必要的信息以及所要处理的数据。包首部就像协议的脸。
@@ -681,20 +681,20 @@ TCP 三次握手建立连接 所谓三次握手(Three-way Handshake)，是指建
     
     <item>
       <title>tsar安装和使用</title>
-      <link>https://wandong.notewan.com/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
+      <link>https://wandong1.github.io/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://wandong1.github.io/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
       <description>从github上检出代码从github上检出代码 $ git clone git://github.com/alibaba/tsar.git $ cd tsar $ make $ make install 从github上下载源码 $ wget -O tsar.zip https://github.com/alibaba/tsar/archive/master.zip --no-check-certificate $ unzip tsar.zip $ cd tsar $ make $ make install 安装后生成的文件 Tsar配置文件路径：/etc/tsar/tsar.conf，tsar的采集模块和输出的具体配置； 定时任务配置:/etc/cron.d/tsar，负责每分钟调用tsar执行采集任务； 日志文件轮转配置:/etc/logrotate.d/tsar，每个月会把tsar的本地存储进行轮转； 模块路径：/usr/local/tsar/modules，各个模块的动态库so文件；
 详细参考：https://www.cnblogs.com/zafu/p/11782988.html</description>
     </item>
     
     <item>
       <title>企业级镜像仓库harbor</title>
-      <link>https://wandong.notewan.com/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</link>
+      <link>https://wandong1.github.io/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</guid>
+      <guid>https://wandong1.github.io/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</guid>
       <description>概述 Harbor是由VMWare公司开源的容器镜像仓库。事实上，Harbor是在Docker Registry上进行了相应的企业级扩展，从而获得了更加广泛的应用，这些新的企业级特性包括：管理用户界面，基于角色的访问控制，AD/LDAP集成以及审计日志等，足以满足基本企业需求。 官方：https://goharbor.io/ Github：https://github.com/goharbor/harbor
 部署先决条件 服务器硬件配置： •最低要求：CPU2核/内存4G/硬盘40GB •推荐：CPU4核/内存8G/硬盘160GB 软件： •Docker CE 17.06版本+ •Docker Compose1.18版本+ Harbor安装有2种方式： •在线安装：从Docker Hub下载Harbor相关镜像，因此安装软件包非常小 •离线安装：安装包包含部署的相关镜像，因此安装包比较大
 Harbor部署HTTP 1、先安装Docker和Docker Compose https://github.com/docker/compose/releases
@@ -707,10 +707,10 @@ vi /etc/docker/daemon.json {&amp;#34;insecure-registries&amp;#34;:[&amp;#34;reg.
     
     <item>
       <title>深入理解Mysql索引底层数据结构与算法</title>
-      <link>https://wandong.notewan.com/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3mysql%E7%B4%A2%E5%BC%95%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
+      <link>https://wandong1.github.io/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3mysql%E7%B4%A2%E5%BC%95%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3mysql%E7%B4%A2%E5%BC%95%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</guid>
+      <guid>https://wandong1.github.io/post/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3mysql%E7%B4%A2%E5%BC%95%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</guid>
       <description>索引的本质 索引是帮助MySQL高效获取数据的排好序的数据结构
 索引数据结构 •二叉树
 •红黑树
@@ -737,19 +737,19 @@ InnoDB存储引擎索引实现 •InnoDB索引实现(聚集)
     
     <item>
       <title>网络设备巡检命令</title>
-      <link>https://wandong.notewan.com/post/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/</link>
+      <link>https://wandong1.github.io/post/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/</guid>
+      <guid>https://wandong1.github.io/post/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87%E5%B7%A1%E6%A3%80%E5%91%BD%E4%BB%A4/</guid>
       <description>display clock display license display version dir display boot-loader display cpu-usage display memory display environment display device verbose display device manuinfo display power display fan display alarm display transceiver alarm interface display transceiver diagnosis interface display stp brief display stp root display stp reg display arp display mac-address display vrrp display interface display interface brief display counters inbound interface display counters outbound interface display counters rate inbound interface display counters rate inbound interface display lldp neighbor-information list display irf display irf link display irf topology display logbuffer display current-configuration </description>
     </item>
     
     <item>
       <title>钉钉群机器人推送脚本</title>
-      <link>https://wandong.notewan.com/post/%E9%92%89%E9%92%89%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A8%E9%80%81%E8%84%9A%E6%9C%AC/</link>
+      <link>https://wandong1.github.io/post/%E9%92%89%E9%92%89%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A8%E9%80%81%E8%84%9A%E6%9C%AC/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E9%92%89%E9%92%89%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A8%E9%80%81%E8%84%9A%E6%9C%AC/</guid>
+      <guid>https://wandong1.github.io/post/%E9%92%89%E9%92%89%E7%BE%A4%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8E%A8%E9%80%81%E8%84%9A%E6%9C%AC/</guid>
       <description>import requests import json import os, sys class PushMessage: def __init__(self): # self.test_ip_lst = [&amp;#39;114.114.114.114&amp;#39;,&amp;#39;223.5.5.5&amp;#39;] self.test_ip_lst = [&amp;#34;23.134.37.253&amp;#34;,&amp;#34;59.214.26.21&amp;#34;,&amp;#34;23.137.37.1&amp;#34;] self.alarm_info = &amp;#39;电子政务外网地址探测:\n&amp;#39; self.is_atall = &amp;#39;false&amp;#39; self.dingding_url = &amp;#34;https://oapi.dingtalk.com/robot/send?access_token=1c1&amp;#34; self.push = False def dingding_qun(self): headers = { &amp;#39;Content-Type&amp;#39;: &amp;#39;application/json;charset=utf-8&amp;#39; } url = &amp;#34;&amp;#34;&amp;#34;{}&amp;#34;&amp;#34;&amp;#34;.format(self.dingding_url) # data_markdown = { # &amp;#34;msgtype&amp;#34;: &amp;#34;markdown&amp;#34;, # &amp;#34;markdown&amp;#34;: { # &amp;#34;title&amp;#34;:&amp;#34;杭州天气&amp;#34;, # &amp;#34;text&amp;#34;: &amp;#34;#### 杭州天气 @18182294500 \n&amp;gt; 9度，西北风1级，空气良89，相对温度73%\n&amp;gt; ![screenshot](https://img.alicdn.com/tfs/TB1NwmBEL9TBuNjy1zbXXXpepXa-2400-1218.png)\n&amp;gt; ###### 10点20分发布 [天气](https://www.dingalk.com) \n&amp;#34; # }, # &amp;#34;at&amp;#34;: { # &amp;#34;atMobiles&amp;#34;: [ # &amp;#34;18500&amp;#34; # ], # &amp;#34;atUserIds&amp;#34;: [ # &amp;#34;user123&amp;#34; # ], # &amp;#34;isAtAll&amp;#34;: &amp;#34;false&amp;#34; # } # } data_text = { &amp;#34;at&amp;#34;: { &amp;#34;atMobiles&amp;#34;: [ &amp;#34;&amp;#34; ], &amp;#34;atUserIds&amp;#34;: [ &amp;#34;user123&amp;#34; ], &amp;#34;isAtAll&amp;#34;: &amp;#34;{}&amp;#34;.</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>prometheus on 万东的云计算运维博客</title>
-    <link>https://wandong.notewan.com/tags/prometheus/</link>
+    <link>https://wandong1.github.io/tags/prometheus/</link>
     <description>Recent content in prometheus on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>prometheus直接安装</title>
-      <link>https://wandong.notewan.com/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</link>
+      <link>https://wandong1.github.io/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</guid>
+      <guid>https://wandong1.github.io/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</guid>
       <description>一、prometheus监控 https://prometheus.io/download/ ###下载源码解压即可 https://grafana.com/grafana/dashboards ###搜索数据源为prometheus的
 安装docker mkdir /etc/yum.repos.d/back mv /etc/yum.repos.d/* /etc/yum.repos.d/back wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo yum install -y yum-utils yum-config-manager \ --add-repo \ http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo yum install -y docker-ce systemctl enable docker --now 安装grafana wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.3.4-1.x86_64.rpm yum localinstall grafana-5.3.4-1.x86_64.rpm systemctl start grafana-server 默认密码 admin/admin prometheus安装 tar -xvzf prometheus-2.34.0.linux-amd64.tar.gz -C /opt/ mv /opt/prometheus-2.34.0.linux-amd64 /opt/prometheus cd /opt/prometheus &amp;amp;&amp;amp; mkdir data # 创建启动脚本 cat &amp;lt;&amp;lt;EOF &amp;gt;start.sh #!/bin/bash ./prometheus --storage.tsdb.path=./data --storage.tsdb.retention.time=744h --web.enable-lifecycle --storage.tsdb.no-lockfile EOF # storage.</description>
     </item>

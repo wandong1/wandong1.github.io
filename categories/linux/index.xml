@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>linux on 万东的云计算运维博客</title>
-    <link>https://wandong.notewan.com/categories/linux/</link>
+    <link>https://wandong1.github.io/categories/linux/</link>
     <description>Recent content in linux on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>nginx的四层转发和七层转发配置示例</title>
-      <link>https://wandong.notewan.com/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</link>
+      <link>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</guid>
+      <guid>https://wandong1.github.io/post/nginx%E7%9A%84%E5%9B%9B%E5%B1%82%E8%BD%AC%E5%8F%91%E5%92%8C%E4%B8%83%E5%B1%82%E8%BD%AC%E5%8F%91%E9%85%8D%E7%BD%AE%E7%A4%BA%E4%BE%8B/</guid>
       <description>user nginx; worker_processes auto; error_log /var/log/nginx/error.log notice; pid /var/run/nginx.pid; events { worker_connections 1024; } # 4层 stream配置 stream { log_format main &amp;#39;$remote_addr $upstream_addr - [$time_local] $status $upstream_bytes_sent&amp;#39;; access_log /var/log/nginx/dingding-access.log main; upstream dingding { server oapi.dingtalk.com:80; } upstream dingding_v2 { server oapi.dingtalk.com:443; } upstream apsoar { server soar.apsoar.com:22; } upstream timor { server timor.tech:443; } upstream timor80 { server timor.tech:80; } server { listen 22; proxy_pass apsoar; } server { listen 7003; proxy_pass timor80; } server { listen 80; proxy_pass dingding; } server { listen 443; proxy_pass dingding_v2; } } # 7层http配置 http { include /etc/nginx/mime.</description>
     </item>
     
     <item>
       <title>nginx调优方法</title>
-      <link>https://wandong.notewan.com/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</link>
+      <link>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://wandong1.github.io/post/nginx%E8%B0%83%E4%BC%98%E6%96%B9%E6%B3%95/</guid>
       <description>一、优化nginx进程数以及cpu分布 修改配置文件 worker_processes 8; worker_cpu_affinity 00000001 00000010 00000100 00001000 00010000 00100000 01000000 10000000; 几核就有几位二进制数，1在哪位就表示在哪个核心上。
 查看nginx worker进程分布在cpu的情况 ps -axo pid,psr,cmd,ni | grep -i &amp;#34;worker process&amp;#34; | awk &amp;#39;{print $2}&amp;#39; | sort -n | uniq -c 二、优化文件数
 ulimit -n #查看文件数限制 ulimit -SHn 65535 （注ulimit -SHn 65535 等效 ulimit -n 65535，-S指soft，-H指hard) #有如下三种修改方式： 1.在/etc/rc.local 中增加一行 ulimit -SHn 65535 2.在/etc/profile 中增加一行 ulimit -SHn 65535 3.在/etc/security/limits.conf最后增加如下两行记录 * soft nofile 65535 * hard nofile 65535 nginx配置修改：
@@ -34,29 +34,29 @@ worker_rlimit_nofile 65535; 三、使用epoll的I/O模型，用这个模型来�
     
     <item>
       <title>Centos更新国内yum源</title>
-      <link>https://wandong.notewan.com/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</link>
+      <link>https://wandong1.github.io/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</link>
       <pubDate>Sun, 15 Aug 2021 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</guid>
+      <guid>https://wandong1.github.io/post/centos%E6%9B%B4%E6%96%B0%E5%9B%BD%E5%86%85yum%E6%BA%90/</guid>
       <description>Centos7
 wget -O /etc/yum.repos.d/epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo wget -O /etc/yum.repos.d/Centos-7.repo http://mirrors.aliyun.com/repo/Centos-7.repo wget -O /etc/yum.repos.d/CentOS7-Base-163.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo </description>
     </item>
     
     <item>
       <title>expect实现免交互登录</title>
-      <link>https://wandong.notewan.com/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</link>
+      <link>https://wandong1.github.io/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</guid>
+      <guid>https://wandong1.github.io/post/expect%E5%AE%9E%E7%8E%B0%E5%85%8D%E4%BA%A4%E4%BA%92%E7%99%BB%E5%BD%95/</guid>
       <description>expect 安装 yum install -y expect 免交互切root用户 #!/usr/bin/expect set passwd &amp;#34;123456&amp;#34; set timeout 10 spawn su - expect { &amp;#34;Password:&amp;#34; { send &amp;#34;$passwd\r&amp;#34; } } interact 免交互ssh登录节点 #!/usr/bin/expect set timeout 10 set passwd &amp;#34;123456&amp;#34; spawn ssh wanye@172.17.0.17 -p 22 expect { &amp;#34;yes/no&amp;#34; { send &amp;#34;yes\r&amp;#34;;exp_continue } &amp;#34;password:&amp;#34; { send &amp;#34;$passwd\r&amp;#34; } } interact </description>
     </item>
     
     <item>
       <title>linux系统根分区扩容</title>
-      <link>https://wandong.notewan.com/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</link>
+      <link>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</guid>
+      <guid>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E6%A0%B9%E5%88%86%E5%8C%BA%E6%89%A9%E5%AE%B9/</guid>
       <description>扩容硬盘后进行如下操作。
 fdisk /dev/vda1 确认只有一个vda1分区的情况下，按d删除分区，然后按n重新创建vda1分区，指定更大范围的sectors,且覆盖原有的sectors。 重启机器，后 resize2fs /dev/vda1
 https://help.aliyun.com/document_detail/113316.html</description>
@@ -64,10 +64,10 @@ https://help.aliyun.com/document_detail/113316.html</description>
     
     <item>
       <title>linux系统负载高排查</title>
-      <link>https://wandong.notewan.com/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</link>
+      <link>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</guid>
+      <guid>https://wandong1.github.io/post/linux%E7%B3%BB%E7%BB%9F%E8%B4%9F%E8%BD%BD%E9%AB%98%E6%8E%92%E6%9F%A5/</guid>
       <description>uptime 查看负载高 uptime uptime 命令用于查看服务器运行了多长时间以及有多少个用户登录，快速获知服务器的负荷情况。
 uptime 的输出包含一项内容是 load average，显示了最近 1，5，15 分钟的负荷情况。它的值代表等待CPU 处理的进程数，如果 CPU 没有时间处理这些进程，load average 值会升高；反之则会降低。load average的最佳值是 1，说明每个进程都可以马上处理并且没有CPU cycles 被丢失。对于单 CPU 的机器，1 或者2 是可以接受的值；对于多路 CPU 的机器，load average 值可能在 8 到 10 之间。也可以使用 uptime 命令来判断网络性能。例如，某个网络应用性能很低，通过运行uptime 查看服务器的负荷是否很高，如果不是，那么问题应该是网络方面造成的。
 以下是 uptime 的运行实例： 9:24am up 19:06, 1 user, load average: 0.00, 0.00, 0.00 也可以查看/proc/loadavg 和/proc/uptime 两个文件，注意不能编辑/proc 中的文件，要用 cat 等命令来查看，如：
@@ -77,10 +77,10 @@ uptime 例： 18:02:41 up 41 days, 23:42,	1 user,	load average: 0.</description>
     
     <item>
       <title>lvm逻辑卷管理</title>
-      <link>https://wandong.notewan.com/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</link>
+      <link>https://wandong1.github.io/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</guid>
+      <guid>https://wandong1.github.io/post/lvm%E9%80%BB%E8%BE%91%E5%8D%B7%E7%AE%A1%E7%90%86/</guid>
       <description>LVM的工作原理 LVM（ Logical Volume Manager）逻辑卷管理，是在磁盘分区和文件系统之间添加的一个逻辑层，来为文件系统屏蔽下层磁盘分区布局，提供一个抽象的盘卷，在盘卷上建立文件系统。管理员利用LVM可以在磁盘不用重新分区的情况下动态调整文件系统的大小，并且利用LVM管理的文件系统可以跨越磁盘，当服务器添加了新的磁盘后，管理员不必将原有的文件移动到新的磁盘上，而是通过LVM可以直接扩展文件系统跨越磁盘
 它就是通过将底层的物理硬盘封装起来，然后以逻辑卷的方式呈现给上层应用。在LVM中，其通过对底层的硬盘进行封装，当我们对底层的物理硬盘进行操作时，其不再是针对于分区进行操作，而是通过一个叫做逻辑卷的东西来对其进行底层的磁盘管理操作。
 LVM常用的术语 物理存储介质（The physical media）:LVM存储介质可以是磁盘分区，整个磁盘，RAID阵列或SAN磁盘，设备必须初始化为LVM物理卷，才能与LVM结合使用
@@ -102,19 +102,19 @@ LVM优点 使用卷组，使多个硬盘空间看起来像是一个大的硬盘
     
     <item>
       <title>nginx常见代理配置</title>
-      <link>https://wandong.notewan.com/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</link>
+      <link>https://wandong1.github.io/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</guid>
+      <guid>https://wandong1.github.io/post/nginx%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE/</guid>
       <description>user nginx; worker_processes auto; error_log /var/log/nginx/error.log notice; pid /var/run/nginx.pid; events { worker_connections 1024; } stream { log_format main &amp;#39;$remote_addr $upstream_addr - [$time_local] $status $upstream_bytes_sent&amp;#39;; access_log /var/log/nginx/dingding-access.log main; upstream dingding { server oapi.dingtalk.com:80; } upstream dingding_v2 { server oapi.dingtalk.com:443; } upstream apsoar { server soar.apsoar.com:22; } upstream mq_wdtest { server MQ_INST_1436183562454837_Bei5tXCs.cn-chongqing-cqzwy-d01.mq.namesrv.alinetcloud.cqzwy.com:9876; } upstream timor { server timor.tech:443; } upstream timor80 { server timor.tech:80; } server { listen 22; proxy_pass apsoar; } server { listen 7003; proxy_pass timor80; } server { listen 80; proxy_pass dingding; } server { listen 443; proxy_pass dingding_v2; } server { listen 9876; proxy_pass mq_wdtest; } } http { include /etc/nginx/mime.</description>
     </item>
     
     <item>
       <title>tsar安装和使用</title>
-      <link>https://wandong.notewan.com/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
+      <link>https://wandong1.github.io/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
+      <guid>https://wandong1.github.io/post/tsar%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
       <description>从github上检出代码从github上检出代码 $ git clone git://github.com/alibaba/tsar.git $ cd tsar $ make $ make install 从github上下载源码 $ wget -O tsar.zip https://github.com/alibaba/tsar/archive/master.zip --no-check-certificate $ unzip tsar.zip $ cd tsar $ make $ make install 安装后生成的文件 Tsar配置文件路径：/etc/tsar/tsar.conf，tsar的采集模块和输出的具体配置； 定时任务配置:/etc/cron.d/tsar，负责每分钟调用tsar执行采集任务； 日志文件轮转配置:/etc/logrotate.d/tsar，每个月会把tsar的本地存储进行轮转； 模块路径：/usr/local/tsar/modules，各个模块的动态库so文件；
 详细参考：https://www.cnblogs.com/zafu/p/11782988.html</description>
     </item>

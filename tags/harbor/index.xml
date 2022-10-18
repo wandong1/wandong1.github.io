@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>harbor on 万东的云计算运维博客</title>
-    <link>https://wandong.notewan.com/tags/harbor/</link>
+    <link>https://wandong1.github.io/tags/harbor/</link>
     <description>Recent content in harbor on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language><atom:link href="https://wandong.notewan.com/tags/harbor/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language><atom:link href="https://wandong1.github.io/tags/harbor/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>企业级镜像仓库harbor</title>
-      <link>https://wandong.notewan.com/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</link>
+      <link>https://wandong1.github.io/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</guid>
+      <guid>https://wandong1.github.io/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</guid>
       <description>概述 Harbor是由VMWare公司开源的容器镜像仓库。事实上，Harbor是在Docker Registry上进行了相应的企业级扩展，从而获得了更加广泛的应用，这些新的企业级特性包括：管理用户界面，基于角色的访问控制，AD/LDAP集成以及审计日志等，足以满足基本企业需求。 官方：https://goharbor.io/ Github：https://github.com/goharbor/harbor
 部署先决条件 服务器硬件配置： •最低要求：CPU2核/内存4G/硬盘40GB •推荐：CPU4核/内存8G/硬盘160GB 软件： •Docker CE 17.06版本+ •Docker Compose1.18版本+ Harbor安装有2种方式： •在线安装：从Docker Hub下载Harbor相关镜像，因此安装软件包非常小 •离线安装：安装包包含部署的相关镜像，因此安装包比较大
 Harbor部署HTTP 1、先安装Docker和Docker Compose https://github.com/docker/compose/releases

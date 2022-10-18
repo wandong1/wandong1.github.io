@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>云原生K8S on 万东的云计算运维博客</title>
-    <link>https://wandong.notewan.com/categories/%E4%BA%91%E5%8E%9F%E7%94%9Fk8s/</link>
+    <link>https://wandong1.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9Fk8s/</link>
     <description>Recent content in 云原生K8S on 万东的云计算运维博客</description>
     <image>
-      <url>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://wandong.notewan.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wandong1.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong.notewan.com/categories/%E4%BA%91%E5%8E%9F%E7%94%9Fk8s/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Sep 2022 08:15:16 +0000</lastBuildDate><atom:link href="https://wandong1.github.io/categories/%E4%BA%91%E5%8E%9F%E7%94%9Fk8s/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>K8S根据现有证书生成管理员kubeconfig文件</title>
-      <link>https://wandong.notewan.com/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</link>
+      <link>https://wandong1.github.io/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</guid>
+      <guid>https://wandong1.github.io/post/k8s%E6%A0%B9%E6%8D%AE%E7%8E%B0%E6%9C%89%E8%AF%81%E4%B9%A6%E7%94%9F%E6%88%90%E7%AE%A1%E7%90%86%E5%91%98kubeconfig%E6%96%87%E4%BB%B6/</guid>
       <description>生成管理员证书 cat &amp;gt; admin-csr.json &amp;lt;&amp;lt;EOF { &amp;#34;CN&amp;#34;: &amp;#34;admin&amp;#34;, &amp;#34;hosts&amp;#34;: [], &amp;#34;key&amp;#34;: { &amp;#34;algo&amp;#34;: &amp;#34;rsa&amp;#34;, &amp;#34;size&amp;#34;: 2048 }, &amp;#34;names&amp;#34;: [ { &amp;#34;C&amp;#34;: &amp;#34;CN&amp;#34;, &amp;#34;L&amp;#34;: &amp;#34;BeiJing&amp;#34;, &amp;#34;ST&amp;#34;: &amp;#34;BeiJing&amp;#34;, &amp;#34;O&amp;#34;: &amp;#34;system:masters&amp;#34;, &amp;#34;OU&amp;#34;: &amp;#34;System&amp;#34; } ] } EOF 执行生成命令 cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json -profile=kubernetes admin-csr.json | cfssljson -bare admin 创建kubeconfig文件 # 设置集群参数 kubectl config set-cluster kubernetes \ --server=https://192.168.0.149:6443 \ --certificate-authority=ca.pem \ --embed-certs=true \ --kubeconfig=config # 设置上下文参数 kubectl config set-context default \ --cluster=kubernetes \ --user=cluster-admin \ --kubeconfig=config # 设置客户端认证参数 kubectl config set-credentials cluster-admin \ --certificate-authority=ca.</description>
     </item>
     
     <item>
       <title>prometheus直接安装</title>
-      <link>https://wandong.notewan.com/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</link>
+      <link>https://wandong1.github.io/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</guid>
+      <guid>https://wandong1.github.io/post/prometheus%E7%9B%B4%E6%8E%A5%E5%AE%89%E8%A3%85/</guid>
       <description>一、prometheus监控 https://prometheus.io/download/ ###下载源码解压即可 https://grafana.com/grafana/dashboards ###搜索数据源为prometheus的
 安装docker mkdir /etc/yum.repos.d/back mv /etc/yum.repos.d/* /etc/yum.repos.d/back wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo yum install -y yum-utils yum-config-manager \ --add-repo \ http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo yum install -y docker-ce systemctl enable docker --now 安装grafana wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.3.4-1.x86_64.rpm yum localinstall grafana-5.3.4-1.x86_64.rpm systemctl start grafana-server 默认密码 admin/admin prometheus安装 tar -xvzf prometheus-2.34.0.linux-amd64.tar.gz -C /opt/ mv /opt/prometheus-2.34.0.linux-amd64 /opt/prometheus cd /opt/prometheus &amp;amp;&amp;amp; mkdir data # 创建启动脚本 cat &amp;lt;&amp;lt;EOF &amp;gt;start.sh #!/bin/bash ./prometheus --storage.tsdb.path=./data --storage.tsdb.retention.time=744h --web.enable-lifecycle --storage.tsdb.no-lockfile EOF # storage.</description>
     </item>
     
     <item>
       <title>rainbond对接nfs或者nas存储</title>
-      <link>https://wandong.notewan.com/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</link>
+      <link>https://wandong1.github.io/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</guid>
+      <guid>https://wandong1.github.io/post/rainbond%E5%AF%B9%E6%8E%A5nfs%E6%88%96%E8%80%85nas%E5%AD%98%E5%82%A8/</guid>
       <description>https://www.rainbond.com/docs/ops-guide/storage/deploy-nfsclient
 添加helm仓库 helm repo add rainbond https://openchart.goodrain.com/goodrain/rainbond helm repo update nfs或者nas配置文件 nfs-client.yaml
 nfs: server: 1afc54bbca-jna4.cn-chongqing-cqzwy-d01.nas.alinetops.cqzwy.com #nfs server地址 path: / #nfs server 的路径 mountOptions: #添加参数 - hard - vers=4 - nolock - proto=tcp - rsize=1048576 - wsize=1048576 - timeo=600 - retrans=2 - noresvport 部署 helm install nfs-client-provisioner rainbond/nfs-client-provisioner \ -f nfs-client.yaml \ --version 1.2.8 创建有状态应用进行绑定 </description>
@@ -43,10 +43,10 @@ nfs: server: 1afc54bbca-jna4.cn-chongqing-cqzwy-d01.nas.alinetops.cqzwy.com #nfs
     
     <item>
       <title>rainbond平台部署ES-filebeat</title>
-      <link>https://wandong.notewan.com/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</link>
+      <link>https://wandong1.github.io/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</link>
       <pubDate>Thu, 15 Sep 2022 08:15:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</guid>
+      <guid>https://wandong1.github.io/post/rainbond%E5%B9%B3%E5%8F%B0%E9%83%A8%E7%BD%B2es-filebeat/</guid>
       <description>https://lequ7.com/guan-yu-paas-ping-tai-rainbond-tong-guo-cha-jian-zheng-he-elkefk-shi-xian-ri-zhi-shou-ji.html
 通过helm部署filebeat采集容器日志 helm repo add elastic https://helm.elastic.co helm pull elastic/filebeat tar -xvzf filebeat-7.17.3.tgz &amp;amp;&amp;amp; cd filebeat hosts: [&amp;#39;cqzwy-mgmt-log-platform-grc055ce-0.cqzwy-mgmt-log-platform-grc055ce.013497775a1b4580924a00009a20c887.svc.cluster.local:9200&amp;#39;] username: &amp;#34;elastic&amp;#34; password: &amp;#34;kuGmFNENeZyYuGkYZ4BU&amp;#34; 进入容器内ping es的svc即可获得svc全称
 helm install filebeat -n 013497775a1b4580924a00009a20c887 ./filebeat helm list -A 或者使用yaml直接不部署
@@ -55,10 +55,10 @@ helm install filebeat -n 013497775a1b4580924a00009a20c887 ./filebeat helm list -
     
     <item>
       <title>为K8S集群添加nfs类型的sotrageClass</title>
-      <link>https://wandong.notewan.com/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</link>
+      <link>https://wandong1.github.io/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</link>
       <pubDate>Sun, 15 Aug 2021 08:25:16 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</guid>
+      <guid>https://wandong1.github.io/post/%E4%B8%BAk8s%E9%9B%86%E7%BE%A4%E6%B7%BB%E5%8A%A0nfs%E7%B1%BB%E5%9E%8B%E7%9A%84sotrageclass/</guid>
       <description>项目源码介绍 使用nfs-subdir-external-provisioner github地址：https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner 详细介绍：https://artifacthub.io/packages/helm/nfs-subdir-external-provisioner/nfs-subdir-external-provisioner 镜像地址：https://hub.docker.com/r/eipwork/nfs-subdir-external-provisioner/tags
 NFS服务端安装 # 安装nfs服务端 yum install nfs-utils -y vim /etc/exports /opt/nfsdata 192.168.0.0/24(rw,no_root_squash,no_all_squash,sync) # 刷新并验证 exportfs -rv # 启动nfs服务，共两个服务 systemctl enable rpcbind --now systemctl enable nfs --now 所有客户端也需要安装nfs-utils，安装完成即可，无需启动服务
 yum install nfs-utils -y storageClass插件安装 # 添加helm仓库地址 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/ # 安装第一个 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata \ --set image.repository=eipwork/nfs-subdir-external-provisioner # 安装第二个(可选) helm install second-nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \ --set nfs.server=192.168.0.13 \ --set nfs.path=/opt/nfsdata2 \ --set image.</description>
@@ -66,10 +66,10 @@ yum install nfs-utils -y storageClass插件安装 # 添加helm仓库地址 helm 
     
     <item>
       <title>docker入门至进阶</title>
-      <link>https://wandong.notewan.com/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</link>
+      <link>https://wandong1.github.io/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</guid>
+      <guid>https://wandong1.github.io/post/docker%E5%85%A5%E9%97%A8%E8%87%B3%E8%BF%9B%E9%98%B6/</guid>
       <description>一、Docker是什么 使用最广泛的开源容器引擎 一种操作系统级的虚拟化技术 依赖于Linux内核特性：Namespace（资源隔离）和Cgroups（资源限制） 一个简单的应用程序打包工具 docker的安装docker的安装 安装依赖包 mkdir /etc/yum.repos.d/back mv /etc/yum.repos.d/* /etc/yum.repos.d/back wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo yum install -y yum-utils 添加Docker软件包源 yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo 安装Docker CE yum install -y docker-ce 启动Docker服务并设置开机启动 systemctl start docker systemctl enable docker https://docs.docker.com/engine/install/centos/ 官方文档：https://docs.docker.com 阿里云源：http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 二、镜像是什么？ 一个分层存储的文件，不是一个单一的文件 一个软件的环境 一个镜像可以创建N个容器 一种标准化的交付 一个不包含Linux内核而又精简的Linux操作系统 镜像从哪里来 Docker Hub是由Docker公司负责维护的公共镜像仓库，包含大量的容器镜像，Docker工具默认从这个公共镜像库下载镜像。 地址：https://hub.docker.com 配置镜像加速器：
 vi /etc/docker/daemon.json { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https://b9pmyelo.mirror.aliyuncs.com&amp;#34;] } 镜像相关命令 镜像加速器获取地址： 阿里云&amp;gt;控制台&amp;gt;容器镜像服务&amp;gt;镜像工具&amp;gt;镜像加速器 https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors docker image docker export 9a495b209d08 -o tomcat.tar</description>
@@ -77,10 +77,10 @@ vi /etc/docker/daemon.json { &amp;#34;registry-mirrors&amp;#34;: [&amp;#34;https
     
     <item>
       <title>docker镜像制作</title>
-      <link>https://wandong.notewan.com/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</link>
+      <link>https://wandong1.github.io/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</guid>
+      <guid>https://wandong1.github.io/post/docker%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C/</guid>
       <description>六、Dockerfile定制容器镜像 Dockerfile常用指令 docker build构建镜像 Usage: docker build [OPTIONS] PATH | URL | -[flags]Options: -t, &amp;ndash;tag list # 镜像名称 -f, &amp;ndash;file string # 指定Dockerfile文件位置
 docker build -t shykes/myapp . docker build -t shykes/myapp -f /path/Dockerfile /path docker build -t shykes/myapp http://www.example.com/Dockerfile CMD与ENTRYPOINT区别 CMD用法： •CMD [“executable”,“param1”,“param2”] ：exec形式（首选） •CMD [“param1”,“param2”] ：作为ENTRYPOINT的默认参数 •CMD command param1 param2 ：Shell形式 ENTRYPOINT用法： •ENTRYPOINT [&amp;ldquo;executable&amp;rdquo;, &amp;ldquo;param1&amp;rdquo;, &amp;ldquo;param2&amp;rdquo;] •ENTRYPOINT command param1 param2
 小结： 1.CMD和ENTRYPOINT指令都可以用来定义运行容器时所使用的默认命令 2.Dockerfile至少指定一个CMD或ENTRYPOINT 3.CMD可以用作ENTRYPOINT默认参数，或者用作容器的默认命令 4.docker run指定时，将会覆盖CMD 5.如果是可执行文件，希望运行时传参，应该使用ENTRYPOINT
@@ -89,10 +89,10 @@ docker build -t shykes/myapp . docker build -t shykes/myapp -f /path/Dockerfile 
     
     <item>
       <title>k8s集群负载均衡keepalived&#43;nginx实现</title>
-      <link>https://wandong.notewan.com/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</link>
+      <link>https://wandong1.github.io/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</guid>
+      <guid>https://wandong1.github.io/post/k8s%E9%9B%86%E7%BE%A4%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1keepalived&#43;nginx%E5%AE%9E%E7%8E%B0/</guid>
       <description>使用keepalived实现vip的动态飘逸 keepalived.conf 主
 ! Configuration File for keepalived global_defs { notification_email { acassen@firewall.loc failover@firewall.loc sysadmin@firewall.loc } notification_email_from Alexandre.Cassen@firewall.loc smtp_server 192.168.200.1 smtp_connect_timeout 30 router_id LVS_DEVEL vrrp_skip_check_adv_addr vrrp_garp_interval 0 vrrp_gna_interval 0 } vrrp_script check_nginx { script &amp;#34;/etc/keepalived/check_nginx.sh&amp;#34; } vrrp_instance VI_1{ state MASTER interface ens34 virtual_router_id 51 priority 100 advert_int 1 authentication { auth_tpye PASS auth_pass 1111 } virtual_ipaddress { 192.168.200.59/24 } track_script { check_nginx } } keepalived.conf 备
 ! Configuration File for keepalived global_defs { notification_email { acassen@firewall.</description>
@@ -100,10 +100,10 @@ docker build -t shykes/myapp . docker build -t shykes/myapp -f /path/Dockerfile 
     
     <item>
       <title>kubeadm安装K8S集群</title>
-      <link>https://wandong.notewan.com/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</link>
+      <link>https://wandong1.github.io/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</guid>
+      <guid>https://wandong1.github.io/post/kubeadm%E5%AE%89%E8%A3%85k8s%E9%9B%86%E7%BE%A4/</guid>
       <description>kubeadm是官方社区推出的一个用于快速部署kubernetes集群的工具。
 这个工具能通过两条指令完成一个kubernetes集群的部署：
 # 创建一个 Master 节点$ kubeadm init# 将一个 Node 节点加入到当前集群中$ kubeadm join &amp;lt;Master节点的IP和端口 &amp;gt; 1. 安装要求 在开始之前，部署Kubernetes集群机器需要满足以下几个条件：
@@ -112,10 +112,10 @@ docker build -t shykes/myapp . docker build -t shykes/myapp -f /path/Dockerfile 
     
     <item>
       <title>kubectl命令补全</title>
-      <link>https://wandong.notewan.com/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</link>
+      <link>https://wandong1.github.io/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</guid>
+      <guid>https://wandong1.github.io/post/kubectl%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8/</guid>
       <description>一、kubectl命令补全 yum install -y bash-completion #临时生效
 source /usr/share/bash-completion/bash_completion #永久生效
 source &amp;lt;(kubectl completion bash) echo &amp;#34;source &amp;lt;(kubectl completion bash)&amp;#34; &amp;gt;&amp;gt; ~/.bashrc </description>
@@ -123,10 +123,10 @@ source &amp;lt;(kubectl completion bash) echo &amp;#34;source &amp;lt;(kubectl c
     
     <item>
       <title>kubectl管理命令概要</title>
-      <link>https://wandong.notewan.com/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</link>
+      <link>https://wandong1.github.io/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</guid>
+      <guid>https://wandong1.github.io/post/kubectl%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4%E6%A6%82%E8%A6%81/</guid>
       <description>kubectl管理命令概要 配置命令补全： http://123.207.224.155:8080/post/60
 体验 使用Deployment控制器部署镜像：
 kubectl create deployment web --image=lizhenliang/java-demo kubectl get deploy,pods 使用Service将Pod暴露出去：
@@ -139,10 +139,10 @@ YAML字段记忆技巧 用create命令生成 kubectl create deployment nginx --i
     
     <item>
       <title>企业级镜像仓库harbor</title>
-      <link>https://wandong.notewan.com/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</link>
+      <link>https://wandong1.github.io/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wandong.notewan.com/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</guid>
+      <guid>https://wandong1.github.io/post/%E4%BC%81%E4%B8%9A%E7%BA%A7%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93harbor/</guid>
       <description>概述 Harbor是由VMWare公司开源的容器镜像仓库。事实上，Harbor是在Docker Registry上进行了相应的企业级扩展，从而获得了更加广泛的应用，这些新的企业级特性包括：管理用户界面，基于角色的访问控制，AD/LDAP集成以及审计日志等，足以满足基本企业需求。 官方：https://goharbor.io/ Github：https://github.com/goharbor/harbor
 部署先决条件 服务器硬件配置： •最低要求：CPU2核/内存4G/硬盘40GB •推荐：CPU4核/内存8G/硬盘160GB 软件： •Docker CE 17.06版本+ •Docker Compose1.18版本+ Harbor安装有2种方式： •在线安装：从Docker Hub下载Harbor相关镜像，因此安装软件包非常小 •离线安装：安装包包含部署的相关镜像，因此安装包比较大
 Harbor部署HTTP 1、先安装Docker和Docker Compose https://github.com/docker/compose/releases
